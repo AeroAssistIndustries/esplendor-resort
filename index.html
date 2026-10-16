@@ -3,7 +3,7 @@
 <meta name="description" content="179-key hilltop resort on 22.74 acres in Río Rico, Arizona, offered as is or with a capital partner.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: a hacienda offering memorandum. Full-bleed photography bands alternate with
    limewash text bands; survey/deed vernacular (APNs, bearings, acreage) in mono. */
@@ -98,7 +98,8 @@ nav.links a:hover{color:var(--ink)}
 .facts div{padding:14px 14px 4px 0;display:grid;gap:2px;min-width:0}
 .facts dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .facts dd{margin:0;font-family:var(--f-display);font-size:1.7rem;line-height:1.1}
-.facts dd span{font-family:var(--f-body);font-size:.85rem;color:var(--muted);margin-left:4px}
+.facts dd .cv{font:inherit;color:inherit;margin:0}
+.facts dd span:not(.cv){font-family:var(--f-body);font-size:.85rem;color:var(--muted);margin-left:4px}
 @media (max-width:900px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:480px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -689,7 +690,7 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
 .hero .dots button{all:unset;cursor:pointer;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45)}
 .hero .dots button[aria-current="true"]{background:#fff}
 .hero .dots button:focus-visible{outline:2px solid #fff;outline-offset:3px}
-@media (max-width:430px){.hdr-actions .lang-sw{display:none}}
+@media (max-width:430px){.hdr-actions .lang-sw{display:none}header.site .wrap{gap:10px}.hdr-actions .btn{padding-inline:12px;letter-spacing:.1em}}
 .hdr-actions .btn{white-space:nowrap}
 @media (min-width:1101px){nav.links{gap:15px}nav.links a{font-size:.93rem}}
 @media (min-width:1101px) and (max-width:1300px){.hdr-actions .btn .lg{display:none}.hdr-actions .btn .sm{display:inline}}
@@ -731,9 +732,203 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
 @media (max-width:760px){.m-cta:not([hidden]){display:grid}body.has-cta .to-top{bottom:calc(76px + env(safe-area-inset-bottom,0px))}body.has-cta footer{padding-bottom:96px}}
 @media print{.m-cta{display:none!important}}
 
+
+/* ===================================================================================
+   LUXE LAYER: "Mesa at golden hour". Limewash editorial chapters alternate with
+   night chapters (reveal, film, contact). Cormorant Garamond display, Jost labels,
+   IBM Plex Sans body. Brass marks what matters; one easing curve everywhere.
+   =================================================================================== */
+:root{
+  --f-display:"Cormorant Garamond","Cormorant","Iowan Old Style",Georgia,serif;
+  --f-label:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --brass:#A97C3F; --brass-l:#D7B37A; --night:#101713; --night-2:#18211C;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.005em}
+h2{font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.05}
+h3{font-weight:600}
+.eyebrow,.facts dt,table.tx th,.path .tag,.news .meta,.specs dt,.hist b+span,.ribbon{font-family:var(--f-label)}
+.eyebrow{font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem}
+.facts dt{font-weight:500;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem}
+.facts dd,.hl b,.stats b,.dcard .big,.total,.clock,.wx-temp,.cstats dd,.path .price,.invested b,.hist b,.kpi b,.big{font-family:var(--f-display);font-variant-numeric:lining-nums tabular-nums}
+.facts dd{font-size:clamp(2rem,3vw,2.6rem);font-weight:600;line-height:1}
+.btn{font-family:var(--f-label);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;border-radius:0;transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
+.btn.solid:hover{filter:none;background:var(--brass);border-color:var(--brass);color:#111915}
+:focus-visible{outline-color:var(--brass)}
+
+/* nav underline */
+nav.links a{font-family:var(--f-label);font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem!important;position:relative}
+@media (min-width:1101px){nav.links{gap:13px!important}}
+nav.links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+nav.links a[aria-current="true"]{box-shadow:none!important;color:var(--ink)!important}
+nav.links a[aria-current="true"]::after,nav.links a:hover::after{transform:scaleX(1)}
+
+/* status ribbon */
+.ribbon.status-rib{text-align:left;background:#0C120F;color:#C4CEC7;border-bottom:1px solid rgba(215,179,122,.18);padding:0}
+.status-rib .wrap{display:flex;gap:6px 22px;flex-wrap:wrap;align-items:center;padding-block:9px;font:500 .7rem var(--f-label);letter-spacing:.16em;text-transform:uppercase}
+.status-rib .as{color:var(--brass-l)}
+.status-rib .ok::before{content:"✓";color:#9fd0b4;margin-right:7px;letter-spacing:0}
+.status-rib .now::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--brass-l);margin-right:8px;vertical-align:1px;animation:pulseb 2.4s var(--ease) infinite}
+.status-rib .draft{margin-left:auto;color:#8f9b94;border:1px solid #3a463f;padding:2px 8px}
+@keyframes pulseb{0%{box-shadow:0 0 0 0 rgba(215,179,122,.55)}70%{box-shadow:0 0 0 9px rgba(215,179,122,0)}100%{box-shadow:0 0 0 0 rgba(215,179,122,0)}}
+@media (max-width:760px){.status-rib .wrap{gap:4px 14px;font-size:.62rem;letter-spacing:.12em;padding-block:7px}.status-rib .as,.status-rib .draft{display:none}}
+@media (prefers-reduced-motion:reduce){.status-rib .now::before{animation:none}}
+
+/* cinematic hero */
+.hero .wrap{min-height:clamp(560px,calc(100svh - 120px),920px)!important;padding-bottom:clamp(40px,7vh,80px)!important}
+.hero::after{background:linear-gradient(180deg,rgba(9,14,11,.32) 0%,rgba(9,14,11,0) 26%,rgba(9,14,11,.12) 52%,rgba(9,14,11,.86) 100%),linear-gradient(90deg,rgba(9,14,11,.45),rgba(9,14,11,0) 60%)!important}
+.hero h1{font-size:clamp(3rem,8.2vw,6.8rem)!important;line-height:.95!important;font-weight:600!important;max-width:12ch!important;letter-spacing:-.015em}
+.hero h1 em{font-style:italic;font-weight:500;color:#F3E6CF}
+.hero .tag1{font-family:var(--f-display);font-style:italic;font-size:clamp(1.35rem,2.4vw,2rem);color:#F3E6CF;line-height:1.2}
+.hero .coord{font:500 .74rem var(--f-label);letter-spacing:.2em;text-transform:uppercase;color:#F3E2C2}
+.hero .btn.solid{background:#F4EFE7!important;color:#111915!important;border-color:#F4EFE7!important}
+.hero .btn.solid:hover{background:var(--brass-l)!important;border-color:var(--brass-l)!important}
+.hero .btn:not(.solid){border-color:rgba(244,239,231,.7)}
+.hero .btn:not(.solid):hover{background:#F4EFE7;color:#111915}
+.btn .play{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid currentColor;font-size:.55rem;letter-spacing:0}
+.btn .dur{opacity:.7;letter-spacing:.08em}
+.hero button.btn{cursor:pointer;background:transparent;color:#fff;font-family:var(--f-label)}
+.scrollcue{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:30px;z-index:2;writing-mode:vertical-rl;font:500 .62rem var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:#E2E8E4;display:flex;align-items:center;gap:10px}
+.scrollcue::after{content:"";width:1px;height:46px;background:linear-gradient(#E2E8E4,transparent)}
+@media (prefers-reduced-motion:no-preference){.scrollcue::after{animation:cue 2.2s var(--ease) infinite}}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero .credit{top:14px!important;bottom:auto!important}
+.hero .dots{left:auto;right:max(56px,calc(env(safe-area-inset-right,0px) + 56px));transform:none;bottom:34px}
+@media (max-width:700px){.scrollcue{display:none}.hero .dots{right:16px;bottom:16px}.hero .wrap{min-height:540px!important}}
+
+/* footnotes */
+.fn{font:500 .62rem var(--f-label);letter-spacing:0;vertical-align:super;line-height:0;color:var(--brass);text-decoration:none;margin-left:3px;padding:0 2px;border-bottom:1px dotted currentColor}
+.fn:hover{color:var(--ink)}
+.fnpop{position:fixed;z-index:80;max-width:min(340px,calc(100vw - 32px));background:#111915;color:#E9EDEA;font:400 .84rem/1.5 var(--f-body);padding:12px 14px;border-left:2px solid var(--brass);box-shadow:0 12px 34px rgba(8,14,10,.35);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.fnpop.on{opacity:1;transform:none}
+.fnpop span b{display:inline;font:600 .84rem var(--f-body);letter-spacing:0;text-transform:none;color:#fff;margin:0}
+.fnpop>b{display:block;font:500 .62rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--brass-l);margin-bottom:4px}
+
+/* signature reveal */
+.reveal{position:relative;height:190vh;padding:0!important;background:var(--night);color:#F4EFE7;--p:0}
+.rv-stick{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center}
+.rv-img{position:absolute;inset:0;clip-path:inset(calc((1 - var(--p)) * 22%) calc((1 - var(--p)) * 30%) round calc((1 - var(--p)) * 220px));will-change:clip-path}
+.rv-img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(calc(1.18 - var(--p) * .18))}
+.rv-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,14,11,0) 40%,rgba(9,14,11,.72));opacity:var(--p)}
+.rv-copy{position:relative;z-index:2;align-self:end;padding-bottom:9vh;width:100%;opacity:clamp(0,calc((var(--p) - .62) * 3),1);transform:translateY(calc((1 - var(--p)) * 30px))}
+.rv-line{font-family:var(--f-display);font-weight:600;font-size:clamp(2.3rem,5.6vw,4.8rem);line-height:1;max-width:15ch;margin-top:12px;color:#fff}
+.rv-line em{font-style:italic;font-weight:500;color:var(--brass-l)}
+.rv-copy .eyebrow{color:var(--brass-l)}
+.rv-pre{position:absolute;z-index:1;font:500 .74rem var(--f-label);letter-spacing:.3em;text-transform:uppercase;color:#D8E1DC;top:12vh;opacity:clamp(0,calc(1 - var(--p) * 3),1)}
+.reveal .credit{position:absolute;z-index:2;right:max(16px,env(safe-area-inset-right,0px));top:16px;font:500 .62rem var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:#D8E1DC;opacity:var(--p)}
+@media (prefers-reduced-motion:reduce){.reveal{height:auto}.rv-stick{position:relative;height:80vh}.rv-img{clip-path:none}.rv-img img{transform:none}.rv-copy,.reveal .credit{opacity:1;transform:none}.rv-pre{display:none}.rv-img::after{opacity:1}}
+
+/* night chapter: same components, night tokens */
+.night{--bg:#0F1411;--paper:#171E1A;--ink:#F1F4EF;--muted:#BFC8C2;--line:#303B35;--accent:#8FCBAE;--clay:#EE9A76;background:var(--bg);color:var(--ink);color-scheme:dark}
+.night .eyebrow{color:var(--brass-l)}
+.night .btn.solid{background:#F4EFE7;border-color:#F4EFE7;color:#111915}
+.night .btn.solid:hover{background:var(--brass-l);border-color:var(--brass-l)}
+.night .contact{border-top-color:var(--brass-l)}
+
+/* documents shelf */
+.shelf{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--ink)}
+.shelf li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.shelf .ic{width:36px;height:46px;border:1px solid var(--ink);position:relative;display:grid;place-items:end center;padding-bottom:5px;font:500 .52rem var(--f-label);letter-spacing:.12em;color:var(--muted)}
+.shelf .ic::before{content:"";position:absolute;top:-1px;right:-1px;width:11px;height:11px;background:linear-gradient(225deg,var(--bg) 50%,var(--ink) 50%)}
+.shelf b{display:block;font-weight:600}
+.shelf small{display:block;color:var(--muted);font-size:.86rem}
+.shelf .acc{font:500 .62rem var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--brass-l);display:block;margin-top:3px}
+.shelf .btn{padding:9px 14px;font-size:.7rem;white-space:nowrap}
+@media (max-width:560px){.shelf li{grid-template-columns:36px minmax(0,1fr)}.shelf .btn{grid-column:2;justify-self:start}}
+
+/* sources appendix */
+.sources ol{margin:0;padding:0;list-style:none;columns:2 360px;column-gap:44px}
+.sources li{break-inside:avoid;padding:12px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:32px minmax(0,1fr);gap:6px;font-size:.92rem;color:var(--muted)}
+.sources li::before{content:attr(data-n);font:500 .74rem var(--f-label);color:var(--brass);padding-top:3px}
+.sources li b{color:var(--ink);font-weight:600}
+.sources li:target{background:linear-gradient(90deg,rgba(169,124,63,.16),transparent)}
+
+/* dock + sheets */
+.dock{position:fixed;z-index:44;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translate(-50%,160%);display:flex;background:rgba(16,23,19,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(215,179,122,.35);box-shadow:0 16px 40px rgba(8,14,10,.35);transition:transform .8s var(--ease);max-width:calc(100vw - 24px)}
+.dock.on{transform:translate(-50%,0)}
+.dock button{all:unset;cursor:pointer;padding:13px 18px;font:500 .7rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:#E9EDEA;white-space:nowrap;display:flex;gap:10px;align-items:center}
+.dock button+button{border-left:1px solid rgba(215,179,122,.3)}
+.dock button.pri{background:var(--brass);color:#111915}
+.dock button:focus-visible{outline:2px solid var(--brass-l);outline-offset:-3px}
+.dock .plus{font-family:var(--f-body);font-size:1rem;line-height:0;color:var(--brass-l)}
+@media (max-width:440px){.dock{left:12px;right:12px;transform:translateY(160%);max-width:none}.dock.on{transform:none}.dock button{flex:1;justify-content:center;padding:13px 8px;letter-spacing:.08em}}
+@media (prefers-reduced-motion:reduce){.dock{transition:none}}
+.to-top{bottom:calc(76px + env(safe-area-inset-bottom,0px))!important}
+footer{padding-bottom:96px!important}
+dialog.sheet{margin:0 0 0 auto;height:100%;max-height:100%;width:min(520px,100%);max-width:100%;padding:0;border:0;border-left:1px solid var(--line);background:var(--paper);color:var(--ink);box-shadow:-30px 0 80px rgba(8,14,10,.3)}
+dialog.sheet::backdrop{background:rgba(8,14,10,.55);backdrop-filter:blur(2px)}
+dialog.sheet[open]{animation:sheetIn .7s var(--ease)}
+@keyframes sheetIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){dialog.sheet[open]{animation:none}}
+.sh-in{padding:30px max(22px,4vw) 40px;display:grid;gap:18px;align-content:start;min-height:100%}
+.sh-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sh-close{font:500 .7rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--ink);padding:8px 12px;cursor:pointer}
+.sh-in h2{font-size:clamp(2rem,3vw,2.6rem)}
+.glance{margin:0;border-top:1px solid var(--ink)}
+.glance div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.glance dt{font:500 .66rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.glance dd{margin:0;font-size:.98rem}
+@media (max-width:480px){.glance div{grid-template-columns:1fr;gap:2px}}
+.govern{font-size:.86rem;color:var(--muted);border-left:2px solid var(--brass);padding-left:12px}
+.talk-btns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.talk-btns a,.talk-btns button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:6px;justify-items:center;text-align:center;padding:16px 8px;border:1px solid var(--line);color:var(--ink);font:500 .66rem var(--f-label);letter-spacing:.14em;text-transform:uppercase;transition:background .5s var(--ease),border-color .5s var(--ease)}
+.talk-btns a:hover,.talk-btns button:hover{background:var(--bg);border-color:var(--brass)}
+.talk-btns a:focus-visible,.talk-btns button:focus-visible{outline:2px solid var(--brass)}
+.talk-btns svg{width:22px;height:22px}
+.prop{display:grid;gap:10px;background:var(--bg);padding:18px;border:1px solid var(--line)}
+.prop input{font:500 1rem var(--f-body);padding:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);width:100%;box-sizing:border-box}
+.prop .tzs{display:grid;gap:0;font-size:.9rem}
+.prop .tzs span{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding:5px 0}
+.prop .tzs b{font-weight:600;font-variant-numeric:tabular-nums}
+.prop .row2{display:flex;gap:8px;flex-wrap:wrap}
+.who{display:flex;gap:14px;align-items:center}
+.who .av{width:54px;height:54px;border-radius:50%;background:var(--night);color:var(--brass-l);display:grid;place-items:center;font-family:var(--f-display);font-size:1.35rem;font-weight:600;flex:none}
+.fxrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.fxrow .lab{font:500 .66rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.fxrow button{all:unset;cursor:pointer;font:500 .7rem var(--f-label);letter-spacing:.14em;padding:6px 11px;border:1px solid var(--line);color:var(--ink)}
+.fxrow button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fxrow button:focus-visible{outline:2px solid var(--brass)}
+.fxnote{font-size:.8rem;color:var(--muted)}
+
+/* film */
+dialog.film{width:100vw;height:100vh;height:100dvh;max-width:100vw;max-height:100vh;max-height:100dvh;margin:0;padding:0;border:0;background:#05080a;color:#fff;overflow:hidden}
+dialog.film::backdrop{background:#05080a}
+.fl-stage{position:absolute;inset:0}
+.fl-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.fl-slide.on{opacity:1}
+.fl-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.fl-slide.on img{animation:var(--kb,flA) 6.4s linear forwards}
+@keyframes flA{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+@keyframes flB{from{transform:scale(1.14) translate(1.5%,0)}to{transform:scale(1.03)}}
+@keyframes flC{from{transform:scale(1.06) translate(0,2%)}to{transform:scale(1.12) translate(0,-2%)}}
+.fl-slide .cap{position:absolute;left:max(24px,5vw);bottom:110px;max-width:min(760px,86vw);display:grid;gap:10px;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.fl-slide .cap span{font:500 .66rem var(--f-label);letter-spacing:.24em;text-transform:uppercase;color:var(--brass-l)}
+.fl-slide .cap b{font:600 clamp(2rem,4.8vw,4rem)/1.02 var(--f-display)}
+.fl-slide.on .cap{animation:capIn 1.6s var(--ease) both .4s}
+@keyframes capIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.fl-slide.title{display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 60%,#25301f 0%,#05080a 70%)}
+.fl-slide.title .cap{position:static;justify-items:center;padding:0 24px}
+.fl-slide.title .cap b{font-size:clamp(2.8rem,8vw,6.6rem)}
+.fl-slide.title .cap b em{font-style:italic;font-weight:500;color:var(--brass-l)}
+.fl-bar{position:absolute;left:0;right:0;bottom:0;padding:18px max(24px,5vw) max(22px,env(safe-area-inset-bottom,0px));display:grid;gap:14px;background:linear-gradient(transparent,rgba(5,8,10,.7))}
+.fl-prog{display:flex;gap:4px}
+.fl-prog i{flex:1;height:2px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
+.fl-prog i b{position:absolute;inset:0;background:var(--brass-l);transform:scaleX(0);transform-origin:left}
+.fl-ctl{display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.fl-ctl .g{display:flex;gap:8px}
+.fl-ctl button{font:500 .66rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.35);color:#fff;padding:9px 14px;cursor:pointer}
+.fl-ctl button:hover{background:rgba(255,255,255,.16)}
+.fl-ctl .lab{font:500 .62rem var(--f-label);letter-spacing:.16em;text-transform:uppercase;color:#a9b4ae}
+@media (prefers-reduced-motion:reduce){.fl-slide.on img{animation:none}.fl-slide{transition:none}}
+
+/* gentle fade-ups (JS adds .rv only when motion is allowed) */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media print{.dock,.status-rib,.scrollcue{display:none!important}.reveal{height:auto}.rv-stick{position:relative;height:60vh}}
+
 </style>
 
-<aside class="ribbon" aria-label="Draft notice">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></aside>
+<aside class="ribbon status-rib" aria-label="Project status"><div class="wrap"><span class="as">Status as of Oct 16, 2026</span><span class="ok">Plans fire-department approved</span><span class="ok">Roof repairs complete</span><span class="now">Offered for sale</span><span class="draft">Staging draft</span></div></aside>
 
 <header class="site">
   <div class="wrap">
@@ -774,16 +969,18 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
     <img src="img/render-pool.jpg" alt="Rendering of the renovated pool deck with palms and guest buildings" fetchpriority="high">
     <div class="wrap">
       <img class="hero-mark" src="img/brand/esplendor-mark-reversed.svg" alt="" width="60" height="70">
-      <p class="eyebrow">Offered for sale · Santa Cruz County, Arizona</p>
-      <h1>Esplendor Resort at Río Rico</h1>
-      <p class="sub">A 179-room hilltop resort on 22.74 acres above the Santa Cruz River Valley. Cleared, designed and ready for its next owner to finish.</p>
+      <span class="coord">31°28′N · 110°59′W · Río Rico mesa, Santa Cruz Valley</span>
+      <h1>Esplendor <em>Resort</em></h1>
+      <p class="tag1">179 rooms above the Santa Cruz Valley.</p>
+      <p class="sub">A 1970 Spanish Colonial resort on 22.74 acres, offered for sale. Cleared, fully planned and fire-department approved, ready for its next owner to finish.</p>
       <div class="ctas">
-        <a class="btn solid" href="#paths">See the two paths</a>
-        <a class="btn" href="walkthrough.html">Take the 3D tour</a>
-        <a class="btn" href="#vision">View all 39 renderings</a>
+        <button class="btn solid" type="button" data-film><span class="play" aria-hidden="true">▶</span>Watch the film <span class="dur">0:56</span></button>
+        <a class="btn" href="walkthrough.html">Explore in 3D</a>
+        <button class="btn" type="button" data-sheet="sheet-offer">Offering at a glance +</button>
       </div>
     </div>
     <span class="credit">Concept rendering</span>
+    <span class="scrollcue" aria-hidden="true">Scroll</span>
   </section>
 
   <div class="deed">
@@ -795,11 +992,11 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
         <a class="now-chip" href="#climate" id="now-chip"><i class="dot" aria-hidden="true"></i>Río Rico now <b id="nc-time">&nbsp;</b><span id="nc-wx"></span></a>
       </div>
       <dl class="facts">
-        <div><dt>Land</dt><dd class="num">22.74<span>acres</span></dd></div>
-        <div><dt>Guest rooms</dt><dd class="num">179</dd></div>
-        <div><dt>Building area</dt><dd class="num">107,579<span>SF</span></dd></div>
-        <div><dt>Zoning</dt><dd>B-2<span>hotel permitted</span></dd></div>
-        <div><dt>Elevation</dt><dd class="num">~3,500<span>ft</span></dd></div>
+        <div><dt>Land</dt><dd class="num"><span class="cv" data-count="22.74" data-dec="2">22.74</span><a class="fn" href="#src-1" data-fn="1" aria-label="Source note 1">1</a><span>acres</span></dd></div>
+        <div><dt>Guest rooms</dt><dd class="num"><span class="cv" data-count="179">179</span><a class="fn" href="#src-2" data-fn="2" aria-label="Source note 2">2</a></dd></div>
+        <div><dt>Building area</dt><dd class="num"><span class="cv" data-count="107579">107,579</span><a class="fn" href="#src-3" data-fn="3" aria-label="Source note 3">3</a><span>SF</span></dd></div>
+        <div><dt>Zoning</dt><dd>B-2<a class="fn" href="#src-4" data-fn="4" aria-label="Source note 4">4</a><span>hotel permitted</span></dd></div>
+        <div><dt>Elevation</dt><dd class="num">~<span class="cv" data-count="3500">3,500</span><a class="fn" href="#src-5" data-fn="5" aria-label="Source note 5">5</a><span>ft</span></dd></div>
         <div><dt>Access</dt><dd>I-19<span>Exit 17</span></dd></div>
       </dl>
     </div>
@@ -849,6 +1046,15 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
     </div>
   </section>
 
+  <section class="reveal" id="reveal" aria-label="The resort from the air">
+    <div class="rv-stick">
+      <span class="rv-pre" aria-hidden="true">Santa Cruz Valley</span>
+      <div class="rv-img"><img src="img/render-pool-aerial.jpg" alt="Aerial rendering of the renovated pool deck, cabanas and guest buildings" loading="lazy" decoding="async"></div>
+      <span class="credit">Concept rendering</span>
+      <div class="rv-copy"><div class="wrap"><span class="eyebrow">The setting</span><p class="rv-line">Above the valley, <em>ready to be finished.</em></p></div></div>
+    </div>
+  </section>
+
   <section id="overview">
     <div class="wrap overview">
       <div class="prose">
@@ -882,11 +1088,12 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
         <p class="eyebrow">Two ways in</p>
         <h2>Buy it as is, or finish it with us</h2>
         <p class="lede">Both paths start from the same asset. The difference is who funds and runs the renovation.</p>
+        <div class="fxrow" role="group" aria-label="Show prices in"><span class="lab">Show prices in</span><button type="button" data-fx="USD" aria-pressed="true">USD</button><button type="button" data-fx="MXN" aria-pressed="false">MXN</button><span class="fxnote" hidden>Pesos at the ECB reference rate of Oct 15, 2026 (about 18.52 per dollar)<a class="fn" href="#src-12" data-fn="12" aria-label="Source note 12">12</a>. Prices are set in US dollars.</span></div>
       </div>
       <div class="paths">
         <article class="path">
           <p class="tag">Path A · Acquire as is</p>
-          <p class="price num">$9M–$11M<small>Asking price for the property in its current state, all three parcels.</small></p>
+          <p class="price num"><span data-usd="9-11">$9M–$11M</span><small>Asking price for the property in its current state, all three parcels.</small></p>
           <dl class="kv">
             <div><dt>Price per room</dt><dd>$50K–$61K</dd></div>
             <div><dt>2023 appraised value, as is</dt><dd>$13.9M</dd></div>
@@ -898,7 +1105,7 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
         </article>
         <article class="path">
           <p class="tag">Path B · Capital partnership</p>
-          <p class="price num">$11M–$13M<small>Capital needed to complete the renovation alongside current ownership.</small></p>
+          <p class="price num"><span data-usd="11-13">$11M–$13M</span><small>Capital needed to complete the renovation alongside current ownership.</small></p>
           <dl class="kv">
             <div><dt>Ownership contributes</dt><dd>Property and pre-development</dd></div>
             <div><dt>Invested to date</dt><dd>$3.17M</dd></div>
@@ -1339,25 +1546,21 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
     </div>
   </section>
 
-  <section id="inquire">
+  <section id="sources" class="sources" aria-labelledby="src-title">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Sources and assumptions</p><h2 id="src-title">Where the numbers come from</h2><p class="lede">Each small number on this page points here. Hover or tap a number to see its source. Market tables and news link to their own sources.</p></div>
+      <ol><li id="src-1" data-n="1"><span><b>Land and parcels.</b> Santa Cruz County assessor records for APN 114-50-001B (21.49 ac), 114-50-013B (0.59 ac) and 114-50-176 (0.66 ac), as listed in the 2023 BDK appraisal and the owner's 2026 presentation.</span></li><li id="src-2" data-n="2"><span><b>Guest rooms.</b> 179 rooms per the 2023 BDK appraisal. The owner's 2026 presentation lists 204 and the CAD plan labels about 195; the remodeling plans in the data room set the final mix.</span></li><li id="src-3" data-n="3"><span><b>Building area.</b> 107,579 square feet gross, county assessor record cited in the 2023 BDK appraisal.</span></li><li id="src-4" data-n="4"><span><b>Zoning.</b> B-2 General Business, Santa Cruz County Zoning and Development Code, Article 9. Hotels are permitted by right on a 1-acre minimum site. See the <a href="land.html#zoning">zoning summary</a>.</span></li><li id="src-5" data-n="5"><span><b>Elevation.</b> Río Rico sits at about 3,481 feet (1,061 m). The mesa site is approximate.</span></li><li id="src-6" data-n="6"><span><b>Asking price and appraisal.</b> Asking price set by the owner. Appraised values from the BDK Appraisal Services report, effective May 22, 2023: $13.9M as is and $28.9M as complete. Historical; third parties may not rely on them.</span></li><li id="src-7" data-n="7"><span><b>Cost to complete and use of funds.</b> Owner's renovation plan and budget, 2026 presentation: $11–13M to complete, with the category split and work-package durations shown in the plan section.</span></li><li id="src-8" data-n="8"><span><b>Progress.</b> Owner's site updates, October 2026: roof repairs complete, new hallway flooring about 60%, plans approved by the fire department.</span></li><li id="src-9" data-n="9"><span><b>Hotel market.</b> Arizona Office of Tourism county lodging report, Q1 2026: Santa Cruz County occupancy 58.0% (+8.8%), ADR $97.83, no new supply.</span></li><li id="src-10" data-n="10"><span><b>Hermosa mine.</b> South32 project FAQ and KVOA reporting, October 2026: about 900 construction workers and 260 employees; 800–900 long-term jobs; first product targeted for early 2028.</span></li><li id="src-11" data-n="11"><span><b>Climate.</b> Arizona State Climate Office, Nogales climate summary, 1991–2020 normals. Live weather from Open-Meteo.</span></li><li id="src-12" data-n="12"><span><b>Currency.</b> European Central Bank euro reference rates, October 15, 2026: USD 1.1208 and MXN 20.7596 per euro, or about 18.52 pesos per dollar. Illustrative only.</span></li></ol>
+    </div>
+  </section>
+
+  <section id="inquire" class="night">
     <div class="wrap">
       <div class="inquire">
         <div class="prose">
           <p class="eyebrow">Next step</p>
           <h2>Request the offering package</h2>
           <p>Qualified buyers and capital partners can review the full package after signing a confidentiality agreement. Property tours are available by appointment.</p>
-          <ul class="docs">
-            <li><b>2023 appraisal</b><span>As is and as complete</span></li>
-            <li><b>Remodeling plans</b><span>Arch., structural, MEP, civil; fire department approved</span></li>
-            <li><b>As-built CAD set</b><span>Site, floor plans, sections</span></li>
-            <li><b>Cost to complete</b><span>Line-item budget and schedule</span></li>
-            <li><b>Phase I ESA</b><span>Environmental assessment</span></li>
-            <li><b>Title and survey</b><span>Title insurance, legal descriptions</span></li>
-            <li><b>Rendering package</b><span>45 images</span></li>
-            <li><b>Investment records</b><span>2021–2025 payments</span></li>
-            <li><b>3D tour</b><span>Live on this site</span></li>
-            <li><a href="img/esplendor-flyer.pdf" target="_blank" rel="noopener"><b>One-page flyer</b><span>PDF, opens in a new tab</span></a></li>
-          </ul>
+          <ul class="shelf"><li><span class="ic" aria-hidden="true">PDF</span><span><b>2023 appraisal</b><small>BDK Appraisal Services · as is and as complete</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%202023%20appraisal&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%202023%20appraisal%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">PDF</span><span><b>Remodeling plans</b><small>Architectural, structural, MEP, civil · fire department approved</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20remodeling%20plans&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20remodeling%20plans%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">DWG</span><span><b>As-built CAD set</b><small>Site, floor plans and sections</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20as-built%20cad%20set&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20as-built%20cad%20set%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">XLS</span><span><b>Cost to complete</b><small>Line-item budget and schedule</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20cost%20to%20complete&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20cost%20to%20complete%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">PDF</span><span><b>Phase I ESA</b><small>Environmental site assessment</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20phase%20i%20esa&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20phase%20i%20esa%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">PDF</span><span><b>Title and survey</b><small>Title insurance and legal descriptions</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20title%20and%20survey&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20title%20and%20survey%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">JPG</span><span><b>Rendering package</b><small>45 images, full resolution</small><span class="acc">On request</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20rendering%20package&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20rendering%20package%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">PDF</span><span><b>Investment records</b><small>2021–2025 payments and improvements</small><span class="acc">Under confidentiality agreement</span></span><a class="btn" href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%3A%20request%20for%20investment%20records&amp;body=Hello%2C%0A%0APlease%20send%20me%20the%20investment%20records%20for%20Esplendor%20Resort%20at%20R%C3%ADo%20Rico.%20I%20am%20happy%20to%20sign%20a%20confidentiality%20agreement.%0A%0AName%3A%0ACompany%3A%0APhone%3A%0A%0AThank%20you.">Request</a></li><li><span class="ic" aria-hidden="true">PDF</span><span><b>One-page flyer</b><small>English, with a Spanish version on the <a href="es.html">Spanish page</a></small><span class="acc">Open now</span></span><a class="btn" href="img/esplendor-flyer.pdf" target="_blank" rel="noopener">Open</a></li></ul>
         </div>
         <div class="contact">
           <p class="eyebrow">Owner</p>
@@ -1395,7 +1598,59 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
   </div>
 <a class="to-top" id="to-top" href="#top" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </footer>
-<nav class="m-cta" id="m-cta" aria-label="Quick actions" hidden><a href="#inquire" class="pri">Request info</a><a href="walkthrough.html">3D tour</a><a href="img/esplendor-flyer.pdf" target="_blank" rel="noopener">Flyer</a></nav>
+<div class="dock" id="dock" role="region" aria-label="Quick actions">
+  <button type="button" data-sheet="sheet-offer">At a glance <span class="plus" aria-hidden="true">+</span></button>
+  <button type="button" class="pri" data-sheet="sheet-talk">Speak with the owner</button>
+</div>
+<dialog class="sheet" id="sheet-offer" aria-labelledby="sho-t">
+  <div class="sh-in">
+    <div class="sh-top"><span class="eyebrow">Summary</span><form method="dialog"><button class="sh-close" type="submit">Close ×</button></form></div>
+    <h2 id="sho-t">Offering at a glance</h2>
+    <div class="fxrow" role="group" aria-label="Show prices in"><span class="lab">Show prices in</span><button type="button" data-fx="USD" aria-pressed="true">USD</button><button type="button" data-fx="MXN" aria-pressed="false">MXN</button></div>
+    <dl class="glance">
+      <div><dt>Property</dt><dd>Esplendor Resort at Río Rico, a 1970 Spanish Colonial resort, closed since 2015</dd></div>
+      <div><dt>Address</dt><dd>1069 Camino Caralampi, Río Rico, AZ 85648</dd></div>
+      <div><dt>Land</dt><dd>22.74 acres in three parcels, all included in one sale</dd></div>
+      <div><dt>Buildings</dt><dd>179 rooms, 650-seat ballroom, restaurant, bar, pool, courts · 107,579 SF</dd></div>
+      <div><dt>Zoning</dt><dd>B-2 General Business; hotel permitted by right</dd></div>
+      <div><dt>Status</dt><dd>Cleared; roofs repaired; plans complete and approved by the fire department</dd></div>
+      <div><dt>Path A · as is</dt><dd><span data-usd="9-11">$9M–$11M</span> asking</dd></div>
+      <div><dt>Path B · partner</dt><dd><span data-usd="11-13">$11M–$13M</span> to complete, with the current owners</dd></div>
+      <div><dt>2023 appraisal</dt><dd><span data-usd="13.9">$13.9M</span> as is · <span data-usd="28.9">$28.9M</span> as complete</dd></div>
+      <div><dt>Documents</dt><dd>Appraisal, plans, CAD, budget, Phase I and title, under a confidentiality agreement</dd></div>
+      <div><dt>Owner</dt><dd>MC Business Group LLC · <a href="mailto:sales@esplendorproject.com">sales@esplendorproject.com</a></dd></div>
+    </dl>
+    <p class="govern">Summary only. Not an offer to sell the property or any security. Figures are subject to buyer verification; definitive written agreements govern.</p>
+    <button class="btn solid" type="button" data-sheet="sheet-talk">Speak with the owner</button>
+  </div>
+</dialog>
+<dialog class="sheet" id="sheet-talk" aria-labelledby="sht-t">
+  <div class="sh-in">
+    <div class="sh-top"><span class="eyebrow">Concierge</span><form method="dialog"><button class="sh-close" type="submit">Close ×</button></form></div>
+    <h2 id="sht-t">Speak with the owner</h2>
+    <div class="who"><span class="av" aria-hidden="true">MC</span><span><b>MC Business Group</b><br><span class="muted">Owner, Esplendor Resort at Río Rico</span><br><span>sales@esplendorproject.com</span></span></div>
+    <div class="talk-btns">
+      <a href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%20inquiry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>Email</a>
+      <button type="button" id="sh-copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="12" height="12"/><path d="M4 16V4h12"/></svg>Copy email</button>
+      <a href="es.html" lang="es"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>En español</a>
+    </div>
+    <div class="prop">
+      <span class="eyebrow">Propose a call time</span>
+      <label class="muted small" for="propT">Pick a time in your own time zone (<span id="propZone">local</span>)</label>
+      <input type="datetime-local" id="propT" step="900">
+      <div class="tzs" id="propTzs" aria-live="polite"></div>
+      <div class="row2"><a class="btn solid" id="propMail" href="mailto:sales@esplendorproject.com">Email this time</a><button class="btn" type="button" id="propIcs">Add to my calendar</button></div>
+    </div>
+    <p class="muted small">Tours of the property are by appointment only. The site is a closed construction area.</p>
+  </div>
+</dialog>
+<dialog class="film" id="film" aria-label="Concept film">
+  <div class="fl-stage" id="flStage"></div>
+  <div class="fl-bar">
+    <div class="fl-prog" id="flProg"></div>
+    <div class="fl-ctl"><span class="lab">Concept film · renderings and photos</span><div class="g"><button type="button" id="flPrev" aria-label="Previous scene">‹</button><button type="button" id="flPlay">Pause</button><button type="button" id="flNext" aria-label="Next scene">›</button><button type="button" id="flClose">Close ×</button></div></div>
+  </div>
+</dialog>
 
 
 <dialog class="lb" id="lb" aria-label="Rendering viewer">
@@ -1831,5 +2086,156 @@ nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 v
     return '<li'+(p[4]?' class="done"':'')+'><span class="hd"><b>'+p[0]+'</b><span>'+p[3]+'</span></span><span class="tr" role="img" aria-label="'+p[0]+': '+p[3]+'">'+bar+'</span></li>'}).join('');
   var c=document.getElementById('m-cta');if(c){c.hidden=false;document.body.classList.add('has-cta');
     var inq=document.getElementById('inquire');if(inq&&'IntersectionObserver' in window){new IntersectionObserver(function(es){c.style.visibility=es[0].isIntersecting?'hidden':''}).observe(inq)}}
+})();
+// ===== luxe layer: film, sheets, dock, count-up, reveal, fade-ups, footnotes, currency, call planner =====
+(function(){
+const q=(s,r)=>(r||document).querySelector(s), qa=(s,r)=>[].slice.call((r||document).querySelectorAll(s));
+const RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const SANDBOX=/claude|usercontent/.test(location.host)||location.protocol==='file:';
+
+function initSheets(){
+  const open=id=>{const d=document.getElementById(id); if(!d||!d.showModal) return; qa('dialog.sheet').forEach(x=>{if(x.open&&x!==d)x.close();}); if(!d.open) d.showModal();};
+  qa('[data-sheet]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();open(b.dataset.sheet)}));
+  qa('dialog.sheet').forEach(d=>d.addEventListener('click',e=>{ if(e.target===d) d.close(); }));
+  const dock=q('#dock'), hero=q('.hero'), inq=q('#inquire'); if(!dock||!hero) return;
+  let past=false, atEnd=false;
+  const sync=()=>dock.classList.toggle('on',past&&!atEnd);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(es=>{past=!es[0].isIntersecting;sync();},{threshold:0.05}).observe(hero);
+    if(inq) new IntersectionObserver(es=>{atEnd=es[0].isIntersecting;sync();},{threshold:0.15}).observe(inq);
+  } else { past=true; sync(); }
+}
+
+const FILM=[
+  {t:1,lab:'Río Rico, Arizona · 31°28′N 110°59′W',h:'Esplendor <em>Resort</em>'},
+  {img:'img/render-entry-tower.jpg',lab:'Rendering',h:'Up the drive, past the bell tower',kb:'flA'},
+  {img:'img/render-porte-cochere.jpg',lab:'Rendering',h:'Arrival beneath ivy and tile',kb:'flB'},
+  {img:'img/render-fountain.jpg',lab:'Rendering',h:'A fountain court at the heart of it',kb:'flC'},
+  {img:'img/render-pool.jpg',lab:'Rendering',h:'A pool deck framed by palms',kb:'flA'},
+  {img:'img/render-wine-aerial.jpg',lab:'Rendering',h:'The wine garden, from above',kb:'flB'},
+  {img:'img/render-suite.jpg',lab:'Rendering',h:'179 rooms, each with a view',kb:'flC'},
+  {img:'img/photo-corridor-view.jpg',lab:'Photo · today',h:'The Santa Cruz Valley, from the mesa',kb:'flA'},
+  {img:'img/photo-guest-wings.jpg',lab:'Photo · today',h:'Cleared, repaired and fully planned',kb:'flB'},
+  {t:1,lab:'Offered for sale · Santa Cruz County',h:'179 rooms · <em>$9–11M</em> as is'}
+];
+function initFilm(){
+  const d=q('#film'), stage=q('#flStage'), prog=q('#flProg'); if(!d||!stage) return;
+  const D=5600; let i=0, t0=0, el=0, raf=0, playing=false;
+  stage.innerHTML=FILM.map(s=>s.t?'<div class="fl-slide title"><div class="cap"><span>'+s.lab+'</span><b>'+s.h+'</b></div></div>':
+    '<div class="fl-slide" style="--kb:'+s.kb+'"><img src="'+s.img+'" alt="'+s.h+'" loading="lazy"><div class="cap"><span>'+s.lab+'</span><b>'+s.h+'</b></div></div>').join('');
+  prog.innerHTML=FILM.map(()=>'<i><b></b></i>').join('');
+  const slides=qa('.fl-slide',stage), bars=qa('i',prog), playBtn=q('#flPlay');
+  function show(n){ i=Math.max(0,Math.min(FILM.length-1,n)); el=0; t0=performance.now();
+    slides.forEach((s,j)=>{ s.classList.toggle('on',j===i); const im=s.querySelector('img'); if(im&&j===i){ im.style.animation='none'; void im.offsetWidth; im.style.animation=''; } });
+    bars.forEach((b,j)=>{ b.firstChild.style.transform=j<i?'scaleX(1)':'scaleX(0)'; }); }
+  function tick(now){ if(!playing) return; el=now-t0; bars[i].firstChild.style.transform='scaleX('+Math.min(1,el/D)+')';
+    if(el>=D){ if(i<FILM.length-1) show(i+1); else { setPlay(false); return; } } raf=requestAnimationFrame(tick); }
+  function setPlay(on){ playing=on; playBtn.textContent=on?'Pause':(i===FILM.length-1&&el>=D?'Replay':'Play');
+    slides.forEach(s=>{const im=s.querySelector('img'); if(im) im.style.animationPlayState=on?'running':'paused';});
+    cancelAnimationFrame(raf); if(on){ t0=performance.now()-el; raf=requestAnimationFrame(tick);} }
+  playBtn.onclick=()=>{ if(!playing&&i===FILM.length-1&&el>=D) show(0); setPlay(!playing); };
+  q('#flPrev').onclick=()=>{show(i-1); setPlay(true);}; q('#flNext').onclick=()=>{show(i+1); setPlay(true);};
+  q('#flClose').onclick=()=>d.close();
+  d.addEventListener('close',()=>setPlay(false));
+  d.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){show(i+1);setPlay(true);} if(e.key==='ArrowLeft'){show(i-1);setPlay(true);} if(e.key===' '){e.preventDefault();playBtn.click();} });
+  qa('[data-film]').forEach(b=>b.addEventListener('click',()=>{ if(!d.showModal) return; d.showModal(); show(0); setPlay(!RM); playBtn.focus(); }));
+}
+
+function initCount(){
+  const els=qa('[data-count]'); if(!els.length||RM||!('IntersectionObserver' in window)) return;
+  const fmt=(el,v)=>(el.dataset.pre||'')+Number(v.toFixed(+(el.dataset.dec||0))).toLocaleString('en-US',{minimumFractionDigits:+(el.dataset.dec||0)})+(el.dataset.suf||'');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target); const el=e.target, to=+el.dataset.count, t0=performance.now();
+    const step=now=>{ const k=Math.min(1,(now-t0)/1300), ease=1-Math.pow(1-k,3); el.textContent=fmt(el,to*ease); if(k<1) requestAnimationFrame(step); else el.textContent=fmt(el,to); };
+    requestAnimationFrame(step); }),{threshold:0.6});
+  els.forEach(el=>io.observe(el));
+}
+
+function initReveal(){
+  const el=q('#reveal'); if(!el) return;
+  if(RM){ el.style.setProperty('--p','1'); return; }
+  let on=false, pend=false;
+  const upd=()=>{ pend=false; const r=el.getBoundingClientRect(), span=el.offsetHeight-innerHeight; const p=Math.max(0,Math.min(1,-r.top/Math.max(1,span*0.8))); el.style.setProperty('--p',p.toFixed(3)); };
+  addEventListener('scroll',()=>{ if(on&&!pend){pend=true;requestAnimationFrame(upd);} },{passive:true});
+  addEventListener('resize',upd);
+  if('IntersectionObserver' in window) new IntersectionObserver(es=>{on=es[0].isIntersecting; if(on) upd();}).observe(el); else on=true;
+  upd();
+}
+
+function initRv(){
+  if(RM||!('IntersectionObserver' in window)) return;
+  const sel='section .sec-head, section .prose, .hl, .paths, .chart-card, .today, .ba, .plan-grid, .tour-card, .stats, .drivers, .cl-grid, .tx-wrap, .news, .steps5, .faq, .shelf, .sources ol, .hist';
+  const els=qa(sel).filter(e=>!e.closest('dialog,.hero')&&e.getBoundingClientRect().top>innerHeight*0.9);
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(e=>{ e.classList.add('rv'); io.observe(e); });
+  setTimeout(()=>els.forEach(e=>e.classList.add('in')),12000);
+}
+
+function initFn(){
+  const fns=qa('a.fn'); if(!fns.length) return;
+  const pop=document.createElement('div'); pop.className='fnpop'; pop.setAttribute('aria-hidden','true'); (document.querySelector('main')||document.body).appendChild(pop);
+  let cur=null;
+  const show=a=>{ const li=document.getElementById('src-'+a.dataset.fn); if(!li) return; cur=a; pop.innerHTML='<b>Source '+a.dataset.fn+'</b><span>'+li.querySelector('span').innerHTML+'</span>';
+    const r=a.getBoundingClientRect(); pop.classList.add('on'); const w=pop.offsetWidth, h=pop.offsetHeight;
+    let x=Math.min(innerWidth-w-16,Math.max(16,r.left-w/2)); let y=r.bottom+10; if(y+h>innerHeight-12) y=r.top-h-10;
+    pop.style.left=x+'px'; pop.style.top=y+'px'; };
+  const hide=()=>{ cur=null; pop.classList.remove('on'); };
+  fns.forEach(a=>{ a.addEventListener('mouseenter',()=>show(a)); a.addEventListener('focus',()=>show(a)); a.addEventListener('mouseleave',hide); a.addEventListener('blur',hide);
+    a.addEventListener('click',e=>{ if(matchMedia('(hover:none)').matches&&cur!==a){ e.preventDefault(); show(a);} }); });
+  addEventListener('scroll',hide,{passive:true});
+}
+
+// USD / MXN view of prices (ECB reference rates, Oct 15, 2026: EUR 1 = USD 1.1208 = MXN 20.7596)
+const MXN=20.7596/1.1208;
+function initFx(){
+  const spans=qa('[data-usd]'), rows=qa('.fxrow'); if(!spans.length||!rows.length) return;
+  qa('[data-usd]').forEach(s=>{ if(!s.dataset.orig) s.dataset.orig=s.innerHTML; });
+  let cur=store.get('esp-fx')==='MXN'?'MXN':'USD';
+  const m=v=>{ const x=v*MXN; return x>=1000?'MX$'+(x/1000).toFixed(x>=10000?0:1)+' mil M':'MX$'+Math.round(x)+'M'; };
+  const draw=()=>{
+    qa('.fxrow button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fx===cur)));
+    spans.forEach(s=>{ if(cur==='USD'){ s.innerHTML=s.dataset.orig; s.removeAttribute('title'); return; }
+      const p=s.dataset.usd.split('-').map(Number); s.textContent=p.length>1?m(p[0])+'–'+m(p[1]).replace('MX$',''):m(p[0]); s.title='About '+s.dataset.orig.replace(/<[^>]+>/g,'')+' in US dollars'; });
+    qa('.fxnote').forEach(n=>n.hidden=cur==='USD');
+  };
+  rows.forEach(r=>r.addEventListener('click',e=>{const b=e.target.closest('[data-fx]'); if(!b) return; cur=b.dataset.fx; store.set('esp-fx',cur); draw();}));
+  draw();
+}
+
+function initProp(){
+  const inp=q('#propT'); if(!inp) return;
+  const tzs=q('#propTzs'), mail=q('#propMail'), ics=q('#propIcs');
+  if(SANDBOX&&ics) ics.hidden=true;
+  const myTz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||'Local';
+  q('#propZone').textContent=myTz.replace(/_/g,' ');
+  const pad=n=>String(n).padStart(2,'0');
+  // default: next weekday at 10:00 AM Arizona time (UTC-7 all year), shown in the visitor's own clock
+  let d0=new Date(Date.now()+86400000);
+  while(['Sat','Sun'].includes(d0.toLocaleDateString('en-US',{timeZone:'America/Phoenix',weekday:'short'}))) d0=new Date(d0.getTime()+86400000);
+  const ymd=d0.toLocaleDateString('en-CA',{timeZone:'America/Phoenix'}).split('-').map(Number);
+  const L=new Date(Date.UTC(ymd[0],ymd[1]-1,ymd[2],17,0));
+  inp.value=L.getFullYear()+'-'+pad(L.getMonth()+1)+'-'+pad(L.getDate())+'T'+pad(L.getHours())+':'+pad(L.getMinutes());
+  const Z=[['Río Rico','America/Phoenix'],['Hermosillo','America/Hermosillo'],['Mexico City','America/Mexico_City'],['Los Angeles','America/Los_Angeles'],['New York','America/New_York']];
+  const f=(d,tz)=>d.toLocaleString('en-US',{timeZone:tz,weekday:'short',month:'short',day:'numeric'})+' · '+d.toLocaleString('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit'});
+  const utc=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  function draw(){
+    const d=new Date(inp.value); if(isNaN(d)) return;
+    tzs.innerHTML=Z.map(z=>'<span>'+z[0]+'<b>'+f(d,z[1])+'</b></span>').join('');
+    const az=f(d,'America/Phoenix'), me=f(d,myTz);
+    const subj=encodeURIComponent('Esplendor Resort: proposed call, '+az+' Arizona time');
+    const body=encodeURIComponent('Hello,\n\nCould we speak about Esplendor Resort at '+me+' my time ('+myTz+'), which is '+az+' in Arizona?\n\nName:\nCompany:\nPhone:\n\nThank you.');
+    mail.href='mailto:sales@esplendorproject.com?subject='+subj+'&body='+body;
+    return d;
+  }
+  inp.addEventListener('input',draw); draw();
+  if(ics) ics.addEventListener('click',()=>{ const d=draw(); if(!d) return; const e=new Date(d.getTime()+30*60000);
+    const txt=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MC Business Group//Esplendor//EN','BEGIN:VEVENT','UID:'+Date.now()+'@esplendor','DTSTAMP:'+utc(new Date()),'DTSTART:'+utc(d),'DTEND:'+utc(e),
+      'SUMMARY:Esplendor Resort call (proposed)','DESCRIPTION:Proposed call about Esplendor Resort at Río Rico. Confirm with sales@esplendorproject.com.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/calendar'})); a.download='esplendor-call.ics'; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500); });
+  const cp=q('#sh-copy'); if(cp) cp.addEventListener('click',()=>{ (navigator.clipboard?navigator.clipboard.writeText('sales@esplendorproject.com'):Promise.reject()).then(()=>{cp.lastChild.textContent='Copied';setTimeout(()=>cp.lastChild.textContent='Copy email',1800)},()=>{cp.lastChild.textContent='sales@esplendorproject.com'}); });
+}
+
+function boot(){ [initSheets,initFilm,initCount,initReveal,initRv,initFn,initFx,initProp].forEach(f=>{try{f();}catch(e){console.error('[esplendor]',f.name,e);}}); }
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
 })();
 </script>

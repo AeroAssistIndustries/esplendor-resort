@@ -26,7 +26,7 @@ head = f"""<!doctype html>
 <style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px/1.4 system-ui,-apple-system,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 """
 # move the page's own <title>/<meta>/<link>/<style> block into <head>: everything before the first <aside class="ribbon"
-cut = body.find('<aside class="ribbon"')
+cut = body.find('<aside class="ribbon')
 if cut < 0: sys.exit("ribbon marker not found")
 doc = head + body[:cut] + "</head>\n<body>\n" + body[cut:] + "\n</body>\n</html>\n"
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(doc)
