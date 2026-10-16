@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aeroassistindustries.github.io/esplendor-resort/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aeroassistindustries.github.io/esplendor-resort/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aeroassistindustries.github.io/esplendor-resort/es.html"/>
+  </url>
+  <url>
+    <loc>https://aeroassistindustries.github.io/esplendor-resort/es.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aeroassistindustries.github.io/esplendor-resort/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aeroassistindustries.github.io/esplendor-resort/es.html"/>
+  </url>
+  <url>
+    <loc>https://aeroassistindustries.github.io/esplendor-resort/land.html</loc>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+  <url>
+    <loc>https://aeroassistindustries.github.io/esplendor-resort/walkthrough.html</loc>
+    <lastmod>2026-10-16</lastmod>
+  </url>
+</urlset>
