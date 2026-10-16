@@ -77,3 +77,6 @@ h2.h3{font-size:1.5rem}
   table.zt thead{display:none}table.zt,table.zt tbody,table.zt tr,table.zt td{display:block;width:100%}
   table.zt tr{border-bottom:1px solid var(--line);padding:8px 0}table.zt td{border:0;padding:4px 14px 4px 86px;position:relative}
   table.zt td::before{content:attr(data-label);position:absolute;left:14px;top:6px;font-size:.8rem;color:var(--muted);font-weight:600}}
+
+.settled{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--m-green,#2F8A5F);padding:14px 18px;max-width:80ch}
+.settled ul{margin:6px 0 0;padding-left:20px;display:grid;gap:6px;line-height:1.55}

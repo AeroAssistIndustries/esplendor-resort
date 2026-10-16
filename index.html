@@ -286,6 +286,8 @@ table.tx tr.us td{background:var(--bg);font-weight:500}
 table.tx tr.us td:first-child{box-shadow:inset 3px 0 0 var(--clay)}
 table.tx a{color:var(--accent)}
 .tx-note{font-size:.85rem;color:var(--muted);margin-top:10px;max-width:90ch}
+.tx-h{font-size:1.15rem;margin:28px 0 10px}
+.tx-h:first-of-type{margin-top:0}
 .news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .news article{background:var(--paper);border:1px solid var(--line);padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
 .news .meta{font:500 .7rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -782,7 +784,7 @@ footer .copy{color:var(--muted)}
       <ol class="hl">
         <li><b>22.74 acres on a mesa</b><span>Three parcels with 360° views of the Santa Cruz Valley, just off I-19 at Exit 17.</span></li>
         <li><b>179 rooms and a 650-seat ballroom</b><span>Guest buildings, a 9,122 SF convention center, restaurant, bar, pool and courts are already standing.</span></li>
-        <li><b>Plans done, site cleared</b><span>Full remodeling plan set, Phase I ESA, title insurance and 39 renderings. Fire damage is demolished and cleared.</span></li>
+        <li><b>Plans done, site cleared</b><span>Full remodeling plan set approved by the fire department, plus Phase I ESA, title insurance and 39 renderings. Roof repairs are finished.</span></li>
         <li><b>A mine coming online</b><span>South32's Hermosa project, about 15 miles away, plans 800–900 long-term jobs averaging about $90,000 a year.</span></li>
         <li><b>A market without new rooms</b><span>County hotel occupancy rose 8.8% in Q1 2026 with no new rooms added.<a class="ref" href="https://tourism.az.gov/wp-content/uploads/2026/04/County-Lodging-Q1-2026.pdf" target="_blank" rel="noopener">source</a></span></li>
         <li><b>Room to grow</b><span>About 6.8 acres of open hillside plus two street lots. <a href="land.html">See the land potential</a>.</span></li>
@@ -944,19 +946,19 @@ footer .copy{color:var(--muted)}
           <figure><img src="img/photo-ballroom.jpg" alt="Cleared interior with beamed ceiling and fireplace"><figcaption>Fire area, demolished and cleared</figcaption></figure>
           <figure><img src="img/photo-corridor-view.jpg" alt="Covered corridor with valley and mountain view"><figcaption>Guest corridor, valley view</figcaption></figure>
           <figure><img src="img/photo-courtyard.jpg" alt="Landscaped courtyard between guest buildings"><figcaption>Courtyard and gardens</figcaption></figure>
-          <figure><img src="img/photo-roof-valley.jpg" alt="Clay tile roof overlooking the Santa Cruz Valley" style="object-position:center 30%"><figcaption>Tile roofs, repairs underway</figcaption></figure>
+          <figure><img src="img/photo-roof-valley.jpg" alt="Clay tile roof overlooking the Santa Cruz Valley" style="object-position:center 30%"><figcaption>Tile roofs, repairs complete</figcaption></figure>
         </div>
         <div>
           <ul class="progress">
             <li><span>Fire-damaged kitchen and adjacent areas demolished</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
             <li><span>Site cleanup, phases one and two</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
-            <li><span>Remodeling plans: architectural, structural, MEP, civil, water line</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Remodeling plans: architectural, structural, MEP, civil, water line; approved by the fire department</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
             <li><span>Renderings and interior design</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
             <li><span>Phase I environmental assessment and title insurance</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
             <li><span>Fountain restoration</span><span class="pct">60%</span><span class="bar"><i style="width:60%"></i></span></li>
             <li><span>Swimming pool</span><span class="pct">50%</span><span class="bar"><i style="width:50%"></i></span></li>
-            <li><span>Roof repairs</span><span class="pct">45%</span><span class="bar"><i style="width:45%"></i></span></li>
-            <li><span>Main hallways</span><span class="pct">30%</span><span class="bar"><i style="width:30%"></i></span></li>
+            <li><span>Roof repairs</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Main hallways, new flooring</span><span class="pct">60%</span><span class="bar"><i style="width:60%"></i></span></li>
           </ul>
           <div class="invested">
             <div><b class="num">$3.17M</b><span>Invested by ownership, 2021–2025</span></div>
@@ -1125,15 +1127,27 @@ footer .copy{color:var(--muted)}
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Recent transactions</p>
-        <h2>Southern Arizona hotel sales</h2>
-        <p class="lede">Operating hotels in the region have traded between about $95,000 and $212,000 per room. Esplendor is offered at $50,000 to $61,000 per room.</p>
+        <h2>Hotel sales and land prices nearby</h2>
+        <p class="lede">Esplendor is offered at $50,000 to $61,000 per room. In Nogales, published prices are few: older motels have sold or been listed at roughly $18,000 to $50,000 per room. Operating hotels in Tucson have traded for about $95,000 to $212,000 per room.</p>
       </div>
+      <h3 class="tx-h">Nogales and Santa Cruz County</h3>
       <div class="tx-wrap">
         <table class="tx">
           <thead><tr><th>Date</th><th>Property</th><th>Location</th><th class="r">Rooms</th><th class="r">Price</th><th class="r">Per room</th><th>Source</th></tr></thead>
           <tbody>
-            <tr class="us"><td>Offered</td><td>Esplendor Resort<small>Vacant; demolition, design and engineering done</small></td><td>Río Rico</td><td class="r">179</td><td class="r">$9M–$11M</td><td class="r">$50K–$61K</td><td>This offering</td></tr>
+            <tr class="us"><td>Offered</td><td>Esplendor Resort<small>Vacant; plans fire-approved, roofs repaired</small></td><td>Río Rico</td><td class="r">179</td><td class="r">$9M–$11M</td><td class="r">$50K–$61K</td><td>This offering</td></tr>
+            <tr><td>Listed</td><td>Arroyo Motel<small>Independent motel, built 1950, upgraded 2024–25; asking price</small></td><td>Nogales</td><td class="r">19</td><td class="r">$950,000</td><td class="r">~$50,000</td><td><a href="https://images.loopnet.ca/d2/HyW_JypEMbgGBUk6gGnPBr_56q9F11A-70FoWXq1ub4/OM%20%20Arroyo%20Motel%20%20Nogales%20AZ.pdf" target="_blank" rel="noopener">Offering memorandum</a></td></tr>
+            <tr><td>Nov 2022</td><td>Quality Hotel Americana<small>Sold to Nogales Hospitality LLC</small></td><td>Nogales</td><td class="r">97</td><td class="r">Undisclosed</td><td class="r">&ndash;</td><td><a href="https://www.hvs.com/news/9504/HVS-Brokerage-Advisory-Closes-Sale-of-Quality-Hotel-Americana-Nogales" target="_blank" rel="noopener">HVS</a></td></tr>
+            <tr><td>Apr 2014</td><td>Americana Hotel<small>Same hotel; court-receivership sale</small></td><td>Nogales</td><td class="r">97</td><td class="r">$1.75M</td><td class="r">~$18,000</td><td><a href="https://hmapr.com/client-news/americana-hotel-in-nogales-sold-to-the-lok-group-resolute-commercial-services-brokered-the-transaction/" target="_blank" rel="noopener">HMA</a></td></tr>
             <tr><td>Jun 2026</td><td>Tubac Golf Resort &amp; Spa<small>Part of a three-property sale to Mountain Capital Partners</small></td><td>Tubac, ~11 mi north</td><td class="r">98</td><td class="r">Undisclosed</td><td class="r">&ndash;</td><td><a href="https://www.abc15.com/news/business/colorado-company-to-acquire-historic-arizona-resorts-and-golf-courses" target="_blank" rel="noopener">ABC15</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="tx-h">Tucson</h3>
+      <div class="tx-wrap">
+        <table class="tx">
+          <thead><tr><th>Date</th><th>Property</th><th>Location</th><th class="r">Rooms</th><th class="r">Price</th><th class="r">Per room</th><th>Source</th></tr></thead>
+          <tbody>
             <tr><td>Oct 2025</td><td>Arizona Inn<small>Historic resort; bought by a Tucson investor group</small></td><td>Tucson</td><td class="r">89</td><td class="r">Undisclosed</td><td class="r">&ndash;</td><td><a href="https://tucson.com/news/local/business/real-estate/article_3fb790e3-0544-46c6-8073-d85f06dc53ba.html" target="_blank" rel="noopener">Arizona Daily Star</a></td></tr>
             <tr><td>Feb 2025</td><td>Courtyard by Marriott Tucson Airport<small>Select-service, operating</small></td><td>Tucson</td><td class="r">149</td><td class="r">$14.2M</td><td class="r">$95,300</td><td><a href="https://www.connectcre.com/stories/tucson-airport-hotel-trades-for-14-2m/" target="_blank" rel="noopener">Connect CRE</a></td></tr>
             <tr><td>Apr 2023</td><td>JW Marriott Starr Pass Resort &amp; Spa<small>Buyer then budgeted $62.2M ($108K/room) to renovate</small></td><td>Tucson</td><td class="r">575</td><td class="r">$110M</td><td class="r">~$191,000</td><td><a href="https://www.hvs.com/article/9711-tucsons-hotel-industry-recovered-and-evolving" target="_blank" rel="noopener">HVS</a></td></tr>
@@ -1142,6 +1156,20 @@ footer .copy{color:var(--muted)}
         </table>
       </div>
       <p class="tx-note">Even after the estimated $11M–$13M to complete, a buyer's all-in cost works out to about $112,000–$134,000 per room, below what renovated resorts in the region have traded for. Sale prices are as reported in the press; undisclosed prices were not made public.</p>
+      <h3 class="tx-h">Commercial land in Río Rico and the county</h3>
+      <div class="tx-wrap">
+        <table class="tx">
+          <thead><tr><th>Date</th><th>Property</th><th>Location</th><th class="r">Acres</th><th class="r">Price</th><th class="r">Per acre</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="us"><td>2022 value</td><td>Esplendor parcel, APN 114-50-013B<small>Vacant commercial lot; county full cash value; included in this sale</small></td><td>Río Rico</td><td class="r">0.59</td><td class="r">$77,101</td><td class="r">~$131,000</td><td>County assessor</td></tr>
+            <tr><td>Listed 2025</td><td>1163 Circulo Mercado<small>Commercial lot visible from I-19; asking, now off market</small></td><td>Río Rico</td><td class="r">0.27</td><td class="r">$85,000</td><td class="r">~$315,000</td><td><a href="https://www.realty.com/land-listings/397661344/1163-Circulo-Mercado-48-Rio-Rico-AZ-85648" target="_blank" rel="noopener">Realty.com</a></td></tr>
+            <tr><td>Listed 2023</td><td>1167 Circulo Mercado<small>Commercial lot near I-19; asking, reduced from $95,000</small></td><td>Río Rico</td><td class="r">0.27</td><td class="r">$80,000</td><td class="r">~$296,000</td><td><a href="https://www.realty.com/land-listings/358041975/1167-Circulo-Mercado-Rio-Rico-AZ-85648" target="_blank" rel="noopener">Realty.com</a></td></tr>
+            <tr><td>Listed 2023</td><td>4 Avenida Pastor<small>B-1 commercial, 746 ft of frontage; asking, now off market</small></td><td>Río Rico</td><td class="r">5.91</td><td class="r">$295,000</td><td class="r">~$50,000</td><td><a href="https://www.realty.com/land-listings/356704909/4-Avenida-Pastor-Rio-Rico-AZ-85648" target="_blank" rel="noopener">Realty.com</a></td></tr>
+            <tr><td>Oct 2026</td><td>Commercial listings, Santa Cruz County<small>Average of 8 active listings; asking</small></td><td>County</td><td class="r">&ndash;</td><td class="r">&ndash;</td><td class="r">~$113,000</td><td><a href="https://www.landsearch.com/commercial/santa-cruz-county-az" target="_blank" rel="noopener">LandSearch</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tx-note">Land prices are asking prices or assessed values, not recorded sales. Small lots ask more per acre than large tracts. Most Nogales hotel sales do not publish a price; a broker's CoStar report or the county's recorded affidavits of value would give buyers a fuller set of comparables.</p>
     </div>
   </section>
 
@@ -1209,7 +1237,7 @@ footer .copy{color:var(--muted)}
         <h3>Questions buyers ask</h3>
         <details><summary>Is the resort open?</summary><p>No. A kitchen fire closed it in 2015. Since buying it in 2021, the owners have demolished and cleared the damaged areas, cleaned the property, repaired roofs and corridors, and completed a full remodeling plan set.</p></details>
         <details><summary>What is the asking price?</summary><p>The owners are seeking $9–11 million to sell as is (Path A). They are also open to a capital partner to finish the renovation together (Path B), with an estimated $11–13 million to complete.</p></details>
-        <details><summary>What is included in the sale?</summary><p>Three parcels totaling 22.74 acres (APN 114-50-001B, 114-50-013B and 114-50-176), all existing buildings, and the plans, engineering, renderings and reports listed in the offering package.</p></details>
+        <details><summary>What is included in the sale?</summary><p>All three parcels, totaling 22.74 acres (APN 114-50-001B, 114-50-013B and 114-50-176), are sold together, with all existing buildings and the plans, engineering, renderings and reports listed in the offering package.</p></details>
         <details><summary>How many rooms are there?</summary><p>The 2023 appraisal counts 179 guest rooms. The remodeling plans and the CAD set are in the data room so buyers can confirm the final room mix.</p></details>
         <details><summary>What does the zoning allow?</summary><p>The site is zoned B-2 (General Business) in Santa Cruz County, which permits hotels, restaurants and a winery tasting room by right. See the <a href="land.html#zoning">zoning summary</a> on the land page.</p></details>
         <details><summary>Can I visit?</summary><p>Yes, by appointment. Email <a href="mailto:sales@esplendorproject.com">sales@esplendorproject.com</a> to schedule a tour. Please do not visit without one; the site is a closed construction area.</p></details>
@@ -1227,7 +1255,7 @@ footer .copy{color:var(--muted)}
           <p>Qualified buyers and capital partners can review the full package after signing a confidentiality agreement. Property tours are available by appointment.</p>
           <ul class="docs">
             <li><b>2023 appraisal</b><span>As is and as complete</span></li>
-            <li><b>Remodeling plans</b><span>Arch., structural, MEP, civil</span></li>
+            <li><b>Remodeling plans</b><span>Arch., structural, MEP, civil; fire department approved</span></li>
             <li><b>As-built CAD set</b><span>Site, floor plans, sections</span></li>
             <li><b>Cost to complete</b><span>Line-item budget and schedule</span></li>
             <li><b>Phase I ESA</b><span>Environmental assessment</span></li>
@@ -1544,8 +1572,8 @@ footer .copy{color:var(--muted)}
   (function(){var m=document.getElementById('m-more'),l=document.getElementById('mlist'); if(!m)return;
     m.addEventListener('click',function(){var c=l.classList.toggle('clip'); m.textContent=c?'Show all places':'Show fewer'});})();
 
-  (function(){var t=document.querySelector('table.tx'); if(!t)return; var h=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent});
-    [].forEach.call(t.querySelectorAll('tbody tr'),function(tr){[].forEach.call(tr.children,function(td,i){td.setAttribute('data-label',h[i]||'')})});})();
+  [].forEach.call(document.querySelectorAll('table.tx'),function(t){var h=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent});
+    [].forEach.call(t.querySelectorAll('tbody tr'),function(tr){[].forEach.call(tr.children,function(td,i){td.setAttribute('data-label',h[i]||'')})})});
   // chart tooltips
   var tip=document.getElementById('tip');
   document.querySelectorAll('.chart rect[data-tip]').forEach(function(r){
