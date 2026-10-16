@@ -44,6 +44,7 @@ footer = "\n".join(idx[f0:f1 + 1])
 footer = re.sub(r'href="#([\w-]+)"', r'href="index.html#\1"', footer)
 # footer scripts on the index (share, flyer) are not on sub-pages; drop share buttons that need them
 footer = re.sub(r'<div class="share"[\s\S]*?</div>\s*', "", footer)
+footer = re.sub(r"<a class=\"to-top\"[\s\S]*?</a>\s*", "", footer)
 
 for name, (title, desc, current) in PAGES.items():
     body = read(f"src/{name}/body.html")
