@@ -25,12 +25,12 @@ head = f"""<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px/1.4 system-ui,-apple-system,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 """
-# move the page's own <title>/<meta>/<link>/<style> block into <head>: everything before the first <div class="ribbon">
-cut = body.find('<div class="ribbon">')
+# move the page's own <title>/<meta>/<link>/<style> block into <head>: everything before the first <aside class="ribbon"
+cut = body.find('<aside class="ribbon"')
 if cut < 0: sys.exit("ribbon marker not found")
 doc = head + body[:cut] + "</head>\n<body>\n" + body[cut:] + "\n</body>\n</html>\n"
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(doc)
-for name in ("img", "walkthrough.html", "model-data.js", "land.html", "privacy.html", "terms.html"):
+for name in ("img", "walkthrough.html", "model-data.js", "land.html", "privacy.html", "terms.html", "es.html", "404.html"):
     src = os.path.join(ROOT, name)
     if os.path.isdir(src): shutil.copytree(src, os.path.join(OUT, name))
     elif os.path.isfile(src): shutil.copy2(src, os.path.join(OUT, name))

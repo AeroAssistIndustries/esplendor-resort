@@ -255,7 +255,7 @@ dialog.lb button:focus-visible{outline:2px solid #8CC0A6}
 .m-list li{border-bottom:1px solid var(--line)}
 .m-list button{all:unset;cursor:pointer;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:4px 12px;align-items:start;width:100%;box-sizing:border-box;padding:10px 6px}
 .m-list button:hover,.m-list button.on{background:var(--bg)}
-.m-list .no{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font:600 11px var(--f-body);margin-top:1px}
+.m-list .no{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 2.5px var(--c);font:600 11px var(--f-body);margin-top:1px}
 .m-list .nm{font-weight:500;line-height:1.3}
 .m-list .ds{display:block;font-size:.84rem;color:var(--muted);line-height:1.4;margin-top:2px}
 .m-list .mi{font:500 .85rem var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px}
@@ -675,9 +675,30 @@ footer .copy{color:var(--muted)}
 .docs li a b{color:var(--accent);text-decoration:underline}
 @media print{.to-top,.share,.ribbon,header.site,.now-chip{display:none!important}}
 
+/* ===== language switch, scrollspy, hero slideshow ===== */
+.lang-sw{display:inline-grid;place-items:center;min-width:40px;height:40px;padding:0 8px;box-sizing:border-box;border:1px solid var(--line);border-radius:4px;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-decoration:none;color:var(--ink);background:var(--paper)}
+.lang-sw:hover{border-color:var(--accent);color:var(--accent)}
+.lang-sw:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hdr-actions{display:flex;align-items:center;gap:10px}
+nav.links a[aria-current="true"]{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.hero img.hs{opacity:0;transition:opacity 1.8s ease}
+.hero img.hs.on{opacity:1}
+.hero img.kb{animation:kb 16s ease-out both}
+@keyframes kb{from{transform:scale(1.0)}to{transform:scale(1.07)}}
+.hero .dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:flex;gap:8px}
+.hero .dots button{all:unset;cursor:pointer;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45)}
+.hero .dots button[aria-current="true"]{background:#fff}
+.hero .dots button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (max-width:430px){.hdr-actions .lang-sw{display:none}}
+.hdr-actions .btn{white-space:nowrap}
+@media (min-width:1101px){nav.links{gap:15px}nav.links a{font-size:.93rem}}
+@media (min-width:1101px) and (max-width:1300px){.hdr-actions .btn .lg{display:none}.hdr-actions .btn .sm{display:inline}}
+@media (min-width:981px) and (max-width:1100px){nav.links{display:none}.menu-btn{display:flex}.m-nav:not([hidden]){display:grid!important}}
+@media (prefers-reduced-motion:reduce){.hero img.kb{animation:none}.hero img.hs{transition:none}}
+
 </style>
 
-<div class="ribbon">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></div>
+<aside class="ribbon" aria-label="Draft notice">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></aside>
 
 <header class="site">
   <div class="wrap">
@@ -703,12 +724,13 @@ footer .copy{color:var(--muted)}
       <a href="#news">News</a>
     </nav>
     <div class="hdr-actions">
+      <a class="lang-sw" href="es.html" lang="es" hreflang="es" title="Ver en español">ES</a>
       <a class="btn solid" href="#inquire"><span class="lg">Request package</span><span class="sm">Inquire</span></a>
       <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <nav class="m-nav" id="m-nav" aria-label="Sections" hidden>
-    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="walkthrough.html">3D tour</a><a href="land.html">Land potential</a><a href="#location">The area</a><a href="#climate">Weather</a><a href="#process">How to buy</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
+    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="walkthrough.html">3D tour</a><a href="land.html">Land potential</a><a href="#location">The area</a><a href="#climate">Weather</a><a href="#process">How to buy</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="es.html" lang="es">Español</a><a href="#inquire">Request the package</a>
   </nav>
 </header>
 
@@ -802,7 +824,7 @@ footer .copy{color:var(--muted)}
         <p>After five years of ownership, the group is ready to hand the project to a buyer who will complete the renovation and reopen it, or to bring in a capital partner and finish it together.</p>
       </div>
       <figure>
-        <img src="img/photo-main-building.jpg" alt="Main building today with cypress trees and clear sky">
+        <img loading="lazy" decoding="async" src="img/photo-main-building.jpg" alt="Main building today with cypress trees and clear sky">
         <figcaption>Main building, 2025 · current condition</figcaption>
       </figure>
     </div>
@@ -851,7 +873,7 @@ footer .copy{color:var(--muted)}
           <span><i style="background:var(--s-build)"></i>Cost to complete</span>
           <span><i style="border-top:2px dashed var(--ink);height:0;border-radius:0"></i>2023 as-complete appraisal</span>
         </div>
-        <div class="chart-scroll">
+        <div class="chart-scroll" tabindex="0" role="region" aria-label="All-in cost chart, scrolls sideways">
           <svg class="chart" viewBox="0 0 640 196" role="img" aria-label="Low case: $9M purchase plus $11M to complete equals $20M. High case: $11M purchase plus $13M to complete equals $24M. Both are below the $28.9M 2023 as-complete appraisal.">
             <line class="grid" x1="120" y1="20" x2="120" y2="150"/>
             <line class="grid" x1="280" y1="20" x2="280" y2="150"/>
@@ -927,7 +949,7 @@ footer .copy{color:var(--muted)}
             <div class="legend" aria-hidden="true"><span><i style="background:var(--s-buy)"></i>Cash returned</span><span><i style="background:var(--s-build);border-radius:50%"></i>Refinance or sale</span><span><i style="border-top:2px dashed var(--ink);height:0;border-radius:0"></i>Equity invested</span></div>
             <svg id="rt-svg" viewBox="0 0 720 300" role="img" aria-label="Cumulative cash returned to investors by year"></svg>
           </div>
-          <div class="rt-tbl-wrap"><table class="rt-tbl" id="rt-tbl"></table></div>
+          <div class="rt-tbl-wrap" tabindex="0" role="region" aria-label="Year-by-year returns table"><table class="rt-tbl" id="rt-tbl"></table></div>
           <p class="rt-note">Illustrative model, not a forecast or an offer. The resort has no recent operating history; results depend on the buyer's plan, brand, management, financing and market conditions. Revenue and costs grow 3% a year; the first two operating years run at 70% and 88% of stabilized income; loans are interest-only; interest during the renovation, closing and pre-opening costs ($1.5M) are funded with equity; refinance and sale costs are 1% and 2%.</p>
         </div>
       </div>
@@ -942,11 +964,11 @@ footer .copy{color:var(--muted)}
       </div>
       <div class="today">
         <div class="photo-grid">
-          <figure class="wide"><img src="img/photo-guest-wings.jpg" alt="Panorama of the three-story guest buildings across the motor court"><figcaption>Guest buildings from the motor court</figcaption></figure>
-          <figure><img src="img/photo-ballroom.jpg" alt="Cleared interior with beamed ceiling and fireplace"><figcaption>Fire area, demolished and cleared</figcaption></figure>
-          <figure><img src="img/photo-corridor-view.jpg" alt="Covered corridor with valley and mountain view"><figcaption>Guest corridor, valley view</figcaption></figure>
-          <figure><img src="img/photo-courtyard.jpg" alt="Landscaped courtyard between guest buildings"><figcaption>Courtyard and gardens</figcaption></figure>
-          <figure><img src="img/photo-roof-valley.jpg" alt="Clay tile roof overlooking the Santa Cruz Valley" style="object-position:center 30%"><figcaption>Tile roofs, repairs complete</figcaption></figure>
+          <figure class="wide"><img loading="lazy" decoding="async" src="img/photo-guest-wings.jpg" alt="Panorama of the three-story guest buildings across the motor court"><figcaption>Guest buildings from the motor court</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="img/photo-ballroom.jpg" alt="Cleared interior with beamed ceiling and fireplace"><figcaption>Fire area, demolished and cleared</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="img/photo-corridor-view.jpg" alt="Covered corridor with valley and mountain view"><figcaption>Guest corridor, valley view</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="img/photo-courtyard.jpg" alt="Landscaped courtyard between guest buildings"><figcaption>Courtyard and gardens</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="img/photo-roof-valley.jpg" alt="Clay tile roof overlooking the Santa Cruz Valley" style="object-position:center 30%"><figcaption>Tile roofs, repairs complete</figcaption></figure>
         </div>
         <div>
           <ul class="progress">
@@ -983,8 +1005,8 @@ footer .copy{color:var(--muted)}
         <button type="button" role="tab" aria-selected="false" data-i="2">Main entrance</button>
       </div>
       <div class="ba" id="ba" style="--pos:50%">
-        <img class="ba-after" id="ba-after" src="img/render-pool.jpg" alt="Rendering of the renovated pool with umbrellas and loungers">
-        <div class="ba-before"><img id="ba-before" src="img/photo-pool-now.jpg" alt="The pool today, drained, with the guest buildings behind"></div>
+        <img loading="lazy" decoding="async" class="ba-after" id="ba-after" src="img/render-pool.jpg" alt="Rendering of the renovated pool with umbrellas and loungers">
+        <div class="ba-before"><img loading="lazy" decoding="async" id="ba-before" src="img/photo-pool-now.jpg" alt="The pool today, drained, with the guest buildings behind"></div>
         <span class="ba-tag l">Today · 2025</span><span class="ba-tag r">Renovation plan</span>
         <div class="ba-handle" aria-hidden="true"><i></i></div>
         <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Slide to compare today and the renovation plan">
@@ -1002,7 +1024,7 @@ footer .copy{color:var(--muted)}
       <div class="slider" id="slider" tabindex="0" aria-roledescription="carousel" aria-label="Renderings">
         <div class="chips" id="chips" aria-label="Filter renderings"></div>
         <div class="stage" id="stage">
-          <img id="s-img" src="img/renders/17.jpg" alt="Pool rendering">
+          <img loading="lazy" decoding="async" id="s-img" src="img/renders/17.jpg" alt="Pool rendering">
           <button class="nav prev" id="s-prev" type="button" aria-label="Previous rendering">&#8249;</button>
           <button class="nav next" id="s-next" type="button" aria-label="Next rendering">&#8250;</button>
           <button class="full" id="s-full" type="button">Enlarge</button>
@@ -1022,7 +1044,7 @@ footer .copy{color:var(--muted)}
       </div>
       <div class="site-grid">
         <figure style="margin:0">
-          <div class="sheet-wrap"><div class="sheet" style="min-width:520px"><img src="img/plan-resort.png" alt="Existing-conditions resort plan showing guest buildings A through M, pool, gym and convention center"></div></div>
+          <div class="sheet-wrap" tabindex="0" role="region" aria-label="Resort plan, scrolls sideways"><div class="sheet" style="min-width:520px"><img loading="lazy" decoding="async" src="img/plan-resort.png" alt="Existing-conditions resort plan showing guest buildings A through M, pool, gym and convention center"></div></div>
           <figcaption>Existing-conditions resort plan, sheet A-6 · HG Desert Designs, January 2022</figcaption>
         </figure>
         <dl class="specs">
@@ -1037,7 +1059,7 @@ footer .copy{color:var(--muted)}
         </dl>
       </div>
       <a class="tour-card" id="tour" href="walkthrough.html">
-        <img src="img/tour-preview.jpg" alt="Dollhouse view of the 3D model showing the guest buildings, pool, fountain court and main building">
+        <img loading="lazy" decoding="async" src="img/tour-preview.jpg" alt="Dollhouse view of the 3D model showing the guest buildings, pool, fountain court and main building">
         <div class="tc-body">
           <p class="eyebrow">New · 3D tour</p>
           <h3>Walk the resort in 3D</h3>
@@ -1304,7 +1326,7 @@ footer .copy{color:var(--muted)}
 <a class="to-top" id="to-top" href="#top" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <dialog class="lb" id="lb" aria-label="Rendering viewer">
-  <img id="lb-img" alt="">
+  <img loading="lazy" decoding="async" id="lb-img" alt="">
   <div class="bar"><button id="lb-prev" type="button">Prev</button><span id="lb-cap"></span><span style="display:flex;gap:8px"><button id="lb-next" type="button">Next</button><button id="lb-close" type="button">Close</button></span></div>
 </dialog>
 <div class="tip" id="tip" hidden></div>
@@ -1460,7 +1482,7 @@ footer .copy{color:var(--muted)}
     var list=document.getElementById('mlist'), chips=document.getElementById('mchips');
     Object.keys(CAT).forEach(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','true');b.innerHTML='<i style="background:'+CAT[k].c+'"></i>'+CAT[k].n;b.onclick=function(){on[k]=!on[k];b.setAttribute('aria-pressed',on[k]);apply()};chips.appendChild(b)});
     PTS.forEach(function(p,i){var li=document.createElement('li');var b=document.createElement('button');b.type='button';
-      b.innerHTML='<span class="no" style="background:'+CAT[p.c].c+'">'+(i+1)+'</span><span><span class="nm"></span><span class="ds"></span></span><span class="mi">'+p.mi.toFixed(1)+' mi</span>';
+      b.innerHTML='<span class="no" style="--c:'+CAT[p.c].c+'">'+(i+1)+'</span><span><span class="nm"></span><span class="ds"></span></span><span class="mi">'+p.mi.toFixed(1)+' mi</span>';
       b.querySelector('.nm').textContent=p.n; b.querySelector('.ds').textContent=p.d;
       b.addEventListener('click',function(){pick(i,true)}); b.addEventListener('mouseenter',function(){pick(i,false)});
       li.appendChild(b); list.appendChild(li); p.li=li; p.btn=b;});
@@ -1567,7 +1589,7 @@ footer .copy{color:var(--muted)}
     b.addEventListener('click',function(){set(n.hidden)});
     n.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!n.hidden){set(false);b.focus()}});
-    addEventListener('resize',function(){if(innerWidth>980&&!n.hidden)set(false)});
+    addEventListener('resize',function(){if(innerWidth>1100&&!n.hidden)set(false)});
   })();
   (function(){var m=document.getElementById('m-more'),l=document.getElementById('mlist'); if(!m)return;
     m.addEventListener('click',function(){var c=l.classList.toggle('clip'); m.textContent=c?'Show all places':'Show fewer'});})();
@@ -1696,4 +1718,30 @@ footer .copy{color:var(--muted)}
   var top=$('to-top');if(top){var onS=function(){top.hidden=scrollY<900};addEventListener('scroll',onS,{passive:true});onS()}
 })();
 
+
+// ===== hero slideshow + scrollspy =====
+(function(){
+  var hero=document.querySelector('.hero'),first=hero&&hero.querySelector('img:not(.hero-mark)');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(hero&&first){
+    var S=[['img/render-pool.jpg','Rendering of the renovated pool deck with palms and guest buildings'],['img/render-entry-tower.jpg','Rendering of the entry drive with the bell tower and oak trees'],['img/render-wine-garden.jpg','Rendering of the wine garden with lawn, red umbrellas and planters'],['img/render-porte-cochere.jpg','Rendering of the main entrance with ivy walls and covered arrival']];
+    var imgs=[first],cur=0,timer=null,dots=document.createElement('div');dots.className='dots';dots.setAttribute('aria-label','Choose a hero image');
+    first.classList.add('hs','on');if(!reduce)first.classList.add('kb');
+    S.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show image '+(i+1)+' of '+S.length);if(i===0)b.setAttribute('aria-current','true');b.addEventListener('click',function(){go(i);restart()});dots.appendChild(b)});
+    hero.appendChild(dots);
+    function ensure(i){if(imgs[i])return imgs[i];var im=new Image();im.src=S[i][0];im.alt=S[i][1];im.className='hs';im.decoding='async';hero.insertBefore(im,first.nextSibling);imgs[i]=im;return im}
+    function go(i){if(i===cur)return;var nx=ensure(i),pv=imgs[cur];var show=function(){nx.classList.remove('kb');void nx.offsetWidth;if(!reduce)nx.classList.add('kb');nx.classList.add('on');pv.classList.remove('on');
+      [].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false')});cur=i};nx.complete?show():nx.onload=show}
+    function restart(){clearInterval(timer);if(!reduce)timer=setInterval(function(){if(!document.hidden)go((cur+1)%S.length)},7000)}
+    addEventListener('load',function(){setTimeout(function(){ensure(1);restart()},1200)});
+  }
+  // scrollspy for the desktop nav
+  var links=[].slice.call(document.querySelectorAll('nav.links a[href^="#"]')),map={};
+  links.forEach(function(a){var el=document.getElementById(a.getAttribute('href').slice(1));if(el)map[el.id]=a});
+  if('IntersectionObserver' in window&&links.length){var vis={};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting?e.intersectionRatio:0});
+      var best=null,bv=0;Object.keys(vis).forEach(function(k){if(vis[k]>bv){bv=vis[k];best=k}});
+      links.forEach(function(a){a.removeAttribute('aria-current')});if(best&&map[best])map[best].setAttribute('aria-current','true')},{rootMargin:'-80px 0px -45% 0px',threshold:[0,.1,.25,.5]});
+    Object.keys(map).forEach(function(k){io.observe(document.getElementById(k))})}
+})();
 </script>

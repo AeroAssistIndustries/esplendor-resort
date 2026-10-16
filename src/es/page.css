@@ -1,0 +1,5 @@
+.es-loc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.es-loc li{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);line-height:1.55}
+.es-loc b{color:var(--ink)}
+#avance .progress{max-width:760px}
+@media (max-width:700px){.es-loc{grid-template-columns:1fr}}

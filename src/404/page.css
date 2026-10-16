@@ -1,0 +1,3 @@
+.nf{min-height:60vh;display:grid;align-items:center;padding-block:clamp(56px,10vw,120px);background:linear-gradient(180deg,rgba(17,25,21,.55),rgba(17,25,21,.75)),url(img/render-entry-tower.jpg) center/cover;color:#fff}
+.nf .eyebrow{color:#CFE6DA}.nf h1{font-family:var(--f-display);font-size:clamp(2rem,5vw,3.4rem);max-width:18ch;line-height:1.1;margin:.3em 0}
+.nf .lede{color:#EEF3EF;max-width:52ch;font-size:1.15rem}.nf .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.nf .btn{color:#fff}.nf .btn.solid{background:#fff;color:#1C2421;border-color:#fff}
