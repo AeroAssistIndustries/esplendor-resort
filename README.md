@@ -4,7 +4,7 @@ Staging site for the sale or recapitalization of the Esplendor Resort, a 179-roo
 
 - `index.html` — single-page offering site (two paths: acquire as is at $9M–$11M, or capital partnership to fund the $11M–$13M completion)
 - `img/` — current photos, existing-conditions plan, hero rendering
-- `img/renders/` — all 39 concept renderings (Victor Robles Arquitectos) with thumbnails in `t/`
+- `img/renders/` — all 39 concept renderings with thumbnails in `t/`
 - `walkthrough.html` — 3D massing model and walkthrough (in progress)
 
 The page is written as an artifact body (no `<html>`/`<head>` wrapper). Fonts load from Google Fonts; there is no build step.

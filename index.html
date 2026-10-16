@@ -3,25 +3,26 @@
 <meta name="description" content="179-key hilltop resort on 22.74 acres in Río Rico, Arizona, offered as is or with a capital partner.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: a hacienda offering memorandum. Full-bleed photography bands alternate with
    limewash text bands; survey/deed vernacular (APNs, bearings, acreage) in mono. */
 :root{
-  --bg:#EEF0EA;          /* limewash stucco, faint sage */
-  --paper:#F8F8F4;       /* sheet surface */
-  --ink:#1C2421;         /* juniper night */
-  --muted:#58635D;
-  --line:#CDD3CB;
-  --accent:#2E5A47;      /* cottonwood green */
-  --clay:#A4472A;        /* roof tile, used for prices only */
+  --bg:#F5F6F2;          /* page ground, faint stucco */
+  --paper:#FFFFFF;       /* cards and surfaces */
+  --ink:#111915;         /* body text */
+  --muted:#3F4943;       /* secondary text, still AA at small sizes */
+  --line:#D5DAD3;
+  --accent:#1E5A43;      /* cottonwood green */
+  --clay:#A13E1F;        /* roof tile, used for prices only */
   --s-buy:#3A6FA8;       /* chart: purchase */
   --s-build:#C8642E;     /* chart: cost to complete */
+  --m-violet:#7A5BB0; --m-green:#2F8A5F;  /* map categories */
   --on-photo:#FFFFFF;
   --scrim:rgba(14,20,17,.62);
   --ribbon-bg:#1C2421; --ribbon-fg:#EEF0EA;
-  --f-display:"Marcellus","Trajan Pro","Palatino Linotype",Palatino,Georgia,serif;
-  --f-body:"Albert Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-display:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   --step-0:1rem; --step-1:1.2rem; --step-2:1.6rem; --step-3:2.2rem; --step-4:clamp(2.4rem,6vw,4.4rem);
   --gutter-l:max(16px, env(safe-area-inset-left, 0px));
@@ -30,14 +31,14 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#121815; --paper:#1A221E; --ink:#E7EBE4; --muted:#A3ADA6; --line:#2E3933;
-    --accent:#8CC0A6; --clay:#E3906B; --s-buy:#4F8FD8; --s-build:#DA7440;
+    --bg:#0F1411; --paper:#171E1A; --ink:#F1F4EF; --muted:#BFC8C2; --line:#303B35;
+    --accent:#8FCBAE; --clay:#EE9A76; --s-buy:#4F8FD8; --s-build:#DA7440; --m-violet:#9A7CD6; --m-green:#3FA877;
     --scrim:rgba(6,10,8,.66); --ribbon-bg:#E7EBE4; --ribbon-fg:#121815; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#121815; --paper:#1A221E; --ink:#E7EBE4; --muted:#A3ADA6; --line:#2E3933;
-  --accent:#8CC0A6; --clay:#E3906B; --s-buy:#4F8FD8; --s-build:#DA7440;
+  --bg:#0F1411; --paper:#171E1A; --ink:#F1F4EF; --muted:#BFC8C2; --line:#303B35;
+  --accent:#8FCBAE; --clay:#EE9A76; --s-buy:#4F8FD8; --s-build:#DA7440; --m-violet:#9A7CD6; --m-green:#3FA877;
   --scrim:rgba(6,10,8,.66); --ribbon-bg:#E7EBE4; --ribbon-fg:#121815; color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -213,20 +214,88 @@ dialog.lb button:focus-visible{outline:2px solid #8CC0A6}
 .walk .badge{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:6px 10px;white-space:nowrap}
 @media (max-width:560px){.walk{grid-template-columns:1fr}}
 
-/* location */
-.loc{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
-.corridor svg{width:100%;height:auto;display:block}
-.corridor text{font-family:var(--f-body);fill:var(--ink);font-size:14px}
-.corridor .sm{font-family:var(--f-mono);font-size:11px;fill:var(--muted);letter-spacing:.04em}
-.corridor .road{stroke:var(--ink);stroke-width:3}
-.corridor .border{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 4}
-.corridor .dot{fill:var(--paper);stroke:var(--ink);stroke-width:2}
-.corridor .here{fill:var(--clay)}
-.drivers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+/* proximity map */
+.mapsec{padding-block:clamp(48px,7vw,80px)}
+.map-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:start}
+.map-frame{position:relative;background:var(--paper);border:1px solid var(--line);min-width:0}
+.map-frame svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.map-frame .m-mex{fill:var(--line);opacity:.45}
+.map-frame .m-border{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:6 4;fill:none}
+.map-frame .m-county{stroke:var(--muted);stroke-width:1;stroke-dasharray:2 4;fill:none;opacity:.7}
+.map-frame .m-river{stroke:var(--s-buy);stroke-width:1.6;fill:none;opacity:.45}
+.map-frame .m-road{stroke:var(--muted);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map-frame .m-i19{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.map-frame .m-ring{fill:none;stroke:var(--clay);stroke-width:1;stroke-dasharray:3 5;opacity:.75}
+.map-frame .m-ringlbl{font:500 11px var(--f-mono);fill:var(--clay)}
+.map-frame .m-terr{font:400 12px var(--f-mono);letter-spacing:.18em;fill:var(--muted);text-transform:uppercase}
+.map-frame .m-mtn{font:italic 400 13px var(--f-body);fill:var(--muted)}
+.map-frame .m-town{font:500 12.5px var(--f-body);fill:var(--ink)}
+.map-frame .m-shield rect{fill:var(--ink)}
+.map-frame .m-shield text{font:600 11px var(--f-body);fill:var(--paper)}
+.map-frame .m-pt circle{stroke:var(--paper);stroke-width:2}
+.map-frame .m-pt text{font:600 11px var(--f-body);fill:#fff;pointer-events:none}
+.map-frame .m-pt{cursor:pointer}
+.map-frame .m-pt.dim{opacity:.18}
+.map-frame .m-pt.on circle{stroke:var(--ink);stroke-width:2.5}
+.map-frame .m-home path{fill:var(--clay);stroke:var(--paper);stroke-width:2}
+.map-frame .m-homelbl{font:400 15px var(--f-display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+.map-frame .m-line{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.map-frame .m-dist rect{fill:var(--ink)} .map-frame .m-dist text{font:600 12px var(--f-mono);fill:var(--paper)}
+.map-frame .m-edge text{font:500 11.5px var(--f-body);fill:var(--ink)}
+.map-frame .m-edge .sub{font:400 10.5px var(--f-mono);fill:var(--muted)}
+.map-frame .m-edge path{fill:var(--ink)}
+.map-note{font-size:.78rem;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line)}
+.m-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.m-chips button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-size:.82rem;border:1px solid var(--line);padding:6px 10px;border-radius:2px;color:var(--ink);background:var(--paper)}
+.m-chips button i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.m-chips button[aria-pressed="false"]{opacity:.45}
+.m-chips button:focus-visible,.m-list button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.m-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);max-height:560px;overflow-y:auto}
+.m-list li{border-bottom:1px solid var(--line)}
+.m-list button{all:unset;cursor:pointer;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:4px 12px;align-items:start;width:100%;box-sizing:border-box;padding:10px 6px}
+.m-list button:hover,.m-list button.on{background:var(--bg)}
+.m-list .no{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font:600 11px var(--f-body);margin-top:1px}
+.m-list .nm{font-weight:500;line-height:1.3}
+.m-list .ds{display:block;font-size:.84rem;color:var(--muted);line-height:1.4;margin-top:2px}
+.m-list .mi{font:500 .85rem var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px}
+.m-list li.hide{display:none}
+.m-beyond{margin-top:16px;display:grid;gap:0;border-top:1px solid var(--line)}
+.m-beyond div{display:flex;justify-content:space-between;gap:12px;padding-block:8px;border-bottom:1px solid var(--line);font-size:.9rem}
+.m-beyond span:last-child{font-family:var(--f-mono);font-size:.82rem;white-space:nowrap}
+@media (max-width:900px){.map-grid{grid-template-columns:1fr}.m-list{max-height:none}}
+
+/* area + market */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-bottom:48px}
+.stats div{padding:16px 16px 16px 0;border-bottom:1px solid var(--line);display:grid;gap:4px;min-width:0}
+.stats b{font-family:var(--f-display);font-weight:400;font-size:1.9rem;line-height:1.1}
+.stats span{font-size:.88rem;color:var(--muted)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.drivers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 28px}
 .drivers div{display:grid;gap:6px;align-content:start;border-top:1px solid var(--line);padding-top:14px;min-width:0}
-.drivers p{color:var(--muted);font-size:.96rem}
-@media (max-width:900px){.loc{grid-template-columns:1fr}.corridor{max-width:340px}}
+.drivers p{color:var(--muted);font-size:.95rem}
+@media (max-width:1000px){.drivers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.drivers{grid-template-columns:1fr}}
+.tx-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--paper)}
+table.tx{width:100%;border-collapse:collapse;min-width:760px;font-size:.92rem}
+table.tx th{font:500 .7rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.tx td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.tx td.r,table.tx th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.tx td small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+table.tx tr.us td{background:var(--bg);font-weight:500}
+table.tx tr.us td:first-child{box-shadow:inset 3px 0 0 var(--clay)}
+table.tx a{color:var(--accent)}
+.tx-note{font-size:.85rem;color:var(--muted);margin-top:10px;max-width:90ch}
+.news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.news article{background:var(--paper);border:1px solid var(--line);padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
+.news .meta{font:500 .7rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.news .tag{color:var(--clay)}
+.news h3{font-size:1.15rem}
+.news p{font-size:.92rem;color:var(--muted)}
+.news a{font-size:.85rem;color:var(--accent)}
+.news article.lead{grid-column:span 2;border-top:3px solid var(--clay)}
+.news article.lead h3{font-size:1.5rem}
+@media (max-width:900px){.news{grid-template-columns:1fr 1fr}.news article.lead{grid-column:1/-1}}
+@media (max-width:560px){.news{grid-template-columns:1fr}}
 
 /* data room + inquire */
 .docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin:0;padding:0;list-style:none}
@@ -248,6 +317,93 @@ footer .owner a{color:var(--accent)}
 footer{padding-block:36px 48px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 footer .wrap{display:grid;gap:12px}
 footer p{max-width:110ch}
+
+/* ===== readability layer: larger type, stronger contrast, one label style ===== */
+body{font-size:18px;line-height:1.65}
+h1,h2,h3{font-weight:600;letter-spacing:-.005em}
+h2{font-size:clamp(1.85rem,3.1vw,2.55rem);line-height:1.15}
+h3{font-size:1.22rem;line-height:1.3}
+.lede{font-size:1.2rem;line-height:1.6;color:var(--muted)}
+.prose .lede{color:var(--ink)}
+.eyebrow,.path .tag,.news .meta,.facts dt,.specs dt,table.tx th,.chips button,.s-meta .cat,.stage .full,.walk .badge,.m-terr{font-family:var(--f-body);font-weight:600;letter-spacing:.06em}
+.eyebrow{font-size:.82rem;color:var(--accent)}
+.hero .eyebrow{color:#fff}
+.vision .eyebrow{color:#A9D8C1}
+.mono{font-size:.92rem;letter-spacing:0}
+.ribbon{font-family:var(--f-body);font-weight:600;font-size:.8rem;letter-spacing:.06em}
+.brand{font-weight:600;font-size:1.3rem}
+.brand small{font-family:var(--f-body);font-size:.75rem;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+nav.links a{font-size:.98rem;color:var(--ink);font-weight:500}
+nav.links a:hover{color:var(--accent)}
+.btn{font-size:1rem;font-weight:600;padding:13px 20px;border-radius:4px}
+.hero::after{background:linear-gradient(90deg,rgba(8,12,10,.72) 0%,rgba(8,12,10,.35) 45%,rgba(8,12,10,0) 70%),linear-gradient(180deg,rgba(8,12,10,0) 40%,rgba(8,12,10,.55) 100%)}
+.hero h1{font-weight:700;line-height:1.05}
+.hero p.sub{font-size:1.25rem;color:#fff}
+.hero .credit{font-family:var(--f-body);font-size:.75rem;color:rgba(255,255,255,.85)}
+figcaption{font-family:var(--f-body);font-size:.9rem;color:var(--muted);letter-spacing:0}
+.deed .legal{font-size:.95rem;color:var(--muted)}
+.facts dt{font-size:.78rem;color:var(--muted)}
+.facts dd{font-size:2rem;font-weight:600}
+.facts dd span{font-size:.95rem}
+.path .tag{font-size:.82rem}
+.path .price{font-weight:700}
+.path .price small{font-size:1rem}
+.kv dt{font-size:1rem;color:var(--muted)}
+.kv dd{font-weight:600}
+.path .muted,.path ul{font-size:1rem}
+.chart text{font-size:14px}
+.chart .val{font-size:14px}
+.chart-card .muted{font-size:.95rem!important}
+.legend{font-size:.95rem;color:var(--ink)}
+.progress li{font-size:1rem}
+.progress .pct{font-family:var(--f-body);font-size:.88rem;font-weight:600;color:var(--accent)}
+.invested b{font-weight:600}
+.invested span{font-size:.92rem}
+.chips button{font-size:.82rem;letter-spacing:.04em;color:#E6EEE9;border-color:#4A5A51}
+.s-meta .cap{font-weight:600;font-size:1.4rem}
+.s-meta .cat{font-size:.8rem;color:#A9D8C1}
+.s-meta .count{font-family:var(--f-body);font-size:.95rem;font-weight:600;color:#D3DDD7}
+.stage .full{font-size:.78rem}
+.vision .note{font-size:.95rem;color:#C9D4CE}
+.specs dt{font-size:.78rem;color:var(--muted)}
+.specs dd{font-size:1rem}
+.walk .badge{font-size:.75rem}
+.stats b{font-weight:600;font-size:2.1rem;color:var(--accent)}
+.stats span{font-size:.98rem;color:var(--muted)}
+.drivers p{font-size:1rem}
+table.tx{font-size:1rem}
+table.tx th{font-size:.78rem;color:var(--muted)}
+table.tx td small{font-size:.88rem}
+.tx-note{font-size:.95rem}
+.news .meta{font-size:.76rem}
+.news p{font-size:1rem}
+.news a{font-size:.95rem;font-weight:600}
+.docs b{font-weight:600}
+.docs span{font-size:.92rem}
+.contact h3{font-size:1.5rem}
+.mail a{font-family:var(--f-body);font-size:1.1rem;font-weight:600}
+.mail button{font-family:var(--f-body);font-weight:600}
+footer{font-size:.92rem}
+/* map */
+.map-frame .m-terr{font-size:12.5px;letter-spacing:.12em}
+.map-frame .m-mtn{font-size:14px}
+.map-frame .m-town{font-size:15px;font-weight:600}
+.map-frame .m-ringlbl{font-family:var(--f-body);font-size:13px;font-weight:600}
+.map-frame .m-pt text{font-family:var(--f-body);font-size:12.5px;font-weight:700}
+.map-frame .m-pt.dim{opacity:.35}
+.map-frame .m-homelbl{font-size:18px;font-weight:700}
+.map-frame .m-dist text{font-family:var(--f-body);font-size:13px;font-weight:700}
+.map-frame .m-edge text{font-size:13px;font-weight:600}
+.map-frame .m-edge .sub{font-family:var(--f-body);font-size:12px;font-weight:500}
+.map-frame .m-shield text{font-size:12px;font-weight:700}
+.map-note{font-size:.9rem}
+.m-chips button{font-size:.92rem;font-weight:500}
+.m-list .nm{font-weight:600}
+.m-list .ds{font-size:.92rem}
+.m-list .mi{font-family:var(--f-body);font-weight:600;font-size:.95rem}
+.m-list .no{font-size:12px;width:24px;height:24px}
+.m-beyond div{font-size:.98rem}
+.m-beyond span:last-child{font-family:var(--f-body);font-weight:600;font-size:.95rem}
 </style>
 
 <div class="ribbon">Staging draft · not for distribution · figures subject to verification</div>
@@ -256,12 +412,13 @@ footer p{max-width:110ch}
   <div class="wrap">
     <a class="brand" href="#top">Esplendor <small>Río Rico, AZ</small></a>
     <nav class="links" aria-label="Sections">
-      <a href="#overview">Overview</a>
+      <a href="#map">Map</a>
       <a href="#paths">Two paths</a>
       <a href="#today">Today</a>
       <a href="#vision">Vision</a>
       <a href="#site">Site</a>
-      <a href="#location">Location</a>
+      <a href="#market">Market</a>
+      <a href="#news">News</a>
     </nav>
     <a class="btn solid" href="#inquire">Request package</a>
   </div>
@@ -279,7 +436,7 @@ footer p{max-width:110ch}
         <a class="btn" href="#vision">View all 39 renderings</a>
       </div>
     </div>
-    <span class="credit">Rendering · Victor Robles Arquitectos</span>
+    <span class="credit">Concept rendering</span>
   </section>
 
   <div class="deed">
@@ -299,6 +456,32 @@ footer p{max-width:110ch}
       </dl>
     </div>
   </div>
+
+  <section id="map" class="mapsec">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">What's around it</p>
+        <h2>Ten miles from the border, fifteen from the Hermosa mine</h2>
+        <p class="lede">Esplendor sits on a mesa just off I-19 at Exit 17. Ports of entry, the region's largest construction project, an airport and the Santa Cruz Valley's lakes, missions and wineries are all within a short drive.</p>
+      </div>
+      <div class="map-grid">
+        <div class="map-frame">
+          <svg id="pmap" viewBox="0 0 800 790" role="img" aria-label="Map of Santa Cruz County showing Esplendor Resort near Río Rico and nearby ports of entry, the Hermosa mine, airports, towns and parks"></svg>
+          <p class="map-note">Rings at 5, 10 and 15 miles. Distances are straight-line from the resort; road distances are longer. Locations are approximate.</p>
+        </div>
+        <div style="min-width:0">
+          <div class="m-chips" id="mchips" aria-label="Show categories"></div>
+          <ol class="m-list" id="mlist"></ol>
+          <div class="m-beyond">
+            <div><span>Tucson International Airport</span><span>~50 min drive</span></div>
+            <div><span>Downtown Tucson</span><span>~57 mi</span></div>
+            <div><span>Phoenix</span><span>~168 mi</span></div>
+            <div><span>Hermosillo, Sonora (via Hwy 15)</span><span>~187 mi</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="overview">
     <div class="wrap overview">
@@ -447,7 +630,7 @@ footer p{max-width:110ch}
         <div class="s-meta" aria-live="polite"><p><span class="cat" id="s-cat"></span><span class="cap" id="s-cap"></span></p><span class="count" id="s-count"></span></div>
         <div class="thumbs" id="thumbs"></div>
       </div>
-      <p class="note">Renderings by Victor Robles Arquitectos. Conceptual, not construction documents.</p>
+      <p class="note">Concept renderings. Not construction documents.</p>
     </div>
   </section>
 
@@ -486,37 +669,94 @@ footer p{max-width:110ch}
   <section id="location" class="band">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Location and demand</p>
-        <h2>On the I-19 trade corridor, ten miles from the border</h2>
+        <p class="eyebrow">The area</p>
+        <h2>A border economy with a mine coming online</h2>
+        <p class="lede">Santa Cruz County runs on cross-border trade, produce logistics and federal agencies. The Hermosa mine adds the largest private investment in southern Arizona's history, about 15 miles from the resort.</p>
       </div>
-      <div class="loc">
-        <div class="corridor">
-          <svg viewBox="0 0 300 470" role="img" aria-label="Interstate 19 corridor from Tucson south through Green Valley, Tubac and Río Rico to Nogales and the Mexican border.">
-            <line class="road" x1="70" y1="24" x2="70" y2="410"/>
-            <line class="border" x1="20" y1="378" x2="290" y2="378"/>
-            <text class="sm" x="286" y="372" text-anchor="end">U.S. | MEXICO</text>
-            <circle class="dot" cx="70" cy="30" r="7"/>
-            <text x="92" y="35">Tucson</text><text class="sm" x="92" y="52">~57 mi · TUS airport</text>
-            <circle class="dot" cx="70" cy="120" r="6"/>
-            <text x="92" y="125">Green Valley</text>
-            <circle class="dot" cx="70" cy="190" r="6"/>
-            <text x="92" y="195">Tubac</text><text class="sm" x="92" y="212">arts village, golf</text>
-            <circle class="here" cx="70" cy="262" r="10"/>
-            <text x="92" y="262" style="font-weight:600">Esplendor · Río Rico</text><text class="sm" x="92" y="279">I-19 Exit 17</text>
-            <circle class="dot" cx="70" cy="340" r="7"/>
-            <text x="92" y="338">Nogales, AZ</text><text class="sm" x="92" y="355">~10 mi · Mariposa port</text>
-            <circle class="dot" cx="70" cy="404" r="6"/>
-            <text x="92" y="409">Nogales, Sonora</text>
-            <text class="sm" x="92" y="426">Hwy 15 to Hermosillo</text>
-            <text class="sm" x="70" y="458" text-anchor="middle">I-19</text>
-          </svg>
-        </div>
-        <div class="drivers">
-          <div><h3>Border trade</h3><p>The Mariposa Port of Entry in Nogales is Arizona's main commercial gateway with Mexico, handling up to 1,600 trucks a day and much of the fresh produce the U.S. imports in winter.</p></div>
-          <div><h3>Federal agencies</h3><p>Customs and Border Protection, Border Patrol and other agencies staff the Nogales ports and need short- and long-term lodging, meeting rooms and food service.</p></div>
-          <div><h3>Hermosa mine</h3><p>South32's $1.23B Hermosa zinc and manganese project in the Patagonia Mountains was about half built as of July 2026, with first ore planned for fiscal 2027 and up to 900 jobs. Its remote operations center is under construction in Nogales.</p></div>
-          <div><h3>Leisure and events</h3><p>Weddings and corporate retreats, golf at Río Rico and Tubac, birding along the Santa Cruz River, and Mexican travelers heading north. Summers run 15–20°F cooler than Phoenix.</p></div>
-        </div>
+      <div class="stats">
+        <div><b class="num">~900</b><span>Construction workers at Hermosa today, plus about 260 permanent staff</span></div>
+        <div><b class="num">800–900</b><span>Long-term Hermosa jobs, averaging about $90,000 a year</span></div>
+        <div><b class="num">1,600</b><span>Trucks a day through the Mariposa Port of Entry at peak</span></div>
+        <div><b class="num">65,000+</b><span>Daytime population in Nogales, AZ (about 20,000 residents)</span></div>
+        <div><b class="num">49,000</b><span>Santa Cruz County population; Río Rico about 19,600</span></div>
+        <div><b class="num">93°F</b><span>Average July high at 3,500 ft, 15–20°F cooler than Phoenix</span></div>
+      </div>
+      <div class="drivers">
+        <div><h3>Mine workforce</h3><p>South32 expects first production in early 2028 and full production in 2030. Crews, contractors, consultants and visiting staff need rooms now, and the operation is planned to run for decades.</p></div>
+        <div><h3>Border trade</h3><p>The Mariposa Port of Entry is Arizona's main commercial gateway with Mexico and handles a large share of the fresh produce the U.S. imports in winter. Produce brokers and logistics firms cluster in Nogales and Río Rico.</p></div>
+        <div><h3>Federal agencies</h3><p>Customs and Border Protection, Border Patrol and other agencies staff the Nogales ports year round and use short- and long-term lodging, meeting rooms and food service.</p></div>
+        <div><h3>Leisure and events</h3><p>Weddings and retreats, golf at Río Rico and Tubac, birding along the Santa Cruz River, Sonoita wine country, and Mexican travelers heading north.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Recent transactions</p>
+        <h2>Southern Arizona hotel sales</h2>
+        <p class="lede">Operating hotels in the region have traded between about $95,000 and $212,000 per room. Esplendor is offered at $50,000 to $61,000 per room.</p>
+      </div>
+      <div class="tx-wrap">
+        <table class="tx">
+          <thead><tr><th>Date</th><th>Property</th><th>Location</th><th class="r">Rooms</th><th class="r">Price</th><th class="r">Per room</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="us"><td>Offered</td><td>Esplendor Resort<small>Vacant; demolition, design and engineering done</small></td><td>Río Rico</td><td class="r">179</td><td class="r">$9M–$11M</td><td class="r">$50K–$61K</td><td>This offering</td></tr>
+            <tr><td>Jun 2026</td><td>Tubac Golf Resort &amp; Spa<small>Part of a three-property sale to Mountain Capital Partners</small></td><td>Tubac, ~11 mi north</td><td class="r">98</td><td class="r">Undisclosed</td><td class="r">&ndash;</td><td><a href="https://www.abc15.com/news/business/colorado-company-to-acquire-historic-arizona-resorts-and-golf-courses" target="_blank" rel="noopener">ABC15</a></td></tr>
+            <tr><td>Oct 2025</td><td>Arizona Inn<small>Historic resort; bought by a Tucson investor group</small></td><td>Tucson</td><td class="r">89</td><td class="r">Undisclosed</td><td class="r">&ndash;</td><td><a href="https://tucson.com/news/local/business/real-estate/article_3fb790e3-0544-46c6-8073-d85f06dc53ba.html" target="_blank" rel="noopener">Arizona Daily Star</a></td></tr>
+            <tr><td>Feb 2025</td><td>Courtyard by Marriott Tucson Airport<small>Select-service, operating</small></td><td>Tucson</td><td class="r">149</td><td class="r">$14.2M</td><td class="r">$95,300</td><td><a href="https://www.connectcre.com/stories/tucson-airport-hotel-trades-for-14-2m/" target="_blank" rel="noopener">Connect CRE</a></td></tr>
+            <tr><td>Apr 2023</td><td>JW Marriott Starr Pass Resort &amp; Spa<small>Buyer then budgeted $62.2M ($108K/room) to renovate</small></td><td>Tucson</td><td class="r">575</td><td class="r">$110M</td><td class="r">~$191,000</td><td><a href="https://www.hvs.com/article/9711-tucsons-hotel-industry-recovered-and-evolving" target="_blank" rel="noopener">HVS</a></td></tr>
+            <tr><td>Dec 2021</td><td>Embassy Suites Tucson Paloma Village<small>Full-service, operating</small></td><td>Tucson</td><td class="r">120</td><td class="r">$25.5M</td><td class="r">$212,500</td><td><a href="https://www.hotelnewsresource.com/article118954.html" target="_blank" rel="noopener">Hotel News Resource</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tx-note">Even after the estimated $11M–$13M to complete, a buyer's all-in cost works out to about $112,000–$134,000 per room, below what renovated resorts in the region have traded for. Sale prices are as reported in the press; undisclosed prices were not made public.</p>
+    </div>
+  </section>
+
+  <section id="news" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Area news</p>
+        <h2>What's happening nearby</h2>
+      </div>
+      <div class="news">
+        <article class="lead">
+          <p class="meta"><span class="tag">Hermosa mine</span> · Oct 14, 2026 · KVOA</p>
+          <h3>South32 targets first product from Hermosa in early 2028</h3>
+          <p>About 900 construction workers and 260 employees are on the project now, and the private-land portion is roughly half built. South32 projects 800 to 900 long-term jobs averaging about $90,000 a year, which it calls the largest private investment in southern Arizona's history.</p>
+          <a href="https://www.kvoa.com/news/santacruzcounty/south32s-hermosa-mine-targets-first-product-by-2028/article_821f8750-83b9-4201-8dba-ca690a583116.html" target="_blank" rel="noopener">Read at KVOA</a>
+        </article>
+        <article>
+          <p class="meta"><span class="tag">Hermosa mine</span> · Oct 14, 2026 · KOLD</p>
+          <h3>Halfway through construction, hiring locally</h3>
+          <p>About half of the temporary crews are from southern Arizona. South32 aims for 80% local staff at full production and is building its Centro operations hub in Nogales.</p>
+          <a href="https://www.kold.com/2026/10/15/south32-hermosa-mine-project-bring-jobs-southern-arizona/" target="_blank" rel="noopener">Read at KOLD</a>
+        </article>
+        <article>
+          <p class="meta"><span class="tag">Hermosa mine</span> · Jul 7, 2026 · Inside Climate News</p>
+          <h3>Forest Service gives final federal approval</h3>
+          <p>The decision covers the mine's access road, tailings facility and power line on national forest land. The article cites a projected 70-year mine life.</p>
+          <a href="https://insideclimatenews.org/news/08072026/forest-service-approves-arizona-south32-hermosa-mine/" target="_blank" rel="noopener">Read at Inside Climate News</a>
+        </article>
+        <article>
+          <p class="meta"><span class="tag">Hospitality</span> · Jun 11, 2026 · ABC15</p>
+          <h3>Tubac Golf Resort &amp; Spa changes hands</h3>
+          <p>Mountain Capital Partners is acquiring the 98-room resort, about 11 miles north of Esplendor, along with two other Arizona golf properties.</p>
+          <a href="https://www.abc15.com/news/business/colorado-company-to-acquire-historic-arizona-resorts-and-golf-courses" target="_blank" rel="noopener">Read at ABC15</a>
+        </article>
+        <article>
+          <p class="meta"><span class="tag">Jobs</span> · Apr 2025 · KVOA</p>
+          <h3>South32 breaks ground on Centro in Nogales</h3>
+          <p>The remote operations center near the Mariposa Industrial Park will employ about 200 people full time. Gov. Katie Hobbs attended the groundbreaking.</p>
+          <a href="https://www.kvoa.com/news/groundbreaking-in-nogales-new-mining-project-center-promises-local-jobs/article_9c473c21-0331-46c6-abb7-8bb8e1ddcbed.html" target="_blank" rel="noopener">Read at KVOA</a>
+        </article>
+        <article>
+          <p class="meta"><span class="tag">Hospitality</span> · Oct 1, 2025 · Arizona Daily Star</p>
+          <h3>Tucson's Arizona Inn sold to local investors</h3>
+          <p>A group of Tucson investors and hotel operators, including Steve Kerr, bought the 89-room landmark.</p>
+          <a href="https://tucson.com/news/local/business/real-estate/article_3fb790e3-0544-46c6-8073-d85f06dc53ba.html" target="_blank" rel="noopener">Read at the Star</a>
+        </article>
       </div>
     </div>
   </section>
@@ -630,6 +870,109 @@ footer p{max-width:110ch}
     function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected';}
     try{navigator.clipboard.writeText(t).then(function(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy'},1800)},sel);}catch(e){sel();}
   });
+  // ---------- proximity map ----------
+  (function(){
+    var svg=document.getElementById('pmap'); if(!svg) return;
+    var NS='http://www.w3.org/2000/svg';
+    var B={w:-111.17,e:-110.60,s:31.255,n:31.735}, W=800;
+    var kLat=W/((B.e-B.w)*Math.cos(31.5*Math.PI/180)); // px per degree of latitude
+    var H=Math.round((B.n-B.s)*kLat); svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    function X(lon){return (lon-B.w)*kLat*Math.cos(31.5*Math.PI/180)}
+    function Y(lat){return (B.n-lat)*kLat}
+    function P(pts){return pts.map(function(p,i){return (i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)}).join(' ')}
+    function el(t,a,parent){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(parent||svg).appendChild(e);return e}
+    function txt(x,y,s,cls,anchor,parent){var t=el('text',{x:x,y:y,'class':cls,'text-anchor':anchor||'start'},parent);t.textContent=s;return t}
+    var HOME={lat:31.4720,lon:-110.9805};
+    function miles(a,b){var R=3958.8,r=Math.PI/180,dl=(b.lat-a.lat)*r,dn=(b.lon-a.lon)*r,h=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dn/2)*Math.sin(dn/2);return 2*R*Math.asin(Math.sqrt(h))}
+    // Mexico + border
+    var bx0=-111.0749,by0=31.3322,slope=-0.3109;
+    var westLat=by0+(B.w-bx0)*slope;
+    el('path',{d:P([[B.w,westLat],[bx0,by0],[B.e,by0],[B.e,B.s-0.05],[B.w,B.s-0.05]])+'Z','class':'m-mex'});
+    el('path',{d:P([[B.w,westLat],[bx0,by0],[B.e,by0]]),'class':'m-border'});
+    txt(X(-110.70),Y(31.300),'Sonora, Mexico','m-terr','middle');
+    txt(X(-110.70),Y(31.345),'Arizona, USA','m-terr','middle');
+    // county line (Santa Cruz County boundary)
+    el('path',{d:P([[-111.3671,31.5214],[-111.1625,31.5214],[-111.1625,31.7259],[-110.8538,31.7267],[-110.8538,31.7319],[-110.4518,31.731]]),'class':'m-county'});
+    // river
+    el('path',{d:P([[-110.984,31.333],[-110.989,31.380],[-110.985,31.430],[-110.990,31.468],[-111.008,31.505],[-111.037,31.555],[-111.049,31.615],[-111.066,31.700],[-111.064,31.760]]),'class':'m-river'});
+    // roads
+    var i19=[[-110.9415,31.3335],[-110.9455,31.3460],[-110.9560,31.3620],[-110.9640,31.3800],[-110.9680,31.4100],[-110.9700,31.4400],[-110.9720,31.4700],[-110.9880,31.5000],[-111.0150,31.5300],[-111.0400,31.5650],[-111.0480,31.6000],[-111.0520,31.6400],[-111.0560,31.7000],[-111.0520,31.7600]];
+    el('path',{d:P([[-110.9380,31.3480],[-110.9000,31.3800],[-110.8600,31.4300],[-110.8300,31.4800],[-110.7900,31.5150],[-110.7565,31.5398],[-110.7000,31.6000],[-110.6560,31.6800],[-110.6450,31.7600]]),'class':'m-road'});
+    el('path',{d:P([[-110.6560,31.6800],[-110.5500,31.6650]]),'class':'m-road'});
+    el('path',{d:P([[-110.9700,31.4300],[-111.0300,31.4200],[-111.0850,31.4050]]),'class':'m-road'});
+    el('path',{d:P([[-110.9420,31.3089],[-110.9300,31.2700],[-110.9200,31.2300]]),'class':'m-road'});
+    el('path',{d:P(i19),'class':'m-i19'});
+    function shield(lon,lat,label){var g=el('g',{'class':'m-shield'});var x=X(lon),y=Y(lat);el('rect',{x:x-15,y:y-9,width:30,height:18,rx:3},g);var t=txt(x,y+4,label,'','middle',g);return g}
+    shield(-111.030,31.548,'I-19'); shield(-110.845,31.455,'82'); shield(-110.640,31.712,'83'); shield(-110.955,31.282,'MX 15');
+    // terrain labels + towns
+    txt(X(-110.86),Y(31.705),'Santa Rita Mts','m-mtn','middle');
+    txt(X(-110.745),Y(31.405),'Patagonia Mts','m-mtn','middle');
+    txt(X(-111.115),Y(31.475),'Tumacácori Mts','m-mtn','middle');
+    [['Nogales',-110.925,31.352],['Río Rico',-110.952,31.505]].forEach(function(t){txt(X(t[1]),Y(t[2]),t[0],'m-town','start')});
+    // rings
+    var mi2px=kLat/69.05;
+    [5,10,15].forEach(function(m){var r=m*mi2px;el('circle',{cx:X(HOME.lon),cy:Y(HOME.lat),r:r,'class':'m-ring'});txt(X(HOME.lon)+r*0.71+4,Y(HOME.lat)-r*0.71-4,m+' mi','m-ringlbl','start')});
+    // edge arrows (off-map)
+    function edge(x,y,rot,a,b,anchor){var g=el('g',{'class':'m-edge'});el('path',{d:'M0 -9 L7 3 L-7 3 Z',transform:'translate('+x+' '+y+') rotate('+rot+')'},g);var tx=anchor==='end'?x-12:x+12;txt(tx,y,a,'',anchor,g);txt(tx,y+14,b,'sub',anchor,g)}
+    edge(X(-111.052)+0,14,0,'Tucson International Airport','~50 min drive','start');
+    edge(X(-110.920),H-30,180,'Hermosillo, Sonora','~187 mi via Hwy 15','start');
+    // categories + points
+    var CAT={border:{n:'Border & trade',c:'var(--s-buy)'},jobs:{n:'Jobs & industry',c:'var(--s-build)'},travel:{n:'Travel & services',c:'var(--m-violet)'},leisure:{n:'Leisure',c:'var(--m-green)'}};
+    var PTS=[
+      {n:'Mariposa Port of Entry',c:'border',lat:31.3346,lon:-110.9737,d:"Arizona's main commercial gateway, up to 1,600 trucks a day"},
+      {n:'DeConcini Port of Entry',c:'border',lat:31.3327,lon:-110.9408,d:'Downtown Nogales crossing for pedestrians and cars'},
+      {n:'Nogales, Sonora',c:'border',lat:31.3000,lon:-110.9440,d:'Sister city and maquiladora manufacturing hub'},
+      {n:'Border Patrol and CBP, Nogales',c:'border',lat:31.3480,lon:-110.9590,d:'Federal agencies that need short- and long-term lodging'},
+      {n:'Hermosa mine (South32)',c:'jobs',lat:31.4550,lon:-110.7220,d:'About half built, ~900 construction workers, first product early 2028'},
+      {n:'Centro operations center',c:'jobs',lat:31.3600,lon:-110.9660,d:"South32's remote operations hub off I-19, ~200 full-time jobs"},
+      {n:'Río Rico produce and logistics district',c:'jobs',lat:31.4630,lon:-110.9560,d:'Produce warehousing, cold storage and distribution'},
+      {n:'Holy Cross Hospital',c:'travel',lat:31.3680,lon:-110.9370,d:'Nearest hospital, in Nogales'},
+      {n:'Nogales International Airport',c:'travel',lat:31.4177,lon:-110.8479,d:'General aviation and charter'},
+      {n:'Río Rico Golf Club',c:'leisure',lat:31.4870,lon:-110.9950,d:'18-hole Robert Trent Jones Sr. course'},
+      {n:'Tumacácori National Historical Park',c:'leisure',lat:31.5676,lon:-111.0507,d:'Spanish colonial mission ruins'},
+      {n:'Tubac',c:'leisure',lat:31.6126,lon:-111.0456,d:'Arts village; Tubac Golf Resort traded in 2026'},
+      {n:'Peña Blanca Lake',c:'leisure',lat:31.4044,lon:-111.0850,d:'Fishing lake in the Coronado National Forest'},
+      {n:'Patagonia Lake State Park',c:'leisure',lat:31.4916,lon:-110.8546,d:'Boating, swimming and camping'},
+      {n:'Patagonia',c:'leisure',lat:31.5398,lon:-110.7565,d:'Birding town at the foot of the Hermosa project'},
+      {n:'Sonoita and Elgin wine country',c:'leisure',lat:31.6790,lon:-110.6560,d:"Home of Arizona's first wine appellation"}
+    ];
+    PTS.forEach(function(p){p.mi=miles(HOME,p)});
+    PTS.sort(function(a,b){return a.mi-b.mi});
+    var on={border:true,jobs:true,travel:true,leisure:true}, sel=-1;
+    var lineG=el('g',{}), ptsG=el('g',{});
+    // home marker (drawn last, on top)
+    PTS.forEach(function(p,i){
+      var g=el('g',{'class':'m-pt',tabindex:'-1'},ptsG); p.g=g;
+      el('circle',{cx:X(p.lon),cy:Y(p.lat),r:13,style:'fill:'+CAT[p.c].c},g);
+      txt(X(p.lon),Y(p.lat)+4,String(i+1),'','middle',g);
+      var t=el('title',{},g); t.textContent=p.n+' · '+p.mi.toFixed(1)+' mi';
+      g.addEventListener('click',function(){pick(i,true)});
+      g.addEventListener('mouseenter',function(){pick(i,false)});
+    });
+    var hg=el('g',{'class':'m-home'}); var hx=X(HOME.lon),hy=Y(HOME.lat);
+    el('path',{d:'M'+hx+' '+(hy-15)+' L'+(hx+12)+' '+hy+' L'+hx+' '+(hy+15)+' L'+(hx-12)+' '+hy+' Z'},hg);
+    txt(hx-18,hy+5,'Esplendor','m-homelbl','end',hg);
+    // list + chips
+    var list=document.getElementById('mlist'), chips=document.getElementById('mchips');
+    Object.keys(CAT).forEach(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','true');b.innerHTML='<i style="background:'+CAT[k].c+'"></i>'+CAT[k].n;b.onclick=function(){on[k]=!on[k];b.setAttribute('aria-pressed',on[k]);apply()};chips.appendChild(b)});
+    PTS.forEach(function(p,i){var li=document.createElement('li');var b=document.createElement('button');b.type='button';
+      b.innerHTML='<span class="no" style="background:'+CAT[p.c].c+'">'+(i+1)+'</span><span><span class="nm"></span><span class="ds"></span></span><span class="mi">'+p.mi.toFixed(1)+' mi</span>';
+      b.querySelector('.nm').textContent=p.n; b.querySelector('.ds').textContent=p.d;
+      b.addEventListener('click',function(){pick(i,true)}); b.addEventListener('mouseenter',function(){pick(i,false)});
+      li.appendChild(b); list.appendChild(li); p.li=li; p.btn=b;});
+    function apply(){PTS.forEach(function(p){var v=on[p.c];p.g.style.display=v?'':'none';p.li.classList.toggle('hide',!v)}); if(sel>=0&&!on[PTS[sel].c]) clear();}
+    function clear(){sel=-1;lineG.innerHTML='';PTS.forEach(function(p){p.g.classList.remove('on','dim');p.btn.classList.remove('on')})}
+    function pick(i,scroll){
+      sel=i; var p=PTS[i]; lineG.innerHTML='';
+      PTS.forEach(function(q,k){q.g.classList.toggle('on',k===i);q.g.classList.toggle('dim',k!==i);q.btn.classList.toggle('on',k===i)});
+      var x2=X(p.lon),y2=Y(p.lat); el('path',{d:'M'+hx+' '+hy+' L'+x2+' '+y2,'class':'m-line'},lineG);
+      var mx=(hx+x2)/2,my=(hy+y2)/2, lbl=p.mi.toFixed(1)+' mi', w=lbl.length*7.6+12;
+      var g=el('g',{'class':'m-dist'},lineG); el('rect',{x:mx-w/2,y:my-11,width:w,height:22,rx:3},g); txt(mx,my+4,lbl,'','middle',g);
+      if(scroll){var L=list, b=p.btn; var top=b.offsetTop-L.offsetTop; if(top<L.scrollTop||top>L.scrollTop+L.clientHeight-b.offsetHeight) L.scrollTop=top-20;}
+    }
+    svg.addEventListener('mouseleave',function(){}); list.addEventListener('mouseleave',function(){});
+    svg.addEventListener('click',function(e){if(!e.target.closest('.m-pt'))clear()});
+  })();
   // chart tooltips
   var tip=document.getElementById('tip');
   document.querySelectorAll('.chart rect[data-tip]').forEach(function(r){
