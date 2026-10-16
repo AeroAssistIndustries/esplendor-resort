@@ -293,11 +293,11 @@ table.tx a{color:var(--accent)}
 .news h3{font-size:1.15rem}
 .news p{font-size:.92rem;color:var(--muted)}
 .news a{font-size:.85rem;color:var(--accent)}
-.news article.lead{grid-column:span 2;grid-row:span 2;border-top:3px solid var(--clay);align-content:center}
+.news article.lead{border-top:3px solid var(--clay)}
 table.tx td:first-child{white-space:nowrap}
 .hero h1{max-width:16ch}
-.news article.lead h3{font-size:1.5rem}
-@media (max-width:900px){.news{grid-template-columns:1fr 1fr}.news article.lead{grid-column:1/-1;grid-row:auto}}
+.news article.lead h3{font-size:1.22rem}
+@media (max-width:900px){.news{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.news{grid-template-columns:1fr}}
 
 /* data room + inquire */
@@ -464,9 +464,69 @@ table.rt-tbl tr.tot td{font-weight:700}
 header.site .wrap{padding-block:10px}
 @media (max-width:560px){.brand .logo{height:44px}}
 .hero .hero-mark{position:static;inset:auto;width:58px;height:auto;display:block;object-fit:contain;filter:drop-shadow(0 1px 10px rgba(0,0,0,.35))}
+
+/* ===== QC pass: spacing, mobile menu, compact mobile ===== */
+section{padding-block:clamp(44px,5.5vw,76px)}
+.mapsec{padding-block:clamp(40px,5vw,64px)}
+.sec-head{margin-bottom:clamp(20px,3vw,32px)}
+.hdr-actions{display:flex;align-items:center;gap:10px}
+.btn .sm{display:none}
+.menu-btn{all:unset;cursor:pointer;display:none;width:44px;height:44px;border-radius:4px;border:1px solid var(--line);flex-direction:column;align-items:center;justify-content:center;gap:5px;background:var(--paper)}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.m-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);background:var(--paper);padding:8px max(16px, env(safe-area-inset-right, 0px)) 14px max(16px, env(safe-area-inset-left, 0px));box-shadow:0 12px 24px rgba(0,0,0,.08)}
+.m-nav a{padding:13px 4px;font-size:1.02rem;font-weight:500;text-decoration:none;border-bottom:1px solid var(--line)}
+.m-nav a:last-child{grid-column:1/-1;margin-top:12px;text-align:center;background:var(--accent);color:var(--paper);font-weight:700;border-radius:4px;border-bottom:0}
+@media (max-width:980px){nav.links{display:none}.menu-btn{display:flex}}
+@media (min-width:981px){.m-nav{display:none!important}}
+@media (max-width:560px){
+  .btn .lg{display:none}.btn .sm{display:inline}
+  header.site .btn{padding:11px 14px}
+  .rb-x{display:none}
+  .deed .wrap{padding-block:16px}
+  .deed .legal{font-size:.85rem;gap:2px 12px}
+  .facts dd{font-size:1.6rem}
+  .hero .wrap{min-height:440px;padding-block:40px 32px}
+  .hero .ctas .btn{flex:1 1 auto;justify-content:center}
+  .lede{font-size:1.08rem}
+  h2{font-size:1.7rem}
+  .path{padding:20px}
+  .kpi{padding:12px}
+  .stats{margin-bottom:28px}
+  .stats div{padding:12px 10px 12px 0}
+  .stats b{font-size:1.7rem}
+  .news article{padding:16px}
+  .contact{padding:18px}
+}
+/* map list: collapse on small screens */
+.m-more{display:none}
+@media (max-width:900px){
+  .m-list.clip li:nth-child(n+7){display:none}
+  .m-more{all:unset;cursor:pointer;display:block;text-align:center;font-weight:600;color:var(--accent);padding:12px;border-bottom:1px solid var(--line)}
+  .m-more:focus-visible{outline:2px solid var(--accent)}
+}
+
+@media (max-width:640px){
+  .tx-wrap{overflow:visible;border:0;background:transparent}
+  table.tx{min-width:0}
+  table.tx thead{display:none}
+  table.tx,table.tx tbody,table.tx tr,table.tx td{display:block;width:100%}
+  table.tx tr{background:var(--paper);border:1px solid var(--line);margin-bottom:10px;padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:6px 12px}
+  table.tx td{border:0;padding:0;text-align:left!important;white-space:normal!important}
+  table.tx td:nth-child(2){grid-column:1/-1;font-weight:600;font-size:1.05rem;order:-1}
+  table.tx td::before{content:attr(data-label);display:block;font:600 .7rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  table.tx td:nth-child(2)::before{display:none}
+  table.tx tr.us td:first-child{box-shadow:none}
+  table.tx tr.us{border-left:3px solid var(--clay);background:var(--bg)}
+  table.tx tr.us td{background:transparent}
+  table.tx td small{font-weight:400;font-size:.9rem}
+}
 </style>
 
-<div class="ribbon">Staging draft · not for distribution · figures subject to verification</div>
+<div class="ribbon">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></div>
 
 <header class="site">
   <div class="wrap">
@@ -489,8 +549,14 @@ header.site .wrap{padding-block:10px}
       <a href="#market">Market</a>
       <a href="#news">News</a>
     </nav>
-    <a class="btn solid" href="#inquire">Request package</a>
+    <div class="hdr-actions">
+      <a class="btn solid" href="#inquire"><span class="lg">Request package</span><span class="sm">Inquire</span></a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
+  <nav class="m-nav" id="m-nav" aria-label="Sections" hidden>
+    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="#location">The area</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -541,7 +607,8 @@ header.site .wrap{padding-block:10px}
         </div>
         <div style="min-width:0">
           <div class="m-chips" id="mchips" aria-label="Show categories"></div>
-          <ol class="m-list" id="mlist"></ol>
+          <ol class="m-list clip" id="mlist"></ol>
+          <button class="m-more" id="m-more" type="button">Show all places</button>
           <div class="m-beyond">
             <div><span>Tucson International Airport</span><span>~50 min drive</span></div>
             <div><span>Downtown Tucson</span><span>~57 mi</span></div>
@@ -1082,6 +1149,7 @@ header.site .wrap{padding-block:10px}
     function clear(){sel=-1;lineG.innerHTML='';PTS.forEach(function(p){p.g.classList.remove('on','dim');p.btn.classList.remove('on')})}
     function pick(i,scroll){
       sel=i; var p=PTS[i]; lineG.innerHTML='';
+      if(i>=6&&list.classList.contains('clip')){list.classList.remove('clip');var mm=document.getElementById('m-more');if(mm)mm.textContent='Show fewer';}
       PTS.forEach(function(q,k){q.g.classList.toggle('on',k===i);q.g.classList.toggle('dim',k!==i);q.btn.classList.toggle('on',k===i)});
       var x2=X(p.lon),y2=Y(p.lat); el('path',{d:'M'+hx+' '+hy+' L'+x2+' '+y2,'class':'m-line'},lineG);
       var mx=(hx+x2)/2,my=(hy+y2)/2, lbl=p.mi.toFixed(1)+' mi', w=lbl.length*7.6+12;
@@ -1172,6 +1240,21 @@ header.site .wrap{padding-block:10px}
     [].forEach.call(document.querySelectorAll('#rt-scen button'),function(b){b.addEventListener('click',function(){setScen(b.getAttribute('data-s'))})});
     setScen('base');
   })();
+
+  // mobile menu
+  (function(){
+    var b=document.getElementById('menu-btn'), n=document.getElementById('m-nav'); if(!b) return;
+    function set(o){b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');n.hidden=!o}
+    b.addEventListener('click',function(){set(n.hidden)});
+    n.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!n.hidden){set(false);b.focus()}});
+    addEventListener('resize',function(){if(innerWidth>980&&!n.hidden)set(false)});
+  })();
+  (function(){var m=document.getElementById('m-more'),l=document.getElementById('mlist'); if(!m)return;
+    m.addEventListener('click',function(){var c=l.classList.toggle('clip'); m.textContent=c?'Show all places':'Show fewer'});})();
+
+  (function(){var t=document.querySelector('table.tx'); if(!t)return; var h=[].map.call(t.querySelectorAll('thead th'),function(th){return th.textContent});
+    [].forEach.call(t.querySelectorAll('tbody tr'),function(tr){[].forEach.call(tr.children,function(td,i){td.setAttribute('data-label',h[i]||'')})});})();
   // chart tooltips
   var tip=document.getElementById('tip');
   document.querySelectorAll('.chart rect[data-tip]').forEach(function(r){
