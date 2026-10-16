@@ -399,7 +399,7 @@ Object.keys(D.pub).forEach(function(k){var p=D.pub[k],x1=p[0],z1=p[1],x2=p[2],z2
 
 // pool + deck furniture
 var P=D.pool,px1=P[0],pz1=P[1],px2=P[2],pz2=P[3],pcx=(px1+px2)/2,pcz=(pz1+pz2)/2;
-plane(px1-6,pz1-6,px2+6,pz2+6,M.stone,.04);
+var deckPlane=plane(px1-7,pz1-8,px2+7,pz2+8,M.stone,.04);
 var cop=new THREE.Mesh(new THREE.BoxGeometry(px2-px1+1.1,.25,pz2-pz1+1.1),M.coping);cop.position.set(pcx,.12,pcz);scene.add(cop);
 var water=plane(px1,pz1,px2,pz2,M.water,.27), dry=plane(px1,pz1,px2,pz2,new THREE.MeshStandardMaterial({color:0xa3b8bb,roughness:1}),.27);dry.visible=false;
 var J=D.jacuzzi, jac=new THREE.Mesh(new THREE.CylinderGeometry(1.9,1.9,.4,32),M.coping);jac.position.set(J[0],.2,J[1]);scene.add(jac);
@@ -423,7 +423,7 @@ var nU=6;for(var i=0;i<nU;i++){var ux=px1+2+i*((px2-px1-4)/(nU-1));if(nearStop(u
 for(var i=0;i<3;i++){cabana(px1+3+i*((px2-px1-6)/2),pz1-4.6)}
 urn(px1-1.5,pz1-1.5);urn(px2+1.5,pz1-1.5);urn(px1-1.5,pz2+1.5);urn(px2+1.5,pz2+1.5);
 // grill terrace pergola west of the pool
-(function(){var gx=px1-14,gz=pcz-2;for(var i=0;i<4;i++)for(var j=0;j<2;j++){var p=new THREE.Mesh(new THREE.BoxGeometry(.6,3.1,.6),M.wall);p.position.set(gx-5+i*3.4,1.55,gz-3+j*6);p.castShadow=true;reno.add(p);var lt=new THREE.Mesh(new THREE.BoxGeometry(.18,.32,.18),M.lamp);lt.position.set(gx-5+i*3.4,2.3,gz-3+j*6+(j?-.4:.4));reno.add(lt)}
+(function(){var gx=px1-14,gz=pcz-2;for(var i=0;i<4;i++)for(var j=0;j<2;j++){var p=new THREE.Mesh(new THREE.BoxGeometry(.6,3.5,.6),M.wall);p.position.set(gx-5+i*3.4,1.4,gz-3+j*6);p.castShadow=true;reno.add(p);var lt=new THREE.Mesh(new THREE.BoxGeometry(.18,.32,.18),M.lamp);lt.position.set(gx-5+i*3.4,2.3,gz-3+j*6+(j?-.4:.4));reno.add(lt)}
   [gz-3,gz+3].forEach(function(z){var b=new THREE.Mesh(new THREE.BoxGeometry(11,.32,.3),M.dark);b.position.set(gx,3.25,z);b.castShadow=true;reno.add(b)});
   for(var k=0;k<14;k++){var s2=new THREE.Mesh(new THREE.BoxGeometry(.14,.22,7.2),M.dark);s2.position.set(gx-5.6+k*.86,3.5,gz);s2.castShadow=true;reno.add(s2)}
   var counter=new THREE.Mesh(new THREE.BoxGeometry(5.5,.95,.9),[M.talavera,M.talavera,M.stone,M.stone,M.talavera,M.talavera]);counter.position.set(gx,.48,gz-3.3);counter.castShadow=true;reno.add(counter);
@@ -467,12 +467,34 @@ for(var i=0;i<5000&&scrub.length<(LOW?550:1000);i++){var x=-650+rnd()*1300,z=-48
 function inst(geo,mat,list,fn,cast){var m=new THREE.InstancedMesh(geo,mat,list.length),o=new THREE.Object3D();list.forEach(function(p,i){fn(o,p);o.updateMatrix();m.setMatrixAt(i,o.matrix)});m.castShadow=!!cast;scene.add(m);return m}
 var cypGeo=(function(){var a=new THREE.ConeGeometry(.95,.7,10);a.translate(0,.35,0);var b=new THREE.ConeGeometry(.75,.62,10);b.translate(0,.62,0);var c=new THREE.CylinderGeometry(.12,.15,.08,6);c.translate(0,.0,0);return THREE.BufferGeometryUtils.mergeBufferGeometries([a,b,c])})();
 var cypM=inst(cypGeo,M.cypress,cyp,function(o,p){o.position.set(p[0],.15,p[1]);o.scale.set(1,p[2],1)},true);
-(function(){var c=new THREE.Color(),r=mulberry(5);for(var i=0;i<cyp.length;i++){c.setHSL(.33+r()*.05,.28+r()*.12,.2+r()*.08);cypM.setColorAt(i,c)}cypM.instanceColor.needsUpdate=true;M.cypress.color.set(0xffffff)})();
+(function(){var c=new THREE.Color(),r=mulberry(5);for(var i=0;i<cyp.length;i++){c.setHSL(.3+r()*.06,.32+r()*.14,.14+r()*.06);cypM.setColorAt(i,c)}cypM.instanceColor.needsUpdate=true;M.cypress.color.set(0xffffff)})();
 var trunkM=inst(new THREE.CylinderGeometry(.2,.32,1,7),M.trunk,palm,function(o,p){o.position.set(p[0],groundY(p[0],p[1])+p[2]/2,p[1]);o.scale.set(1,p[2],1)},true);
 var frondGeo=(function(){var parts=[];for(var i=0;i<9;i++){var g=new THREE.PlaneGeometry(.9,3.6,1,3);g.translate(0,1.8,0);var pos=g.attributes.position;for(var k=0;k<pos.count;k++){var y=pos.getY(k);pos.setZ(k,-(y*y)*.09)}g.rotateX(-1.05);g.rotateY(i/9*Math.PI*2);parts.push(g)}return THREE.BufferGeometryUtils.mergeBufferGeometries(parts)})();
 var frondM=inst(frondGeo,M.frond,palm,function(o,p){o.position.set(p[0],groundY(p[0],p[1])+p[2],p[1]);o.rotation.set(0,p[3],0);o.scale.set(1,1,1)},true);
 var scrubM=inst(new THREE.IcosahedronGeometry(1,0),M.scrub,scrub,function(o,p){o.position.set(p[0],groundY(p[0],p[1])+p[2]*.42,p[1]);o.scale.set(p[2],p[2]*.75,p[2]);o.rotation.set(0,p[2]*2,0)},false);
-(function(){var c=new THREE.Color(),r=mulberry(11);for(var i=0;i<scrub.length;i++){c.setHSL(.2+r()*.1,.22+r()*.12,.3+r()*.1);scrubM.setColorAt(i,c)}scrubM.instanceColor.needsUpdate=true;M.scrub.color.set(0xffffff)})();
+(function(){var c=new THREE.Color(),r=mulberry(11);for(var i=0;i<scrub.length;i++){c.setHSL(.19+r()*.09,.24+r()*.12,.22+r()*.08);scrubM.setColorAt(i,c)}scrubM.instanceColor.needsUpdate=true;M.scrub.color.set(0xffffff)})();
+// broadleaf shade trees (mesquite / oak canopy, as in the entry renderings)
+var drivePts=[[MB[2]+20,MB[3]+8],[MB[2]+55,MB[3]+30],[MB[2]+70,MB[3]+80],[MB[2]+40,MB[3]+140],[MB[2]-20,MB[3]+190]],driveCurve=new THREE.CatmullRomCurve3(drivePts.map(function(p){return new THREE.Vector3(p[0],0,p[1])}));
+var oaks=[];(function(){var r=mulberry(77);
+  for(var i=0;i<=60;i++){var t=i/60,pt=driveCurve.getPoint(t),d=driveCurve.getTangent(t),nx=-d.z,nz=d.x,l=Math.hypot(nx,nz)||1;nx/=l;nz/=l;[1,-1].forEach(function(sd){if(r()<.55){var off=8+r()*9,x=pt.x+nx*off*sd,z=pt.z+nz*off*sd;if(padDist(x,z)>1.02)oaks.push([x,z,.8+r()*.6,r()*6])}})}
+  for(var a=0;a<Math.PI*2;a+=Math.PI/30){if(r()<.6){var k=1.14+r()*.18,x=PAD.cx+Math.cos(a)*PAD.rx*k,z=PAD.cz+Math.sin(a)*PAD.rz*k;oaks.push([x,z,.9+r()*.7,r()*6])}}
+  for(var i=0;i<3000&&oaks.length<(LOW?110:150);i++){var x=EX[0]+r()*(EX[2]-EX[0]),z=EX[1]+r()*(EX[3]-EX[1]);if(freeSpot(x,z,4))oaks.push([x,z,.6+r()*.35,r()*6])}})();
+oaks=oaks.filter(function(o){for(var q=0;q<D.stops.length;q++){var sp=D.stops[q].pos;if(Math.hypot(o[0]-sp[0],o[1]-sp[1])<11)return false}return true});
+var oakGeo=(function(){var parts=[[0,0,0,2.6],[1.7,-.3,.6,1.9],[-1.6,-.4,-.4,2],[.3,.6,-1.6,1.8],[-.4,-.2,1.7,1.8],[.9,.9,.9,1.5]].map(function(q){var g=new THREE.IcosahedronGeometry(q[3],1);g.translate(q[0],q[1],q[2]);return g});var m=THREE.BufferGeometryUtils.mergeBufferGeometries(parts);m.scale(1,.72,1);m.translate(0,5.2,0);return m})();
+M.oakLeaf=new THREE.MeshStandardMaterial({roughness:1,flatShading:true});
+var oakM=inst(oakGeo,M.oakLeaf,oaks,function(o,p){o.position.set(p[0],groundY(p[0],p[1]),p[1]);o.scale.set(p[2],p[2],p[2]);o.rotation.set(0,p[3],0)},true);
+var oakTrunk=inst((function(){var a=new THREE.CylinderGeometry(.22,.38,4.4,7);a.translate(0,2.2,0);var b=new THREE.CylinderGeometry(.1,.18,2.4,6);b.rotateZ(.7);b.translate(.8,4,0);var c=new THREE.CylinderGeometry(.1,.18,2.2,6);c.rotateZ(-.6);c.translate(-.7,3.9,0);return THREE.BufferGeometryUtils.mergeBufferGeometries([a,b,c])})(),M.trunk,oaks,function(o,p){o.position.set(p[0],groundY(p[0],p[1]),p[1]);o.scale.set(p[2],p[2],p[2]);o.rotation.set(0,p[3],0)},true);
+(function(){var c=new THREE.Color(),r=mulberry(31);for(var i=0;i<oaks.length;i++){c.setHSL(.22+r()*.08,.38+r()*.15,.17+r()*.07);oakM.setColorAt(i,c)}oakM.instanceColor.needsUpdate=true})();
+// entry drive: double yellow centre line and low planting along the shoulders
+(function(){var N=90,v=[],idx=[],sh=[],r=mulberry(13);[.13,-.13].forEach(function(o,li){var base=v.length/3;for(var i=0;i<=N;i++){var t=i/N,pt=driveCurve.getPoint(t),d=driveCurve.getTangent(t),nx=-d.z,nz=d.x,l=Math.hypot(nx,nz)||1;nx/=l;nz/=l;
+    [o-.05,o+.05].forEach(function(e){var x=pt.x+nx*e,z=pt.z+nz*e;v.push(x,groundY(x,z)+.33,z)});if(i<N){var k=base+i*2;idx.push(k,k+1,k+2,k+1,k+3,k+2)}}});
+  var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));g.setIndex(idx);scene.add(new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:0xd9a520,side:THREE.DoubleSide})));
+  for(var i=0;i<=140;i++){var t=i/140,pt=driveCurve.getPoint(t),d=driveCurve.getTangent(t),nx=-d.z,nz=d.x,l=Math.hypot(nx,nz)||1;nx/=l;nz/=l;[1,-1].forEach(function(sd){var off=4.6+r()*2.4,x=pt.x+nx*off*sd,z=pt.z+nz*off*sd;if(padDist(x,z)>1.0)sh.push([x,z,.5+r()*.6])})}
+  var shM=inst(new THREE.IcosahedronGeometry(1,1),new THREE.MeshStandardMaterial({roughness:1,flatShading:true}),sh,function(o,p){o.position.set(p[0],groundY(p[0],p[1])+p[2]*.5,p[1]);o.scale.set(p[2]*1.3,p[2],p[2]*1.3)},false);
+  var c=new THREE.Color();for(var j=0;j<sh.length;j++){c.setHSL(.2+r()*.12,.35+r()*.2,.24+r()*.12);if(r()<.12)c.setHSL(.9,.5,.55);shM.setColorAt(j,c)}shM.instanceColor.needsUpdate=true})();
+// tan concrete pool deck (renderings show a warm broom-finish deck)
+T.deck=tex(256,256,function(g,w,h){noiseFill(g,w,h,'#c9b08c',1400,.07);g.strokeStyle='rgba(110,80,50,.25)';g.lineWidth=2;for(var i=0;i<=w;i+=128){g.beginPath();g.moveTo(i,0);g.lineTo(i,h);g.stroke();g.beginPath();g.moveTo(0,i);g.lineTo(w,i);g.stroke()}},[8,5]);
+M.deck=new THREE.MeshStandardMaterial({map:T.deck,roughness:.95});deckPlane.material=M.deck;
 // lawns in the courtyards: central garden + west courtyard (cells free of walls)
 var lawns=[];
 lawns.push(plane(D.stops[8].pos[0]-17,D.stops[8].pos[1]-11,D.stops[8].pos[0]+17,D.stops[8].pos[1]+11,M.lawnGrid,.025));
@@ -496,6 +518,10 @@ function addBox(w,h,d,mat,x,y,z,parent,ry){var b=new THREE.Mesh(new THREE.BoxGeo
   addBox(w+.4,.55,d+.4,M.wall,x,h+.27,z,g);addBox(w+.2,.06,d+.2,M.dark,x,h-.02,z,g);
   for(var k=0;k<9;k++)addBox(.16,.22,d,M.dark,x-w/2+.6+k*(w-1.2)/8,h-.15,z,g);
   var r=new THREE.Mesh(hipRoofGeo(w+.4,d+.4,2.2,.7),M.roof);r.position.set(x,h+.55,z);r.castShadow=true;g.add(r);
+  var W2=(w+.4)/2,ps=new THREE.Shape();ps.moveTo(-W2,0);ps.lineTo(-W2,.55);ps.lineTo(-3.3,.55);ps.quadraticCurveTo(-2,.6,-1.9,1.55);ps.lineTo(-1.5,1.55);ps.lineTo(-1.5,2.0);ps.absarc(0,2.0,1.5,Math.PI,0,true);ps.lineTo(1.5,1.55);ps.lineTo(1.9,1.55);ps.quadraticCurveTo(2,.6,3.3,.55);ps.lineTo(W2,.55);ps.lineTo(W2,0);ps.lineTo(-W2,0);
+  var pg=new THREE.Mesh(new THREE.ExtrudeGeometry(ps,{depth:.4,bevelEnabled:false}),M.wall);pg.position.set(x,h+.5,z+(d+.4)/2-.3);pg.castShadow=true;g.add(pg);
+  var crest=new THREE.Mesh(new THREE.TorusGeometry(1.5,.09,6,24,Math.PI),M.roof);crest.position.set(x,h+2.5,z+(d+.4)/2+.12);g.add(crest);
+  addBox(.9,.9,.08,new THREE.MeshStandardMaterial({color:0x6b4a2e,roughness:.6}),x,h+1.6,z+(d+.4)/2+.13,g);
   plane(x-w/2-1,z-d/2,x+w/2+1,z+d/2+5,M.stone,.05,g);reno.add(g);
   for(var off=14;off>=9;off--){if(!blocked(x-3,z+d/2+off)){a.pos=[x-3,z+d/2+off];a.look=[x+1,zt-4];a.fixed=true;break}}})();
 // grill terrace: face the pergola and outdoor kitchen
@@ -535,6 +561,19 @@ function addBox(w,h,d,mat,x,y,z,parent,ry){var b=new THREE.Mesh(new THREE.BoxGeo
 // ballroom: banquet rounds and chandeliers
 (function(){var c=D.pub.conv,n=0;for(var x=c[0]+5;x<c[2]-4;x+=4.2)for(var z=c[1]+6;z<c[3]-4;z+=4.2){if(nearStop(x,z,3.6)||blocked(x,z)||blocked(x+1.2,z)||blocked(x-1.2,z)||blocked(x,z+1.2)||blocked(x,z-1.2))continue;
   var t=new THREE.Mesh(new THREE.CylinderGeometry(.95,.95,.75,20),M.cloth);t.position.set(x,.38,z);reno.add(t);if((n++)%3===0){var ch=new THREE.Mesh(new THREE.SphereGeometry(.45,12,8),M.lamp);ch.position.set(x,5.6,z);reno.add(ch)}}})();
+
+function clearLine(a,b){var n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/.15);for(var i=1;i<n-4;i++){var t=i/n;if(solid(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t))return false}return true}
+(function(){var st=S('lobby'),tg=null;D.labels.forEach(function(l){if(l.t==='Reception')tg=[l.p[0],l.p[1]+.6]});if(!tg)return;var best=null;
+  for(var r=10;r>=4;r-=.5)for(var a=0;a<Math.PI*2;a+=Math.PI/24){var c=[tg[0]+Math.cos(a)*r,tg[1]+Math.sin(a)*r];if(blocked(c[0],c[1])||!clearLine(c,tg))continue;
+    var cl=0;for(var k=0;k<8;k++){var b2=k/8*Math.PI*2;if(!solid(c[0]+Math.cos(b2)*1.2,c[1]+Math.sin(b2)*1.2))cl++}if(cl<8)continue;
+    var sc=r-Math.hypot(c[0]-st.pos[0],c[1]-st.pos[1])*.15;if(!best||sc>best.s)best={c:c,s:sc}}
+  if(best){st.pos=best.c}st.look=tg;st.fixed=true})();
+S('drive').fixed=true;S('drive').narrowBack=13;
+
+// exposed dark-wood ceiling beams inside the main building and ballroom (as in the site photos)
+(function(){var list=[];['main','conv'].forEach(function(k){var p=D.pub[k],h=PUBN[k][2],w=p[2]-p[0],d=p[3]-p[1],alongX=w<d,L=alongX?w:d,n=Math.floor((alongX?d:w)/1.5);
+  for(var i=1;i<n;i++){var t=(alongX?p[1]:p[0])+i*1.5;list.push(alongX?[(p[0]+p[2])/2,h-.32,t,L,0]:[t,h-.32,(p[1]+p[3])/2,L,1])}});
+  var m=new THREE.InstancedMesh(new THREE.BoxGeometry(1,.3,.22),M.dark,list.length),o=new THREE.Object3D();list.forEach(function(b,i){o.position.set(b[0],b[1],b[2]);o.rotation.set(0,b[4]?Math.PI/2:0,0);o.scale.set(b[3]-.4,1,1);o.updateMatrix();m.setMatrixAt(i,o.matrix)});roofs.add(m)})();
 
 // ---------- labels and stop markers ----------
 var labelsEl=document.getElementById('labels'), items=[], v3=new THREE.Vector3();
@@ -598,9 +637,10 @@ function openYaw(pos,want){var best=want,bs=-1e9;for(var k=0;k<48;k++){var a=wan
   var diff=Math.abs(((a-want+Math.PI*3)%(Math.PI*2))-Math.PI);var sc=Math.min(dist,18)-diff*4;if(sc>bs){bs=sc;best=a}}return best}
 function goStop(i){var wasDoll=mode==='doll';camera.fov=innerWidth<760?62:55;camera.updateProjectionMatrix();setTimeout(showHint,1700);cur=i;var s=D.stops[i];if(mode!=='tour'){mode='tour';[].forEach.call(document.querySelectorAll('[data-mode]'),function(b){b.setAttribute('aria-pressed',b.dataset.mode==='tour')});controls.enabled=false;roofs.visible=true;panel.hidden=false;joy.hidden=true}
   if(wasDoll)fly=null; tab='plan'; renderPanel(); markStrip();
-  var y=groundY(s.pos[0],s.pos[1])+(s.eye||EYE), yw=s.fixed?lookAtYaw(s.pos,s.look):openYaw(s.pos,lookAtYaw(s.pos,s.look)), pt=s.id==='valley'||s.id==='terrace'?-.06:0;
+  var P=s.pos;if(s.narrowBack&&innerWidth<innerHeight){var bx=s.look[0]-s.pos[0],bz=s.look[1]-s.pos[1],bl=Math.hypot(bx,bz);P=[s.pos[0]-bx/bl*s.narrowBack,s.pos[1]-bz/bl*s.narrowBack]}
+  var y=groundY(P[0],P[1])+(s.eye||EYE), yw=s.fixed?lookAtYaw(P,s.look):openYaw(P,lookAtYaw(P,s.look)), pt=s.id==='valley'||s.id==='terrace'?-.06:0;
   if(wasDoll&&!reduce){ // swoop: from the orbit view down to eye level
-    flyTo(s.pos,y,yw,pt)}else flyTo(s.pos,y,yw,pt)}
+    flyTo(P,y,yw,pt)}else flyTo(P,y,yw,pt)}
 function openLB(src){var lb=document.createElement('div');lb.className='lightbox';lb.innerHTML='<img alt=""><button type="button">Close</button>';lb.querySelector('img').src=src;lb.onclick=function(e){if(e.target!==lb.querySelector('img'))lb.remove()};document.body.appendChild(lb);lb.querySelector('button').focus()}
 var toastEl=null;function toast(t){if(toastEl)toastEl.remove();toastEl=document.createElement('div');toastEl.className='toast';toastEl.textContent=t;document.body.appendChild(toastEl);var e=toastEl;setTimeout(function(){e.remove()},4200)}
 

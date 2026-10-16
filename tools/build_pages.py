@@ -30,7 +30,7 @@ cut = body.find('<div class="ribbon">')
 if cut < 0: sys.exit("ribbon marker not found")
 doc = head + body[:cut] + "</head>\n<body>\n" + body[cut:] + "\n</body>\n</html>\n"
 open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(doc)
-for name in ("img", "walkthrough.html", "model-data.js"):
+for name in ("img", "walkthrough.html", "model-data.js", "land.html"):
     src = os.path.join(ROOT, name)
     if os.path.isdir(src): shutil.copytree(src, os.path.join(OUT, name))
     elif os.path.isfile(src): shutil.copy2(src, os.path.join(OUT, name))
