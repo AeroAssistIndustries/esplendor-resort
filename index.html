@@ -524,6 +524,16 @@ section{padding-block:clamp(44px,5.5vw,76px)}
   table.tx tr.us td{background:transparent}
   table.tx td small{font-weight:400;font-size:.9rem}
 }
+
+/* 3D tour card */
+.tour-card{margin-top:28px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--clay);text-decoration:none;color:inherit;overflow:hidden;transition:box-shadow .2s}
+.tour-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.tour-card img{width:100%;height:100%;object-fit:cover;display:block;min-height:240px}
+.tc-body{padding:clamp(20px,3vw,32px);display:grid;gap:12px;align-content:center}
+.tc-body h3{font-size:1.6rem}
+.tc-body p:not(.eyebrow){color:var(--muted)}
+.tc-body .btn{justify-self:start}
+@media (max-width:820px){.tour-card{grid-template-columns:1fr}.tour-card img{min-height:0;aspect-ratio:16/9}}
 </style>
 
 <div class="ribbon">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></div>
@@ -546,6 +556,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
       <a href="#today">Today</a>
       <a href="#vision">Vision</a>
       <a href="#site">Site</a>
+      <a href="walkthrough.html">3D tour</a>
       <a href="#market">Market</a>
       <a href="#news">News</a>
     </nav>
@@ -555,7 +566,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
     </div>
   </div>
   <nav class="m-nav" id="m-nav" aria-label="Sections" hidden>
-    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="#location">The area</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
+    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="walkthrough.html">3D tour</a><a href="#location">The area</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
   </nav>
 </header>
 
@@ -569,6 +580,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
       <p class="sub">A 179-room hilltop resort on 22.74 acres above the Santa Cruz River Valley. Cleared, designed and ready for its next owner to finish.</p>
       <div class="ctas">
         <a class="btn solid" href="#paths">See the two paths</a>
+        <a class="btn" href="walkthrough.html">Take the 3D tour</a>
         <a class="btn" href="#vision">View all 39 renderings</a>
       </div>
     </div>
@@ -842,13 +854,15 @@ section{padding-block:clamp(44px,5.5vw,76px)}
           <div><dt>Utilities</dt><dd>All public utilities available to the site</dd></div>
         </dl>
       </div>
-      <div class="walk">
-        <span class="badge">In production</span>
-        <div>
-          <h3>3D walkthrough</h3>
-          <p class="muted">A 3D model is being built from the full CAD drawing set. Buyers and partners will be able to walk the guest wings, lobby, ballroom and pool deck from a browser.</p>
+      <a class="tour-card" id="tour" href="walkthrough.html">
+        <img src="img/tour-preview.jpg" alt="Dollhouse view of the 3D model showing the guest buildings, pool, fountain court and main building">
+        <div class="tc-body">
+          <p class="eyebrow">New · 3D tour</p>
+          <h3>Walk the resort in 3D</h3>
+          <p>Built from the property's 2022 CAD plans. Lift the roofs in dollhouse view, step through 12 stops from the entry drive to a guest room, compare each renovation rendering with today's photo, or walk anywhere you like.</p>
+          <span class="btn solid">Open the 3D tour &rarr;</span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -963,7 +977,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
             <li><b>Title and survey</b><span>Title insurance, legal descriptions</span></li>
             <li><b>Rendering package</b><span>45 images</span></li>
             <li><b>Investment records</b><span>2021–2025 payments</span></li>
-            <li><b>3D walkthrough</b><span>Coming soon</span></li>
+            <li><b>3D tour</b><span>Live on this site</span></li>
           </ul>
         </div>
         <div class="contact">
