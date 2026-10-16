@@ -1174,6 +1174,10 @@ dialog.film::backdrop{background:#05080a}
 function set(o){b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');n.hidden=!o}
 b.addEventListener('click',function(){set(n.hidden)});n.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!n.hidden){set(false);b.focus()}})})();
+
+(function(){if(!/(^|\.)esplendorproject\.com$|(^|\.)aeroassistindustries\.github\.io$/.test(location.hostname))return;
+var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+s.setAttribute('data-goatcounter','https://esplendor-resort.goatcounter.com/count');document.head.appendChild(s)})();
 </script>
 </body>
 </html>

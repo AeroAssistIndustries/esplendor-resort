@@ -19,6 +19,10 @@ PAGES = {
 # optional per-page overrides: src/<name>/nav.html replaces the desktop and mobile nav,
 # src/<name>/footer.html replaces the footer, src/<name>/head.html adds to <head>,
 # src/<name>/lang.txt sets the document language.
+GC_JS = """(function(){if(!/(^|\\.)esplendorproject\\.com$|(^|\\.)aeroassistindustries\\.github\\.io$/.test(location.hostname))return;
+var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+s.setAttribute('data-goatcounter','https://esplendor-resort.goatcounter.com/count');document.head.appendChild(s)})();
+"""
 MENU_JS = """(function(){var b=document.getElementById('menu-btn'),n=document.getElementById('m-nav');if(!b||!n)return;
 function set(o){b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');n.hidden=!o}
 b.addEventListener('click',function(){set(n.hidden)});n.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
@@ -66,6 +70,7 @@ for name, (title, desc, current) in PAGES.items():
     extra_head = read(f"src/{name}/head.html")
     if "menu-btn" not in js:
         js = MENU_JS + js
+    js = js + "\n" + GC_JS
     doc = f"""<!doctype html>
 <html lang="{lang}">
 <head>
