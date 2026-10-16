@@ -292,9 +292,11 @@ table.tx a{color:var(--accent)}
 .news h3{font-size:1.15rem}
 .news p{font-size:.92rem;color:var(--muted)}
 .news a{font-size:.85rem;color:var(--accent)}
-.news article.lead{grid-column:span 2;border-top:3px solid var(--clay)}
+.news article.lead{grid-column:span 2;grid-row:span 2;border-top:3px solid var(--clay);align-content:center}
+table.tx td:first-child{white-space:nowrap}
+.hero h1{max-width:16ch}
 .news article.lead h3{font-size:1.5rem}
-@media (max-width:900px){.news{grid-template-columns:1fr 1fr}.news article.lead{grid-column:1/-1}}
+@media (max-width:900px){.news{grid-template-columns:1fr 1fr}.news article.lead{grid-column:1/-1;grid-row:auto}}
 @media (max-width:560px){.news{grid-template-columns:1fr}}
 
 /* data room + inquire */
