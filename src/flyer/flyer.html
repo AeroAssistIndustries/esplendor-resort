@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Esplendor Resort at Río Rico · One-page flyer</title>
+<style>
+@font-face{font-family:"SS4";src:url(fonts/source-serif-4-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"SS4";src:url(fonts/source-serif-4-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"Plex";src:url(fonts/ibm-plex-sans-latin-400-normal.woff2) format("woff2");font-weight:400}
+@font-face{font-family:"Plex";src:url(fonts/ibm-plex-sans-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Plex";src:url(fonts/ibm-plex-sans-latin-700-normal.woff2) format("woff2");font-weight:700}
+@page{size:8.5in 11in;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{width:8.5in;height:11in;font:400 9.6pt/1.45 Plex,sans-serif;color:#111915;background:#F5F6F2;-webkit-print-color-adjust:exact;print-color-adjust:exact;display:flex;flex-direction:column}
+.hero{position:relative;height:3.75in;overflow:hidden}
+.hero img.bg{width:100%;height:100%;object-fit:cover;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,14,.55) 0%,rgba(10,18,14,.08) 30%,rgba(10,18,14,.05) 45%,rgba(10,18,14,.8) 100%)}
+.hero .in{position:absolute;left:.5in;right:.5in;bottom:.32in;z-index:2;color:#fff}
+.hero .logo{position:absolute;left:.5in;top:.32in;z-index:2;height:.62in}
+.hero .tag{position:absolute;right:.5in;top:.36in;z-index:2;background:#A13E1F;color:#fff;font-weight:700;font-size:8.5pt;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px}
+.hero .eb{font-weight:600;font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase;color:#CFE6DA;margin:0 0 4px}
+.hero h1{font:700 30pt/1.05 SS4,serif;margin:0 0 6px;letter-spacing:-.01em}
+.hero p.sub{margin:0;font-size:11pt;color:#EEF3EF;max-width:6in}
+.facts{display:grid;grid-template-columns:repeat(6,1fr);background:#1E5A43;color:#fff}
+.facts div{padding:10px 0 10px 14px;border-right:1px solid rgba(255,255,255,.18)}
+.facts div:first-child{padding-left:.5in}.facts div:last-child{border-right:0}
+.facts b{display:block;font:700 15pt/1.1 SS4,serif}
+.facts span{font-size:7.6pt;color:#CFE6DA;letter-spacing:.02em}
+.main{flex:1;display:grid;grid-template-columns:1.12fr 1fr;gap:.32in;padding:.26in .5in .18in}
+h2{font:700 13pt/1.2 SS4,serif;margin:0 0 6px;color:#111915}
+.eyb{font-weight:700;font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:#1E5A43;margin:0 0 3px}
+p{margin:0 0 8px}
+ul.hl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+ul.hl li{padding-left:14px;position:relative}
+ul.hl li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;background:#A13E1F}
+ul.hl b{font-weight:700}
+.paths{display:grid;gap:8px;margin:2px 0 10px}
+.path{background:#fff;border:1px solid #D5DAD3;border-top:3px solid #3A6FA8;padding:9px 12px}
+.path.b{border-top-color:#C8642E}
+.path .k{font-weight:700;font-size:7.6pt;letter-spacing:.12em;text-transform:uppercase;color:#3F4943}
+.path .v{font:700 17pt/1.1 SS4,serif;color:#A13E1F;margin:2px 0}
+.path p{margin:0;font-size:8.8pt;color:#3F4943}
+.pics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+.pics img{width:100%;height:.95in;object-fit:cover;display:block}
+.pics figure{margin:0}.pics figcaption{font-size:7pt;color:#3F4943;margin-top:2px}
+.foot{display:grid;grid-template-columns:auto 1fr auto;gap:.25in;align-items:center;background:#111915;color:#EEF0EA;padding:.2in .5in}
+.foot .qr{width:.85in;height:.85in;background:#fff;padding:4px}
+.foot .qr img{width:100%;height:100%;display:block}
+.foot h3{font:700 13pt/1.2 SS4,serif;margin:0 0 3px}
+.foot p{margin:0;color:#C9D3CC;font-size:8.8pt}
+.foot .mail{font-weight:700;color:#8FCBAE;font-size:11pt}
+.foot .r{text-align:right;font-size:8.4pt;color:#C9D3CC}
+.foot .r b{display:block;color:#fff;font-size:9pt}
+.disc{font-size:6.6pt;line-height:1.35;color:#5b6660;padding:.08in .5in .12in;background:#F5F6F2}
+</style>
+</head>
+<body>
+  <section class="hero">
+    <img class="bg" src="../../img/render-pool.jpg" alt="">
+    <img class="logo" src="../../img/brand/esplendor-logo-horizontal-reversed.svg" alt="Esplendor Resort, Río Rico">
+    <span class="tag">Offered for sale</span>
+    <div class="in">
+      <p class="eb">Santa Cruz County, Arizona · I-19, Exit 17</p>
+      <h1>Esplendor Resort at Río Rico</h1>
+      <p class="sub">A 179-room hilltop resort on 22.74 acres above the Santa Cruz River Valley. Cleared, designed and ready for its next owner to finish.</p>
+    </div>
+  </section>
+  <div class="facts">
+    <div><b>22.74</b><span>acres, 3 parcels</span></div>
+    <div><b>179</b><span>guest rooms</span></div>
+    <div><b>107,579</b><span>SF of buildings</span></div>
+    <div><b>650</b><span>seat ballroom</span></div>
+    <div><b>B-2</b><span>hotel permitted</span></div>
+    <div><b>~3,500</b><span>ft elevation</span></div>
+  </div>
+  <div class="main">
+    <div>
+      <p class="eyb">The opportunity</p>
+      <h2>A resort site with the hard part done</h2>
+      <p>Esplendor opened in 1970 as a Spanish Colonial resort on a mesa with 360° views of the valley. A kitchen fire closed it in 2015. Since 2021 the owners have demolished and cleared the damaged areas, repaired roofs and corridors, and commissioned a complete remodeling plan set.</p>
+      <ul class="hl">
+        <li><b>Plans done:</b> architectural, structural, MEP, civil and water-line plans; Phase I ESA; title insurance; 39 renderings.</li>
+        <li><b>Demand nearby:</b> South32's Hermosa mine, about 15 miles away, plans 800–900 long-term jobs averaging about $90,000 a year.</li>
+        <li><b>No new supply:</b> county hotel occupancy rose 8.8% in Q1 2026 with no new rooms added.</li>
+        <li><b>Room to grow:</b> about 6.8 acres of open hillside plus two street lots for extended stay, casitas or events.</li>
+        <li><b>Border economy:</b> 10 miles from the Nogales ports of entry and 50 minutes from Tucson International Airport.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyb">Two ways in</p>
+      <div class="paths">
+        <div class="path"><div class="k">Path A · Buy as is</div><div class="v">$9–11M</div><p>Take the cleared, fully planned site and run the renovation yourself.</p></div>
+        <div class="path b"><div class="k">Path B · Partner to finish</div><div class="v">$11–13M</div><p>Owner's estimate to complete. Bring capital and finish it with the current owners.</p></div>
+      </div>
+      <div class="pics">
+        <figure><img src="../../img/render-wine-garden.jpg" alt=""><figcaption>Wine garden (plan)</figcaption></figure>
+        <figure><img src="../../img/render-suite.jpg" alt=""><figcaption>Guest room (plan)</figcaption></figure>
+        <figure><img src="../../img/photo-main-building.jpg" alt=""><figcaption>Main building today</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="qr"><img src="qr.svg" alt="QR code linking to the property website"></div>
+    <div>
+      <h3>Request the offering package</h3>
+      <p>Appraisal, plans, CAD, cost to complete and more, after a confidentiality agreement. Tours by appointment.</p>
+      <p class="mail">sales@esplendorproject.com</p>
+    </div>
+    <div class="r"><b>MC Business Group LLC</b>Owner<br>1069 Camino Caralampi<br>Río Rico, AZ 85648</div>
+  </div>
+  <p class="disc">For information only. Not an offer to sell the property or any security; any sale or investment only through definitive written agreements. Figures come from the owner, a 2023 appraisal and public sources, are not guaranteed and are subject to buyer verification. Path B amount is the owner's estimate of the cost to complete. Renderings are conceptual. Scan the code or visit the website for the 3D tour, all renderings, the land potential and sources. October 2026.</p>
+</body>
+</html>

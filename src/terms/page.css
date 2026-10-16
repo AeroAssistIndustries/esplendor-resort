@@ -1,0 +1,15 @@
+.legal-page{padding-block:clamp(36px,6vw,72px)}
+.legal-page .wrap{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.legal-page h1{font-family:var(--f-display);font-size:clamp(2rem,4.5vw,3rem);line-height:1.1;margin:.2em 0 .3em}
+.legal-page .upd{color:var(--muted);margin-bottom:28px}
+.legal-page .doc{max-width:72ch;line-height:1.7;font-size:1.04rem}
+.legal-page .doc h2{font-size:1.35rem;margin:2em 0 .5em;scroll-margin-top:90px}
+.legal-page .doc p,.legal-page .doc li{color:var(--ink)}
+.legal-page .doc ul{padding-left:20px;display:grid;gap:6px}
+.legal-page .doc .box{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px;margin:18px 0}
+.legal-page .toc{position:sticky;top:96px;display:grid;gap:4px;font-size:.92rem;border-left:2px solid var(--line);padding-left:14px}
+.legal-page .toc p{font-weight:700;margin:0 0 6px}
+.legal-page .toc a{color:var(--muted);text-decoration:none;padding:3px 0}
+.legal-page .toc a:hover{color:var(--accent)}
+.legal-page .eyebrow a{color:inherit}
+@media (max-width:860px){.legal-page .wrap{grid-template-columns:1fr}.legal-page .toc{position:static}}

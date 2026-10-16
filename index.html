@@ -536,6 +536,143 @@ section{padding-block:clamp(44px,5.5vw,76px)}
 .tc-body .btn{justify-self:start}
 @media (max-width:820px){.tour-card{grid-template-columns:1fr}.tour-card img{min-height:0;aspect-ratio:16/9}}
 .land-card{border-top-color:var(--accent);margin-top:16px}
+/* ===== live chip in the deed strip ===== */
+.now-chip{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.now-chip:hover{border-color:var(--accent)}
+.now-chip b{font-weight:600}
+.now-chip .dot{width:7px;height:7px;border-radius:50%;background:#2F8A5F;box-shadow:0 0 0 0 rgba(47,138,95,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,138,95,.55)}70%{box-shadow:0 0 0 7px rgba(47,138,95,0)}100%{box-shadow:0 0 0 0 rgba(47,138,95,0)}}
+@media (prefers-reduced-motion:reduce){.now-chip .dot{animation:none}}
+
+/* ===== highlights ===== */
+.hl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);counter-reset:hl}
+.hl li{background:var(--paper);padding:22px 22px 24px;display:grid;gap:8px;align-content:start;counter-increment:hl;min-width:0}
+.hl li::before{content:"0" counter(hl);font:600 .8rem var(--f-body);letter-spacing:.08em;color:var(--clay)}
+.hl b{font-family:var(--f-display);font-size:1.35rem;font-weight:600;line-height:1.2}
+.hl span{color:var(--muted);line-height:1.55}
+.hl .ref{font-size:.8rem;margin-left:6px;color:var(--accent)}
+@media (max-width:900px){.hl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.hl{grid-template-columns:1fr}}
+
+/* ===== before / after ===== */
+.ba-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.ba-tabs button{all:unset;cursor:pointer;font-weight:600;font-size:.95rem;padding:9px 14px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)}
+.ba-tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.ba-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ba{position:relative;aspect-ratio:16/8;overflow:hidden;background:#1b211e;border:1px solid var(--line);user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:0;pointer-events:none}
+.ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.4)}
+.ba-handle i{position:absolute;top:50%;left:-22px;width:44px;height:44px;margin-top:-22px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.ba-handle i::before,.ba-handle i::after{content:"";position:absolute;top:50%;width:0;height:0;border:7px solid transparent;margin-top:-7px}
+.ba-handle i::before{left:6px;border-right-color:#1E5A43}.ba-handle i::after{right:6px;border-left-color:#1E5A43}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba input[type=range]:focus-visible~.ba-handle i,.ba:focus-within .ba-handle i{outline:3px solid #8FCBAE}
+.ba-tag{position:absolute;top:12px;font-weight:700;font-size:.8rem;letter-spacing:.04em;padding:5px 9px;border-radius:3px;background:rgba(14,20,17,.72);color:#fff;pointer-events:none}
+.ba-tag.l{left:12px}.ba-tag.r{right:12px}
+@media (max-width:640px){.ba{aspect-ratio:4/3}}
+
+/* ===== climate ===== */
+.cl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:start}
+.now-card{background:linear-gradient(160deg,#173A2E,#10251D);color:#EEF3EF;border-radius:6px;padding:24px;display:grid;gap:18px}
+.now-card .eyebrow{color:#9FD1B8}
+.now-card .muted{color:#BFD0C6}
+.clock{font-family:var(--f-display);font-size:clamp(2.6rem,6vw,3.6rem);font-weight:600;line-height:1;margin:.15em 0 .1em;letter-spacing:-.01em}
+.tzdiff{font-size:.92rem;color:#D8E6DD;margin-top:6px}
+.wx-main{display:flex;align-items:center;gap:16px}
+.wx-ico{width:58px;height:58px;flex:none;color:#F2C36B}
+.wx-ico svg{width:100%;height:100%}
+.wx-temp{font-family:var(--f-display);font-size:2.4rem;font-weight:600;line-height:1}
+.wx-cond{color:#D8E6DD}
+.wx-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 0}
+.wx-meta div{background:rgba(255,255,255,.07);border-radius:4px;padding:8px 10px}
+.wx-meta dt{font-size:.75rem;color:#AFC4B8}.wx-meta dd{margin:2px 0 0;font-weight:600}
+.sun{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;font-size:.92rem}
+.sun .arc{height:44px}
+.sun .arc svg{width:100%;height:100%;overflow:visible}
+.sun b{display:block;font-size:1.05rem}
+.fc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.fc li{background:rgba(255,255,255,.07);border-radius:4px;padding:10px 6px;text-align:center;display:grid;gap:4px;justify-items:center;font-size:.85rem}
+.fc .d{font-weight:700}.fc svg{width:28px;height:28px;color:#F2C36B}.fc .t b{font-weight:700}.fc .t span{color:#AFC4B8;margin-left:4px}.fc .p{color:#9FC6E8;font-size:.78rem}
+.src-line{font-size:.8rem;color:var(--muted)}
+.now-card .src-line{color:#AFC4B8}.now-card a{color:#BFE3D0}
+.clim h3{font-size:1.3rem;margin:0 0 4px}
+.small{font-size:.85rem}
+.cchart,.rchart{position:relative;margin-top:12px}
+.cchart svg,.rchart svg{width:100%;height:auto;display:block;overflow:visible}
+.cchart .bar{fill:var(--s-build)}.rchart .bar{fill:var(--s-buy)}
+.cchart .hit,.rchart .hit{fill:transparent;cursor:pointer}
+.cchart .grid line,.rchart .grid line{stroke:var(--line);stroke-width:1}
+.cchart text,.rchart text{fill:var(--muted);font:500 11px var(--f-body)}
+.cchart text.lab{fill:var(--ink);font-weight:600}
+.cchart .cur,.rchart .cur{fill:var(--ink);opacity:.06}
+.ctip{position:absolute;z-index:5;pointer-events:none;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.15);padding:8px 10px;border-radius:4px;font-size:.85rem;min-width:130px}
+.ctip b{display:block;margin-bottom:2px}
+.ctip .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+.clim{position:relative}
+.cstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0 10px}
+.cstats div{background:var(--paper);padding:10px 12px}.cstats dt{font-size:.78rem;color:var(--muted)}.cstats dd{margin:2px 0 0;font-family:var(--f-display);font-weight:600;font-size:1.25rem}
+.ctable summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent)}
+.ctable table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.88rem}
+.ctable th,.ctable td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--line)}.ctable th:first-child,.ctable td:first-child{text-align:left}
+@media (max-width:900px){.cl-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.wx-meta div{padding:7px 8px}.fc{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.fc li{padding:8px 2px;font-size:.78rem}.cstats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== process + FAQ ===== */
+.steps5{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:st}
+.steps5 li{counter-increment:st;display:grid;gap:6px;align-content:start;padding:16px;background:var(--bg);border:1px solid var(--line);position:relative;min-width:0}
+.steps5 li::before{content:counter(st);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--paper);font-weight:700}
+.steps5 b{font-size:1.05rem}.steps5 span{color:var(--muted);font-size:.93rem;line-height:1.5}
+.faq{max-width:820px}
+.faq h3{font-size:1.4rem;margin:0 0 10px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:15px 34px 15px 0;font-weight:600;font-size:1.05rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.4rem;font-weight:400;color:var(--accent)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 16px;color:var(--muted);line-height:1.6;max-width:72ch}
+.faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:900px){.steps5{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps5{grid-template-columns:1fr}}
+
+/* ===== inquiry form ===== */
+.iq{display:grid;gap:12px;margin-top:8px;padding-top:16px;border-top:1px solid var(--line)}
+.iq-h{font-weight:600}
+.iq label{display:grid;gap:5px;font-size:.88rem;font-weight:600;color:var(--ink);min-width:0}
+.iq .opt{font-weight:400;color:var(--muted)}
+.iq input:not([type=radio]):not([type=checkbox]),.iq textarea{font:inherit;font-size:1rem;font-weight:400;padding:10px 11px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);width:100%;box-sizing:border-box}
+.iq input:focus,.iq textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.iq-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.iq fieldset{border:0;margin:0;padding:0;display:grid;gap:6px}
+.iq legend{font-size:.88rem;font-weight:600;padding:0;margin-bottom:6px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills label{display:inline-flex;font-weight:500}
+.pills input{position:absolute;opacity:0;width:1px;height:1px}
+.pills span{padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);cursor:pointer;font-size:.88rem}
+.pills input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.pills input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.iq-actions{display:flex;flex-wrap:wrap;gap:10px}
+.iq-actions .btn{cursor:pointer;font-family:inherit}
+.iq-err{color:#B42318;font-weight:600;font-size:.9rem}
+@media (max-width:560px){.iq-row{grid-template-columns:1fr}}
+
+/* ===== footer, share, to-top ===== */
+.f-links{display:flex;flex-wrap:wrap;gap:8px 20px;font-weight:600}
+.f-links a{color:var(--ink)}
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.share>span{color:var(--muted);margin-right:4px}
+.share a,.share button{all:unset;cursor:pointer;font-size:.88rem;font-weight:600;padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink)}
+.share a:hover,.share button:hover{border-color:var(--accent)}
+.share a:focus-visible,.share button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer .copy{color:var(--muted)}
+.to-top{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--paper);box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:40}
+.to-top:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.docs li a{display:grid;gap:2px;color:inherit;text-decoration:none}
+.docs li a b{color:var(--accent);text-decoration:underline}
+@media print{.to-top,.share,.ribbon,header.site,.now-chip{display:none!important}}
+
 </style>
 
 <div class="ribbon">Staging draft · not for distribution<span class="rb-x"> · figures subject to verification</span></div>
@@ -569,7 +706,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
     </div>
   </div>
   <nav class="m-nav" id="m-nav" aria-label="Sections" hidden>
-    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="walkthrough.html">3D tour</a><a href="land.html">Land potential</a><a href="#location">The area</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
+    <a href="#overview">Overview</a><a href="#map">Map</a><a href="#paths">Two paths</a><a href="#returns">Returns</a><a href="#today">Today</a><a href="#vision">Renderings</a><a href="#site">Site plan</a><a href="walkthrough.html">3D tour</a><a href="land.html">Land potential</a><a href="#location">The area</a><a href="#climate">Weather</a><a href="#process">How to buy</a><a href="#market">Hotel sales</a><a href="#news">News</a><a href="#inquire">Request the package</a>
   </nav>
 </header>
 
@@ -596,6 +733,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
         <span>1069 Camino Caralampi, Río Rico, AZ 85648</span>
         <span>APN 114-50-001B · 114-50-013B · 114-50-176</span>
         <span>Sec. 3, T23S, R13E · Rio Rico Unit 7, Blk 699</span>
+        <a class="now-chip" href="#climate" id="now-chip"><i class="dot" aria-hidden="true"></i>Río Rico now <b id="nc-time">&nbsp;</b><span id="nc-wx"></span></a>
       </div>
       <dl class="facts">
         <div><dt>Land</dt><dd class="num">22.74<span>acres</span></dd></div>
@@ -632,6 +770,23 @@ section{padding-block:clamp(44px,5.5vw,76px)}
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="highlights" class="band hl-band" aria-labelledby="hl-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Investment highlights</p>
+        <h2 id="hl-title">Why this property, why now</h2>
+      </div>
+      <ol class="hl">
+        <li><b>22.74 acres on a mesa</b><span>Three parcels with 360° views of the Santa Cruz Valley, just off I-19 at Exit 17.</span></li>
+        <li><b>179 rooms and a 650-seat ballroom</b><span>Guest buildings, a 9,122 SF convention center, restaurant, bar, pool and courts are already standing.</span></li>
+        <li><b>Plans done, site cleared</b><span>Full remodeling plan set, Phase I ESA, title insurance and 39 renderings. Fire damage is demolished and cleared.</span></li>
+        <li><b>A mine coming online</b><span>South32's Hermosa project, about 15 miles away, plans 800–900 long-term jobs averaging about $90,000 a year.</span></li>
+        <li><b>A market without new rooms</b><span>County hotel occupancy rose 8.8% in Q1 2026 with no new rooms added.<a class="ref" href="https://tourism.az.gov/wp-content/uploads/2026/04/County-Lodging-Q1-2026.pdf" target="_blank" rel="noopener">source</a></span></li>
+        <li><b>Room to grow</b><span>About 6.8 acres of open hillside plus two street lots. <a href="land.html">See the land potential</a>.</span></li>
+      </ol>
     </div>
   </section>
 
@@ -813,6 +968,28 @@ section{padding-block:clamp(44px,5.5vw,76px)}
     </div>
   </section>
 
+  <section id="transform" aria-labelledby="ba-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Today and the plan</p>
+        <h2 id="ba-title">Drag to see the renovation</h2>
+        <p class="lede">Each pair shows the same part of the property: a 2025 photo on the left and the renovation rendering on the right. Angles differ a little.</p>
+      </div>
+      <div class="ba-tabs" role="tablist" aria-label="Choose a comparison">
+        <button type="button" role="tab" aria-selected="true" data-i="0">Pool</button>
+        <button type="button" role="tab" aria-selected="false" data-i="1">Central courtyard</button>
+        <button type="button" role="tab" aria-selected="false" data-i="2">Main entrance</button>
+      </div>
+      <div class="ba" id="ba" style="--pos:50%">
+        <img class="ba-after" id="ba-after" src="img/render-pool.jpg" alt="Rendering of the renovated pool with umbrellas and loungers">
+        <div class="ba-before"><img id="ba-before" src="img/photo-pool-now.jpg" alt="The pool today, drained, with the guest buildings behind"></div>
+        <span class="ba-tag l">Today · 2025</span><span class="ba-tag r">Renovation plan</span>
+        <div class="ba-handle" aria-hidden="true"><i></i></div>
+        <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Slide to compare today and the renovation plan">
+      </div>
+    </div>
+  </section>
+
   <section id="vision" class="vision">
     <div class="wrap">
       <div class="sec-head">
@@ -890,14 +1067,56 @@ section{padding-block:clamp(44px,5.5vw,76px)}
         <div><b class="num">800–900</b><span>Long-term Hermosa jobs, averaging about $90,000 a year</span></div>
         <div><b class="num">1,600</b><span>Trucks a day through the Mariposa Port of Entry at peak</span></div>
         <div><b class="num">65,000+</b><span>Daytime population in Nogales, AZ (about 20,000 residents)</span></div>
-        <div><b class="num">49,000</b><span>Santa Cruz County population; Río Rico about 19,600</span></div>
-        <div><b class="num">93°F</b><span>Average July high at 3,500 ft, 15–20°F cooler than Phoenix</span></div>
+        <div><b class="num">50,000</b><span>Santa Cruz County population (2025 estimate); Río Rico about 22,000</span></div>
+        <div><b class="num">94°F</b><span>Average July high nearby (Nogales, 1991–2020), about 12°F cooler than Phoenix</span></div>
       </div>
       <div class="drivers">
         <div><h3>Mine workforce</h3><p>South32 expects first production in early 2028 and full production in 2030. Crews, contractors, consultants and visiting staff need rooms now, and the operation is planned to run for decades.</p></div>
         <div><h3>Border trade</h3><p>The Mariposa Port of Entry is Arizona's main commercial gateway with Mexico and handles a large share of the fresh produce the U.S. imports in winter. Produce brokers and logistics firms cluster in Nogales and Río Rico.</p></div>
         <div><h3>Federal agencies</h3><p>Customs and Border Protection, Border Patrol and other agencies staff the Nogales ports year round and use short- and long-term lodging, meeting rooms and food service.</p></div>
         <div><h3>Leisure and events</h3><p>Weddings and retreats, golf at Tubac, birding along the Santa Cruz River, Sonoita wine country, and Mexican travelers heading north.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="climate" aria-labelledby="cl-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Río Rico right now</p>
+        <h2 id="cl-title">Local time, weather and climate</h2>
+        <p class="lede">High desert at about 3,500 feet: warm days, cool nights, mild winters and a summer monsoon.</p>
+      </div>
+      <div class="cl-grid">
+        <div class="now-card" aria-live="polite">
+          <div class="now-time">
+            <p class="eyebrow">Local time · Arizona (MST, UTC−7)</p>
+            <p class="clock num" id="cl-clock">&nbsp;</p>
+            <p class="muted" id="cl-date">&nbsp;</p>
+            <p class="tzdiff" id="cl-diff"></p>
+          </div>
+          <div class="now-wx" id="cl-wx">
+            <div class="wx-main"><span class="wx-ico" id="wx-ico" aria-hidden="true"></span><div><p class="wx-temp num" id="wx-temp">—</p><p class="wx-cond" id="wx-cond">Loading live weather…</p></div></div>
+            <dl class="wx-meta" id="wx-meta"></dl>
+          </div>
+          <div class="sun" id="cl-sun"></div>
+          <ol class="fc" id="cl-fc" aria-label="Five-day forecast"></ol>
+          <p class="src-line" id="cl-src">Live weather from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</p>
+        </div>
+        <div class="clim">
+          <h3>Average year</h3>
+          <p class="muted small">Nogales, about 10 miles south, 1991–2020 normals. Bars run from the average low to the average high.</p>
+          <div class="cchart" id="cchart" role="img" aria-label="Monthly average high and low temperatures, from 65°F/28°F in January to 97°F/56°F in June"></div>
+          <div class="rchart" id="rchart" role="img" aria-label="Monthly average rainfall in inches, peaking at 3.9 inches in August"></div>
+          <div class="ctip" id="ctip" hidden></div>
+          <dl class="cstats">
+            <div><dt>Average high</dt><dd class="num">80.6°F</dd></div>
+            <div><dt>Average low</dt><dd class="num">44.1°F</dd></div>
+            <div><dt>Rain per year</dt><dd class="num">16.1 in</dd></div>
+            <div><dt>Falls Jul–Sep</dt><dd class="num">60%</dd></div>
+          </dl>
+          <details class="ctable"><summary>Show the table</summary><table id="ctable"><thead><tr><th>Month</th><th>High °F</th><th>Low °F</th><th>Rain in</th></tr></thead><tbody></tbody></table></details>
+          <p class="src-line">Source: <a href="https://globalfutures.asu.edu/azclimate/wp-content/uploads/sites/35/2025/06/Nogales.pdf" target="_blank" rel="noopener">Arizona State Climate Office, Nogales climate summary</a>.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -973,6 +1192,32 @@ section{padding-block:clamp(44px,5.5vw,76px)}
     </div>
   </section>
 
+  <section id="process" class="band" aria-labelledby="pr-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">How the sale works</p>
+        <h2 id="pr-title">From first call to closing</h2>
+      </div>
+      <ol class="steps5">
+        <li><b>Inquire</b><span>Email the owner with who you are and which path interests you.</span></li>
+        <li><b>Sign the NDA</b><span>A short confidentiality agreement opens the offering package.</span></li>
+        <li><b>Review the data room</b><span>Appraisal, plans, CAD, cost to complete, Phase I, title and records.</span></li>
+        <li><b>Tour the property</b><span>Walk the site with the owner's team, by appointment.</span></li>
+        <li><b>Offer and close</b><span>Submit a letter of intent, then due diligence and closing.</span></li>
+      </ol>
+      <div class="faq" id="faq">
+        <h3>Questions buyers ask</h3>
+        <details><summary>Is the resort open?</summary><p>No. A kitchen fire closed it in 2015. Since buying it in 2021, the owners have demolished and cleared the damaged areas, cleaned the property, repaired roofs and corridors, and completed a full remodeling plan set.</p></details>
+        <details><summary>What is the asking price?</summary><p>The owners are seeking $9–11 million to sell as is (Path A). They are also open to a capital partner to finish the renovation together (Path B), with an estimated $11–13 million to complete.</p></details>
+        <details><summary>What is included in the sale?</summary><p>Three parcels totaling 22.74 acres (APN 114-50-001B, 114-50-013B and 114-50-176), all existing buildings, and the plans, engineering, renderings and reports listed in the offering package.</p></details>
+        <details><summary>How many rooms are there?</summary><p>The 2023 appraisal counts 179 guest rooms. The remodeling plans and the CAD set are in the data room so buyers can confirm the final room mix.</p></details>
+        <details><summary>What does the zoning allow?</summary><p>The site is zoned B-2 (General Business) in Santa Cruz County, which permits hotels, restaurants and a winery tasting room by right. See the <a href="land.html#zoning">zoning summary</a> on the land page.</p></details>
+        <details><summary>Can I visit?</summary><p>Yes, by appointment. Email <a href="mailto:sales@esplendorproject.com">sales@esplendorproject.com</a> to schedule a tour. Please do not visit without one; the site is a closed construction area.</p></details>
+        <details><summary>Are brokers welcome?</summary><p>Yes. Please say who you represent when you write.</p></details>
+      </div>
+    </div>
+  </section>
+
   <section id="inquire">
     <div class="wrap">
       <div class="inquire">
@@ -990,6 +1235,7 @@ section{padding-block:clamp(44px,5.5vw,76px)}
             <li><b>Rendering package</b><span>45 images</span></li>
             <li><b>Investment records</b><span>2021–2025 payments</span></li>
             <li><b>3D tour</b><span>Live on this site</span></li>
+            <li><a href="img/esplendor-flyer.pdf" download><b>One-page flyer</b><span>PDF, download now</span></a></li>
           </ul>
         </div>
         <div class="contact">
@@ -997,6 +1243,19 @@ section{padding-block:clamp(44px,5.5vw,76px)}
           <h3>MC Business Group</h3>
           <p class="muted">For the offering package, tours and partnership inquiries:</p>
           <div class="mail"><a href="mailto:sales@esplendorproject.com?subject=Esplendor%20Resort%20inquiry" id="mail">sales@esplendorproject.com</a><button type="button" id="copy-mail">Copy</button></div>
+          <form class="iq" id="iq" novalidate>
+            <p class="iq-h">Or write your message here and we'll open it in your email app.</p>
+            <div class="iq-row"><label>Name<input name="name" autocomplete="name" required></label><label>Company<input name="company" autocomplete="organization"></label></div>
+            <div class="iq-row"><label>Email<input name="email" type="email" autocomplete="email" required></label><label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label></div>
+            <fieldset><legend>I am a</legend><div class="pills">
+              <label><input type="radio" name="role" value="Buyer" checked><span>Buyer</span></label><label><input type="radio" name="role" value="Capital partner"><span>Capital partner</span></label><label><input type="radio" name="role" value="Broker"><span>Broker</span></label><label><input type="radio" name="role" value="Lender"><span>Lender</span></label><label><input type="radio" name="role" value="Other"><span>Other</span></label></div></fieldset>
+            <fieldset><legend>Interested in</legend><div class="pills">
+              <label><input type="checkbox" name="want" value="Path A: buy as is" checked><span>Buy as is</span></label><label><input type="checkbox" name="want" value="Path B: capital partner"><span>Partner to finish</span></label><label><input type="checkbox" name="want" value="NDA and offering package" checked><span>NDA and package</span></label><label><input type="checkbox" name="want" value="Site tour"><span>Site tour</span></label></div></fieldset>
+            <label><span>Message <span class="opt">(optional)</span></span><textarea name="msg" rows="3"></textarea></label>
+            <p class="iq-err" id="iq-err" role="alert" hidden></p>
+            <div class="iq-actions"><button type="submit" class="btn solid">Open in email</button><button type="button" class="btn" id="iq-copy">Copy message</button></div>
+            <p class="small muted">Nothing is sent or stored by this website. Your email app opens a draft you can review before sending. See the <a href="privacy.html">privacy policy</a>.</p>
+          </form>
         </div>
       </div>
     </div>
@@ -1005,10 +1264,16 @@ section{padding-block:clamp(44px,5.5vw,76px)}
 
 <footer>
   <div class="wrap">
+    <nav class="f-links" aria-label="Site">
+      <a href="land.html">Land potential</a><a href="walkthrough.html">3D tour</a><a href="img/esplendor-flyer.pdf" download>Flyer (PDF)</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms of use</a>
+    </nav>
+    <div class="share" aria-label="Share this listing"><span>Share</span><button type="button" data-share="copy">Copy link</button><a data-share="email" href="#">Email</a><a data-share="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a><a data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></div>
     <p class="owner"><span>Esplendor Resort at Río Rico</span><span>1069 Camino Caralampi, Río Rico, Arizona 85648</span><span>Owner: MC Business Group</span><a href="mailto:sales@esplendorproject.com">sales@esplendorproject.com</a></p>
     <p>This page is for information only. It is not an offer to sell or a solicitation of an offer to buy any security; any investment would be made only through definitive documents with qualified parties. Appraised values come from an independent appraisal prepared for the owner with an effective date of May 22, 2023; they are historical and may not be relied on by third parties. Cost, investment and progress figures are provided by the owner and are subject to buyer verification. Renderings are conceptual.</p>
+    <p class="copy">© 2026 MC Business Group LLC. Last updated October 2026.</p>
   </div>
 </footer>
+<a class="to-top" id="to-top" href="#top" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <dialog class="lb" id="lb" aria-label="Rendering viewer">
   <img id="lb-img" alt="">
@@ -1288,4 +1553,119 @@ section{padding-block:clamp(44px,5.5vw,76px)}
     r.addEventListener('mouseleave',function(){tip.hidden=true;});
   });
 })();
+</script>
+<script>
+// ===== Río Rico local time, live weather, climate, before/after, inquiry, share =====
+(function(){
+  var TZ='America/Phoenix', LAT=31.4720, LON=-110.9805;
+  var $=function(id){return document.getElementById(id)};
+  function fmt(d,o){o.timeZone=TZ;return new Intl.DateTimeFormat('en-US',o).format(d)}
+  // ---------- clock ----------
+  function tick(){var d=new Date(),t=fmt(d,{hour:'numeric',minute:'2-digit'});
+    if($('nc-time'))$('nc-time').textContent=t;
+    if($('cl-clock'))$('cl-clock').textContent=t;
+    if($('cl-date'))$('cl-date').textContent=fmt(d,{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    var diff=(-d.getTimezoneOffset()+420)/60,el=$('cl-diff');
+    if(el){var h=Math.abs(diff),hs=(h%1?h.toFixed(1):h)+(h===1?' hour':' hours');
+      el.textContent=diff===0?'Same time as you. Arizona and Sonora stay on MST all year.':'You are '+hs+(diff>0?' ahead of':' behind')+' Río Rico. Arizona and Sonora stay on MST all year.'}}
+  tick();setInterval(tick,15000);
+
+  // ---------- weather ----------
+  var I={sun:'<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="currentColor"/><g stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.6 10.6l3.5 3.5M33.9 33.9l3.5 3.5M10.6 37.4l3.5-3.5M33.9 14.1l3.5-3.5"/></g></svg>',
+    moon:'<svg viewBox="0 0 48 48"><path d="M31 8a16 16 0 1 0 9 26A14 14 0 0 1 31 8z" fill="#E7E2C6"/></svg>',
+    part:'<svg viewBox="0 0 48 48"><circle cx="18" cy="17" r="7" fill="currentColor"/><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 3v4M4 17h4M8 7l2.8 2.8M28 7l-2.8 2.8"/></g><path d="M15 40h20a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0 1 13z" fill="#E6ECEF"/></svg>',
+    cloud:'<svg viewBox="0 0 48 48"><path d="M13 38h22a9 9 0 0 0 0-18 12 12 0 0 0-23 3.5A7.3 7.3 0 0 0 13 38z" fill="#DDE4E8"/></svg>',
+    rain:'<svg viewBox="0 0 48 48"><path d="M13 30h22a9 9 0 0 0 0-18 12 12 0 0 0-23 3.5A7.3 7.3 0 0 0 13 30z" fill="#DDE4E8"/><g stroke="#7FB7E6" stroke-width="3" stroke-linecap="round"><path d="M17 35l-2 6M25 35l-2 6M33 35l-2 6"/></g></svg>',
+    storm:'<svg viewBox="0 0 48 48"><path d="M13 29h22a9 9 0 0 0 0-18 12 12 0 0 0-23 3.5A7.3 7.3 0 0 0 13 29z" fill="#C9D1D6"/><path d="M25 30l-6 9h6l-3 7 9-11h-6l3-5z" fill="#F2C36B"/></svg>',
+    fog:'<svg viewBox="0 0 48 48"><g stroke="#DDE4E8" stroke-width="3.2" stroke-linecap="round"><path d="M8 18h32M5 25h38M10 32h28M14 39h20"/></g></svg>',
+    snow:'<svg viewBox="0 0 48 48"><path d="M13 30h22a9 9 0 0 0 0-18 12 12 0 0 0-23 3.5A7.3 7.3 0 0 0 13 30z" fill="#DDE4E8"/><g fill="#fff"><circle cx="17" cy="37" r="2.2"/><circle cx="25" cy="41" r="2.2"/><circle cx="33" cy="37" r="2.2"/></g></svg>'};
+  function wx(c,day){if(c===0)return[day?'sun':'moon','Clear'];if(c===1)return[day?'sun':'moon','Mostly clear'];if(c===2)return['part','Partly cloudy'];if(c===3)return['cloud','Cloudy'];
+    if(c===45||c===48)return['fog','Fog'];if(c>=51&&c<=57)return['rain','Drizzle'];if(c>=61&&c<=67)return['rain','Rain'];if(c>=71&&c<=77)return['snow','Snow'];
+    if(c>=80&&c<=82)return['rain','Showers'];if(c===85||c===86)return['snow','Snow showers'];if(c>=95)return['storm','Thunderstorms'];return['cloud','—']}
+  var DIRS=['N','NE','E','SE','S','SW','W','NW'];
+  var NORM={hi:[65.3,67.2,72.8,79.4,87.4,96.5,94.4,92.3,90.5,83.5,73.4,64.6],lo:[28.3,30.5,35.0,39.5,46.3,56.3,65.3,64.0,57.5,44.6,34.4,28.0],pr:[.98,.92,.69,.35,.17,.68,3.59,3.91,2.23,.85,.59,1.14]};
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function phxMonth(){return +fmt(new Date(),{month:'numeric'})-1}
+  // NOAA sunrise/sunset for a date, returns {rise,set} as Date
+  function sunTimes(date){var rad=Math.PI/180,d=new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth(),date.getUTCDate(),12)),
+      n=(d-Date.UTC(2000,0,1,12))/864e5,Js=n-LON/360,M=(357.5291+.98560028*Js)%360,C=1.9148*Math.sin(M*rad)+.02*Math.sin(2*M*rad)+.0003*Math.sin(3*M*rad),
+      L=(M+C+180+102.9372)%360,Jt=2451545+Js+.0053*Math.sin(M*rad)-.0069*Math.sin(2*L*rad),dec=Math.asin(Math.sin(L*rad)*Math.sin(23.44*rad)),
+      w=Math.acos((Math.sin(-.833*rad)-Math.sin(LAT*rad)*Math.sin(dec))/(Math.cos(LAT*rad)*Math.cos(dec)))/rad/360,
+      toDate=function(j){return new Date((j-2440587.5)*864e5)};return{rise:toDate(Jt-w),set:toDate(Jt+w)}}
+  function drawSun(rise,set){var el=$('cl-sun');if(!el)return;var now=Date.now(),p=Math.max(0,Math.min(1,(now-rise)/(set-rise))),up=now>rise&&now<set,
+      x=10+p*180,y=40-Math.sin(p*Math.PI)*32,len=(set-rise)/36e5,hh=Math.floor(len),mm=Math.round((len-hh)*60);
+    el.innerHTML='<div><span class="muted">Sunrise</span><b>'+fmt(rise,{hour:'numeric',minute:'2-digit'})+'</b></div>'+
+      '<div class="arc"><svg viewBox="0 0 200 44" aria-hidden="true"><path d="M10 40 Q100 -24 190 40" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="4 4"/><line x1="0" y1="40" x2="200" y2="40" stroke="rgba(255,255,255,.25)"/>'+(up?'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="7" fill="#F2C36B"/>':'')+'</svg></div>'+
+      '<div style="text-align:right"><span class="muted">Sunset</span><b>'+fmt(set,{hour:'numeric',minute:'2-digit'})+'</b></div>'+
+      '<p class="muted small" style="grid-column:1/-1;margin:0">'+hh+' h '+mm+' min of daylight today'+(up?'':' · the sun is down')+'</p>'}
+  var st=sunTimes(new Date());drawSun(st.rise,st.set);
+  function fallback(){var m=phxMonth();if($('wx-temp'))$('wx-temp').textContent=Math.round(NORM.hi[m])+'° / '+Math.round(NORM.lo[m])+'°';
+    if($('wx-cond'))$('wx-cond').textContent='Typical '+MON[m]+' high and low. Live weather is not available in this view.';
+    if($('wx-ico'))$('wx-ico').innerHTML=I.sun;if($('nc-wx'))$('nc-wx').textContent='';var src=$('cl-src');if(src)src.textContent='Live weather appears on the public website.';var fc=$('cl-fc');if(fc)fc.hidden=true}
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max,uv_index_max&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FPhoenix&forecast_days=5';
+  var ctl=window.AbortController?new AbortController():null;var to=setTimeout(function(){if(ctl)ctl.abort()},8000);
+  if(!window.fetch){fallback()}else fetch(url,ctl?{signal:ctl.signal}:{}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){clearTimeout(to);
+    var c=j.current,w=wx(c.weather_code,c.is_day),t=Math.round(c.temperature_2m);
+    $('wx-ico').innerHTML=I[w[0]];$('wx-temp').textContent=t+'°F';$('wx-cond').textContent=w[1]+' · feels like '+Math.round(c.apparent_temperature)+'°';
+    $('wx-meta').innerHTML='<div><dt>Wind</dt><dd>'+Math.round(c.wind_speed_10m)+' mph '+DIRS[Math.round(c.wind_direction_10m/45)%8]+'</dd></div><div><dt>Humidity</dt><dd>'+Math.round(c.relative_humidity_2m)+'%</dd></div><div><dt>UV today</dt><dd>'+Math.round(j.daily.uv_index_max[0])+'</dd></div>';
+    if($('nc-wx'))$('nc-wx').textContent=' · '+t+'°F '+w[1].toLowerCase();
+    var d=j.daily,fc=$('cl-fc');fc.innerHTML=d.time.map(function(day,i){var dt=new Date(day+'T12:00:00-07:00'),ww=wx(d.weather_code[i],1),pp=d.precipitation_probability_max[i];
+      return '<li><span class="d">'+(i===0?'Today':fmt(dt,{weekday:'short'}))+'</span><span aria-hidden="true">'+I[ww[0]]+'</span><span class="sr-only" style="position:absolute;left:-9999px">'+ww[1]+'</span><span class="t"><b>'+Math.round(d.temperature_2m_max[i])+'°</b><span>'+Math.round(d.temperature_2m_min[i])+'°</span></span><span class="p">'+(pp==null?'':pp+'% rain')+'</span></li>'}).join('');
+    if(d.sunrise&&d.sunrise[0]){drawSun(new Date(d.sunrise[0]+':00-07:00'),new Date(d.sunset[0]+':00-07:00'))}
+    $('cl-src').innerHTML='Live weather from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · updated '+fmt(new Date(),{hour:'numeric',minute:'2-digit'})+' local time.';
+  }).catch(function(){clearTimeout(to);fallback()});
+
+  // ---------- climate charts ----------
+  function chart(el,kind){if(!el)return;var W=Math.max(320,Math.min(640,Math.round(el.clientWidth||640))),H=kind==='t'?220:110,L=34,R=8,T=18,B=22,cw=(W-L-R)/12,bw=Math.min(22,cw*.5),
+      max=kind==='t'?100:4,min=kind==='t'?20:0,y=function(v){return T+(H-T-B)*(1-(v-min)/(max-min))},ticks=kind==='t'?[20,40,60,80,100]:[0,2,4],cm=phxMonth(),
+      g='<svg viewBox="0 0 '+W+' '+H+'"><g class="grid">'+ticks.map(function(v){return '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'"/><text x="'+(L-6)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+(kind==='t'?'°':' in')+'</text>'}).join('')+'</g>';
+    g+='<rect class="cur" x="'+(L+cm*cw)+'" y="'+T+'" width="'+cw+'" height="'+(H-T-B)+'"/>';
+    for(var i=0;i<12;i++){var cx=L+i*cw+cw/2,a,b;if(kind==='t'){a=y(NORM.hi[i]);b=y(NORM.lo[i])}else{a=y(NORM.pr[i]);b=y(0)}
+      var h=Math.max(2,b-a);g+='<rect class="bar" x="'+(cx-bw/2)+'" y="'+a+'" width="'+bw+'" height="'+h+'" rx="4"/>';
+      if(kind==='t'&&(i===0||i===5||i===11)){g+='<text class="lab" x="'+cx+'" y="'+(a-5)+'" text-anchor="middle">'+Math.round(NORM.hi[i])+'°</text><text class="lab" x="'+cx+'" y="'+(b+13)+'" text-anchor="middle">'+Math.round(NORM.lo[i])+'°</text>'}
+      if(kind==='r'&&i===7)g+='<text class="lab" x="'+cx+'" y="'+(a-5)+'" text-anchor="middle">'+NORM.pr[i]+' in</text>';
+      g+='<text x="'+cx+'" y="'+(H-6)+'" text-anchor="middle">'+MON[i][0]+'</text><rect class="hit" data-i="'+i+'" x="'+(L+i*cw)+'" y="'+T+'" width="'+cw+'" height="'+(H-T-B+B)+'"/>'}
+    el.innerHTML=g+'</svg>';
+    var tip=$('ctip'),box=el.closest('.clim');
+    el.addEventListener('pointermove',function(e){var r=e.target.closest('.hit');if(!r){tip.hidden=true;return}var i=+r.getAttribute('data-i'),bb=box.getBoundingClientRect();
+      tip.innerHTML='<b>'+['January','February','March','April','May','June','July','August','September','October','November','December'][i]+'</b><span class="sw" style="background:var(--s-build)"></span>High '+NORM.hi[i]+'°F<br><span class="sw" style="background:var(--s-build);opacity:.55"></span>Low '+NORM.lo[i]+'°F<br><span class="sw" style="background:var(--s-buy)"></span>Rain '+NORM.pr[i]+' in';
+      tip.hidden=false;var x=e.clientX-bb.left+14,yy=e.clientY-bb.top+14;if(x+150>bb.width)x=e.clientX-bb.left-150;tip.style.left=x+'px';tip.style.top=yy+'px'});
+    el.addEventListener('pointerleave',function(){tip.hidden=true})}
+  chart($('cchart'),'t');chart($('rchart'),'r');
+  var tb=document.querySelector('#ctable tbody');if(tb)tb.innerHTML=MON.map(function(m,i){return '<tr><td>'+m+'</td><td>'+NORM.hi[i]+'</td><td>'+NORM.lo[i]+'</td><td>'+NORM.pr[i]+'</td></tr>'}).join('');
+
+  // ---------- before / after ----------
+  var PAIRS=[['img/photo-pool-now.jpg','The pool today, drained, with the guest buildings behind','img/render-pool.jpg','Rendering of the renovated pool with umbrellas and loungers','center 60%'],
+    ['img/photo-courtyard-2.jpg','The central courtyard today, bare ground with a tree and walkways','img/render-wine-garden.jpg','Rendering of the courtyard as a wine garden with lawn, umbrellas and planters','center'],
+    ['img/photo-main-building.jpg','The main building today behind a stone wall and cypress trees','img/render-porte-cochere.jpg','Rendering of the main entrance with ivy walls and a covered arrival','center']];
+  var ba=$('ba'),rg=$('ba-range');
+  if(ba&&rg){rg.addEventListener('input',function(){ba.style.setProperty('--pos',rg.value+'%')});
+    [].forEach.call(document.querySelectorAll('.ba-tabs button'),function(b){b.addEventListener('click',function(){var p=PAIRS[+b.getAttribute('data-i')];
+      [].forEach.call(document.querySelectorAll('.ba-tabs button'),function(x){x.setAttribute('aria-selected',x===b)});
+      var bf=$('ba-before'),af=$('ba-after');bf.src=p[0];bf.alt=p[1];af.src=p[2];af.alt=p[3];bf.style.objectPosition=p[4];rg.value=50;ba.style.setProperty('--pos','50%')})})}
+
+  // ---------- inquiry composer ----------
+  var f=$('iq');
+  function body(){var v=function(n){return (f.elements[n]&&f.elements[n].value||'').trim()},role=(f.querySelector('input[name=role]:checked')||{}).value||'',
+      want=[].map.call(f.querySelectorAll('input[name=want]:checked'),function(x){return x.value});
+    return 'Hello,\n\nI am interested in Esplendor Resort at Río Rico.\n\nName: '+v('name')+'\nCompany: '+(v('company')||'—')+'\nEmail: '+v('email')+'\nPhone: '+(v('phone')||'—')+'\nI am a: '+role+'\nInterested in: '+(want.join('; ')||'—')+'\n\n'+(v('msg')?v('msg')+'\n\n':'')+'Thank you.'}
+  function check(){var e=$('iq-err'),n=f.elements.name.value.trim(),m=f.elements.email.value.trim();
+    if(!n||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){e.textContent=!n?'Please add your name.':'Please add a valid email address.';e.hidden=false;(n?f.elements.email:f.elements.name).focus();return false}e.hidden=true;return true}
+  if(f){f.addEventListener('submit',function(ev){ev.preventDefault();if(!check())return;
+      var subj='Esplendor Resort inquiry'+(f.elements.company.value.trim()?' – '+f.elements.company.value.trim():'');
+      location.href='mailto:sales@esplendorproject.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body())});
+    $('iq-copy').addEventListener('click',function(){if(!check())return;var b=this,t='To: sales@esplendorproject.com\n\n'+body();
+      (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy message'},1800)},function(){b.textContent='Copy failed';})})}
+
+  // ---------- share + back to top ----------
+  var page=(location.protocol==='file:'||/claude|usercontent/.test(location.host))?'https://aeroassistindustries.github.io/esplendor-resort/':location.href.split('#')[0],
+      title='Esplendor Resort at Río Rico – 179-room resort on 22.74 acres, offered for sale';
+  [].forEach.call(document.querySelectorAll('[data-share]'),function(a){var k=a.getAttribute('data-share');
+    if(k==='email')a.href='mailto:?subject='+encodeURIComponent(title)+'&body='+encodeURIComponent(title+'\n\n'+page);
+    if(k==='whatsapp')a.href='https://wa.me/?text='+encodeURIComponent(title+' '+page);
+    if(k==='linkedin')a.href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(page);
+    if(k==='copy')a.addEventListener('click',function(){(navigator.clipboard?navigator.clipboard.writeText(page):Promise.reject()).then(function(){a.textContent='Link copied';setTimeout(function(){a.textContent='Copy link'},1800)},function(){a.textContent=page})})});
+  var top=$('to-top');if(top){var onS=function(){top.hidden=scrollY<900};addEventListener('scroll',onS,{passive:true});onS()}
+})();
+
 </script>
