@@ -406,6 +406,56 @@ footer{font-size:.92rem}
 .m-list .no{font-size:12px;width:24px;height:24px}
 .m-beyond div{font-size:.98rem}
 .m-beyond span:last-child{font-family:var(--f-body);font-weight:600;font-size:.95rem}
+
+/* ===== returns model ===== */
+.rt-head{display:grid;gap:12px;margin-bottom:28px}
+.rt-scen{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.rt-scen button{all:unset;cursor:pointer;font:600 .95rem var(--f-body);padding:10px 16px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)}
+.rt-scen button small{display:block;font-weight:500;font-size:.8rem;color:var(--muted)}
+.rt-scen button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--bg)}
+.rt-scen button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.rt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:24px;align-items:start}
+.rt-inputs{background:var(--paper);border:1px solid var(--line);padding:20px;display:grid;gap:16px}
+.rt-inputs h3{font-size:1.05rem}
+.rt-in{display:grid;gap:6px}
+.rt-in label{display:flex;justify-content:space-between;gap:12px;font-size:.95rem}
+.rt-in output{font-weight:600;font-variant-numeric:tabular-nums}
+.rt-in input[type=range]{width:100%;accent-color:var(--accent)}
+.rt-in .hint{font-size:.82rem;color:var(--muted);line-height:1.4}
+.rt-sep{border:0;border-top:1px solid var(--line);margin:4px 0}
+.rt-toggle{display:flex;align-items:center;gap:10px;font-size:.95rem}
+.rt-toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.rt-out{display:grid;gap:16px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kpi{background:var(--paper);border:1px solid var(--line);padding:16px;display:grid;gap:4px;min-width:0}
+.kpi .k{font:600 .78rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi .v{font:700 clamp(1.6rem,3vw,2.2rem)/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.kpi .s{font-size:.88rem;color:var(--muted)}
+.kpi.lead{border-top:3px solid var(--clay)}
+.kpi.lead .v{color:var(--clay)}
+.rt-chart{background:var(--paper);border:1px solid var(--line);padding:16px 16px 8px}
+.rt-chart h3{font-size:1.05rem;margin-bottom:4px}
+.rt-chart .legend{margin:4px 0 6px}
+.rt-chart svg{display:block;width:100%;height:auto}
+.rt-chart text{font:500 12.5px var(--f-body);fill:var(--muted)}
+.rt-chart .ax{stroke:var(--line)}
+.rt-chart .zero{stroke:var(--muted);stroke-width:1}
+.rt-chart .eq{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4}
+.rt-chart .cum{stroke:var(--s-buy);stroke-width:2.5;fill:none}
+.rt-chart .area{fill:var(--s-buy);opacity:.10}
+.rt-chart .dot{fill:var(--s-buy);stroke:var(--paper);stroke-width:2}
+.rt-chart .ev{fill:var(--s-build);stroke:var(--paper);stroke-width:2}
+.rt-chart .lbl{fill:var(--ink);font-weight:600}
+.rt-chart .hit{fill:transparent}
+.rt-tbl-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line)}
+table.rt-tbl{width:100%;border-collapse:collapse;min-width:640px;font-size:.92rem}
+table.rt-tbl th,table.rt-tbl td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.rt-tbl th:first-child,table.rt-tbl td:first-child{text-align:left}
+table.rt-tbl thead th{font:600 .75rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+table.rt-tbl tr.tot td{font-weight:700}
+.rt-note{font-size:.9rem;color:var(--muted);max-width:95ch}
+@media (max-width:980px){.rt-grid{grid-template-columns:1fr}.rt-out{order:-1}}
+@media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}}
 </style>
 
 <div class="ribbon">Staging draft · not for distribution · figures subject to verification</div>
@@ -416,6 +466,7 @@ footer{font-size:.92rem}
     <nav class="links" aria-label="Sections">
       <a href="#map">Map</a>
       <a href="#paths">Two paths</a>
+      <a href="#returns">Returns</a>
       <a href="#today">Today</a>
       <a href="#vision">Vision</a>
       <a href="#site">Site</a>
@@ -574,6 +625,55 @@ footer{font-size:.92rem}
           </svg>
         </div>
         <p class="muted" style="font-size:.88rem">All-in basis of $20M–$24M against a $28.9M as-complete appraisal leaves roughly $4.9M–$8.9M of headroom before soft costs, carry and financing. Illustrative only; the appraisal is dated and a buyer should commission its own.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="returns">
+    <div class="wrap">
+      <div class="rt-head">
+        <p class="eyebrow">Returns model</p>
+        <h2>How fast the money comes back once it reopens</h2>
+        <p class="lede">Pick a scenario or move the sliders. The model buys the property, renovates for 18 months, opens, ramps up over three years, refinances once the hotel stabilizes, and sells in year seven.</p>
+      </div>
+      <div class="rt-scen" id="rt-scen">
+        <button type="button" data-s="cons" aria-pressed="false">Conservative<small>60% occupancy · $150 a night</small></button>
+        <button type="button" data-s="base" aria-pressed="true">Base<small>66% occupancy · $165 a night</small></button>
+        <button type="button" data-s="up" aria-pressed="false">Upside<small>Mine crews + events · 76% · $195</small></button>
+      </div>
+      <div class="rt-grid">
+        <form class="rt-inputs" id="rt-form" onsubmit="return false">
+          <h3>Operations, once stabilized</h3>
+          <div class="rt-in"><label for="i-adr">Average nightly rate <output id="o-adr"></output></label><input type="range" id="i-adr" min="110" max="260" step="5"><span class="hint">Tucson hotels averaged about $135 in late 2025; Tubac Golf Resort is booking at about $319 including tax.</span></div>
+          <div class="rt-in"><label for="i-occ">Occupancy <output id="o-occ"></output></label><input type="range" id="i-occ" min="45" max="85" step="1"><span class="hint">Tucson ran about 56–60% in late 2025, before Hermosa's 900 crew members and the 200-person Centro staff.</span></div>
+          <div class="rt-in"><label for="i-oth">Food, events and spa revenue <output id="o-oth"></output></label><input type="range" id="i-oth" min="30" max="100" step="5"><span class="hint">As a share of room revenue. A 650-person ballroom, 8 meeting rooms, a restaurant and a planned spa.</span></div>
+          <div class="rt-in"><label for="i-mar">Net operating margin <output id="o-mar"></output></label><input type="range" id="i-mar" min="15" max="35" step="1"><span class="hint">After all operating costs, management fees, taxes, insurance and a furniture and equipment reserve.</span></div>
+          <hr class="rt-sep">
+          <h3>Cost and financing</h3>
+          <div class="rt-in"><label for="i-px">Purchase price <output id="o-px"></output></label><input type="range" id="i-px" min="9" max="11" step="0.25"></div>
+          <div class="rt-in"><label for="i-rn">Renovation <output id="o-rn"></output></label><input type="range" id="i-rn" min="10" max="16" step="0.5"><span class="hint">Owner estimate $11M–$13M; the 2023 appraisal budget was $14.8M.</span></div>
+          <div class="rt-in"><label for="i-ltc">Loan, share of total cost <output id="o-ltc"></output></label><input type="range" id="i-ltc" min="0" max="70" step="5"></div>
+          <div class="rt-in"><label for="i-rate">Interest rate <output id="o-rate"></output></label><input type="range" id="i-rate" min="5" max="11" step="0.25"></div>
+          <div class="rt-in"><label for="i-cap">Cap rate at refinance and sale <output id="o-cap"></output></label><input type="range" id="i-cap" min="6.5" max="11" step="0.25"><span class="hint">Value equals net operating income divided by this rate.</span></div>
+          <label class="rt-toggle" for="i-refi"><input type="checkbox" id="i-refi" checked> Refinance at stabilization (end of year 3, 65% of value)</label>
+        </form>
+        <div class="rt-out">
+          <div class="kpis">
+            <div class="kpi lead"><span class="k">Equity back</span><span class="v" id="k-pay">&ndash;</span><span class="s" id="k-pay-s"></span></div>
+            <div class="kpi"><span class="k">Equity multiple</span><span class="v" id="k-mult">&ndash;</span><span class="s" id="k-mult-s"></span></div>
+            <div class="kpi"><span class="k">Value when stabilized</span><span class="v" id="k-val">&ndash;</span><span class="s" id="k-val-s"></span></div>
+            <div class="kpi"><span class="k">Revenue, stabilized</span><span class="v" id="k-rev">&ndash;</span><span class="s" id="k-rev-s"></span></div>
+            <div class="kpi"><span class="k">Net operating income</span><span class="v" id="k-noi">&ndash;</span><span class="s" id="k-noi-s"></span></div>
+            <div class="kpi"><span class="k">Cash yield on equity</span><span class="v" id="k-coc">&ndash;</span><span class="s" id="k-coc-s"></span></div>
+          </div>
+          <div class="rt-chart">
+            <h3>Cash returned to investors, cumulative</h3>
+            <div class="legend" aria-hidden="true"><span><i style="background:var(--s-buy)"></i>Cash returned</span><span><i style="background:var(--s-build);border-radius:50%"></i>Refinance or sale</span><span><i style="border-top:2px dashed var(--ink);height:0;border-radius:0"></i>Equity invested</span></div>
+            <svg id="rt-svg" viewBox="0 0 720 300" role="img" aria-label="Cumulative cash returned to investors by year"></svg>
+          </div>
+          <div class="rt-tbl-wrap"><table class="rt-tbl" id="rt-tbl"></table></div>
+          <p class="rt-note">Illustrative model, not a forecast or an offer. The resort has no recent operating history; results depend on the buyer's plan, brand, management, financing and market conditions. Revenue and costs grow 3% a year; the first two operating years run at 70% and 88% of stabilized income; loans are interest-only; interest during the renovation, closing and pre-opening costs ($1.5M) are funded with equity; refinance and sale costs are 1% and 2%.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -973,6 +1073,87 @@ footer{font-size:.92rem}
     }
     svg.addEventListener('mouseleave',function(){}); list.addEventListener('mouseleave',function(){});
     svg.addEventListener('click',function(e){if(!e.target.closest('.m-pt'))clear()});
+  })();
+
+  // ---------- returns model ----------
+  (function(){
+    var form=document.getElementById('rt-form'); if(!form) return;
+    var ROOMS=179;
+    var SC={cons:{adr:150,occ:60,oth:55,mar:22},base:{adr:165,occ:66,oth:65,mar:25},up:{adr:195,occ:76,oth:80,mar:30}};
+    var COMMON={px:10,rn:12,ltc:60,rate:8,cap:8.5};
+    var ids=['adr','occ','oth','mar','px','rn','ltc','rate','cap'];
+    var inp={}, out={}; ids.forEach(function(k){inp[k]=document.getElementById('i-'+k); out[k]=document.getElementById('o-'+k)});
+    var refi=document.getElementById('i-refi');
+    function M(v,d){d=d==null?1:d; return '$'+(v/1e6).toFixed(d)+'M'}
+    function fmt(k,v){if(k==='adr')return '$'+v; if(k==='px'||k==='rn')return '$'+(+v)+'M'; if(k==='rate'||k==='cap')return (+v).toFixed(2).replace(/0$/,'')+'%'; return v+'%'}
+    function setScen(s){var v=Object.assign({},COMMON,SC[s]); ids.forEach(function(k){inp[k].value=v[k]}); [].forEach.call(document.querySelectorAll('#rt-scen button'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===s)}); calc()}
+    function irr(cfs){var lo=-0.9,hi=3;function npv(r){return cfs.reduce(function(a,c){return a+c[1]/Math.pow(1+r,c[0])},0)} if(npv(lo)*npv(hi)>0)return null; for(var i=0;i<100;i++){var m=(lo+hi)/2; if(npv(m)>0)lo=m; else hi=m;} return (lo+hi)/2}
+    function calc(){
+      var v={}; ids.forEach(function(k){v[k]=+inp[k].value; out[k].textContent=fmt(k,inp[k].value)});
+      var g=0.03, ramp=[0.70,0.88,1,1,1,1,1];
+      var roomsRev=ROOMS*365*(v.occ/100)*v.adr, totRev=roomsRev*(1+v.oth/100), noi=totRev*(v.mar/100);
+      var soft=1.5e6, cost=v.px*1e6+v.rn*1e6+soft, loan=cost*v.ltc/100, rate=v.rate/100, cap=v.cap/100;
+      var carry=loan*rate*0.5*1.5, equity=cost-loan+carry;
+      var rows=[], cum=0, curLoan=loan, events=[], cfs=[[0,-(cost-loan)],[0.75,-carry]];
+      for(var y=1;y<=7;y++){
+        var yNoi=noi*ramp[y-1]*Math.pow(1+g,y-1), interest=curLoan*rate, cf=yNoi-interest, extra=0, label='';
+        if(y===3&&refi.checked){var val3=yNoi*(1+g)/cap, nl=0.65*val3; var co=nl*0.99-curLoan; if(co>0){extra=co; curLoan=nl; label='Refinance'; events.push({y:y,amt:co,t:'Refinance'})}}
+        if(y===7){var val7=yNoi*(1+g)/cap, net=val7*0.98-curLoan; extra+=net; label=label?label+' + sale':'Sale'; events.push({y:y,amt:net,t:'Sale'})}
+        cum+=cf+extra; rows.push({y:y,noi:yNoi,int:interest,cf:cf,extra:extra,cum:cum,label:label});
+        cfs.push([1.5+y,cf+extra]);
+      }
+      // payback (fractional, cash flow spread evenly; lump events at year end)
+      var pay=null, prev=0;
+      for(var k=0;k<rows.length;k++){var r=rows[k]; if(prev+r.cf>=equity){pay=k+(equity-prev)/r.cf;break} if(prev+r.cf+r.extra>=equity){pay=k+1;break} prev=r.cum}
+      var total=rows[rows.length-1].cum, mult=total/equity, ir=irr(cfs);
+      var valStab=noi*Math.pow(1+g,3)/cap;
+      var cocStab=(noi*Math.pow(1+g,2)-loan*rate)/equity;
+      var T=function(id,t){document.getElementById(id).textContent=t};
+      if(pay!=null){T('k-pay',(pay).toFixed(1)+' yrs'); T('k-pay-s','after opening, about '+(pay+1.5).toFixed(1)+' years after closing')} else {T('k-pay','7+ yrs'); T('k-pay-s','not within the 7-year hold')}
+      T('k-mult',mult.toFixed(1)+'x'); T('k-mult-s',M(total)+' back on '+M(equity)+' equity'+(ir!=null?' · '+Math.round(ir*100)+'% IRR':''));
+      T('k-val',M(valStab)); T('k-val-s','vs. '+M(cost)+' total cost, '+M(valStab-cost)+' created');
+      T('k-rev',M(totRev)); T('k-rev-s',M(roomsRev)+' rooms · RevPAR $'+Math.round(v.adr*v.occ/100));
+      T('k-noi',M(noi)); T('k-noi-s','per year, stabilized, before debt');
+      T('k-coc',Math.round(cocStab*100)+'%'); T('k-coc-s','year-3 cash flow ÷ equity, before refinance');
+      draw(rows,equity,events); table(rows,equity);
+    }
+    var svg=document.getElementById('rt-svg'), NS='http://www.w3.org/2000/svg';
+    function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+    function tx(x,y,s,c,a,p){var t=el('text',{x:x,y:y,'class':c||'','text-anchor':a||'start'},p);t.textContent=s;return t}
+    function nice(m){var e=Math.pow(10,Math.floor(Math.log10(m))),f=m/e;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*e}
+    function draw(rows,equity,events){
+      svg.innerHTML=''; var W=Math.max(300,Math.round(svg.parentNode.clientWidth-32)), H=W<520?250:300; svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      var L=W<520?44:56,R=W-14,T=18,B=H-38;
+      var pts=[{y:0,c:0}].concat(rows.map(function(r){return {y:r.y,c:r.cum}}));
+      var mx=Math.max(equity,pts.reduce(function(a,p){return Math.max(a,p.c)},0))*1.08, mn=Math.min(0,pts.reduce(function(a,p){return Math.min(a,p.c)},0));
+      var step=nice((mx-mn)/4); var top=Math.ceil(mx/step)*step, bot=Math.floor(mn/step)*step;
+      function X(y){return L+(R-L)*y/7} function Y(v){return T+(B-T)*(top-v)/(top-bot)}
+      for(var v=bot;v<=top+1;v+=step){el('line',{x1:L,x2:R,y1:Y(v),y2:Y(v),'class':v===0?'zero':'ax'});tx(L-8,Y(v)+4,'$'+Math.round(v/1e6)+'M','','end')}
+      for(var y=0;y<=7;y++){tx(X(y),B+20,y===0?(W<520?'0':'Open'):(W<520?String(y):'Yr '+y),'','middle')}
+      el('line',{x1:L,x2:R,y1:Y(equity),y2:Y(equity),'class':'eq'}); tx(R,Y(equity)-6,'Equity in: '+M(equity),'lbl','end');
+      var d=pts.map(function(p,i){return (i?'L':'M')+X(p.y)+' '+Y(p.c)}).join(' ');
+      el('path',{d:d+' L'+X(7)+' '+Y(0)+' L'+X(0)+' '+Y(0)+' Z','class':'area'}); el('path',{d:d,'class':'cum'});
+      pts.slice(1).forEach(function(p,i){var r=rows[i]; var isEv=r.extra>0; el('circle',{cx:X(p.y),cy:Y(p.c),r:isEv?6:4.5,'class':isEv?'ev':'dot'});
+        var h=el('rect',{x:X(p.y)-22,y:T,width:44,height:B-T,'class':'hit'}); h.addEventListener('mousemove',function(e){tipShow(e,'Year '+r.y+': cash flow '+M(r.cf,2)+(r.extra?' + '+r.label.toLowerCase()+' '+M(r.extra,1):'')+'. Total returned '+M(r.cum,1))}); h.addEventListener('mouseleave',tipHide)});
+      var last=pts[pts.length-1]; tx(X(7)-8,Y(last.c)-12,M(last.c,1),'lbl','end');
+    }
+    var tip=document.getElementById('tip');
+    function tipShow(e,t){tip.textContent=t;tip.hidden=false;tip.style.left=Math.min(e.clientX+14,innerWidth-250)+'px';tip.style.top=(e.clientY+14)+'px'}
+    function tipHide(){tip.hidden=true}
+    function table(rows,equity){
+      var h='<thead><tr><th>Year after opening</th>'+rows.map(function(r){return '<th>'+r.y+'</th>'}).join('')+'</tr></thead><tbody>';
+      h+='<tr><td>Net operating income</td>'+rows.map(function(r){return '<td>'+M(r.noi,2)+'</td>'}).join('')+'</tr>';
+      h+='<tr><td>Interest</td>'+rows.map(function(r){return '<td>&minus;'+M(r.int,2)+'</td>'}).join('')+'</tr>';
+      h+='<tr><td>Cash flow to investors</td>'+rows.map(function(r){return '<td>'+M(r.cf,2)+'</td>'}).join('')+'</tr>';
+      h+='<tr><td>Refinance or sale proceeds</td>'+rows.map(function(r){return '<td>'+(r.extra?M(r.extra,1):'&ndash;')+'</td>'}).join('')+'</tr>';
+      h+='<tr class="tot"><td>Total returned</td>'+rows.map(function(r){return '<td>'+M(r.cum,1)+'</td>'}).join('')+'</tr></tbody>';
+      document.getElementById('rt-tbl').innerHTML=h;
+    }
+    ids.forEach(function(k){inp[k].addEventListener('input',function(){[].forEach.call(document.querySelectorAll('#rt-scen button'),function(b){b.setAttribute('aria-pressed','false')}); calc()})});
+    refi.addEventListener('change',calc);
+    var rz; addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(calc,150)});
+    [].forEach.call(document.querySelectorAll('#rt-scen button'),function(b){b.addEventListener('click',function(){setScen(b.getAttribute('data-s'))})});
+    setScen('base');
   })();
   // chart tooltips
   var tip=document.getElementById('tip');
