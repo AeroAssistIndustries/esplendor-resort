@@ -71,7 +71,7 @@ for name, (title, desc, current) in PAGES.items():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex">
+<meta name="robots" content="{'index, follow' if name in ('land','es') else 'noindex'}">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 {extra_head}<link rel="icon" href="img/brand/favicon.svg" type="image/svg+xml">
