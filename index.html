@@ -1,0 +1,630 @@
+<title>Esplendor Resort at Río Rico</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="179-key hilltop resort on 22.74 acres in Río Rico, Arizona, offered as is or with a capital partner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a hacienda offering memorandum. Full-bleed photography bands alternate with
+   limewash text bands; survey/deed vernacular (APNs, bearings, acreage) in mono. */
+:root{
+  --bg:#EEF0EA;          /* limewash stucco, faint sage */
+  --paper:#F8F8F4;       /* sheet surface */
+  --ink:#1C2421;         /* juniper night */
+  --muted:#58635D;
+  --line:#CDD3CB;
+  --accent:#2E5A47;      /* cottonwood green */
+  --clay:#A4472A;        /* roof tile, used for prices only */
+  --s-buy:#3A6FA8;       /* chart: purchase */
+  --s-build:#C8642E;     /* chart: cost to complete */
+  --on-photo:#FFFFFF;
+  --scrim:rgba(14,20,17,.62);
+  --ribbon-bg:#1C2421; --ribbon-fg:#EEF0EA;
+  --f-display:"Marcellus","Trajan Pro","Palatino Linotype",Palatino,Georgia,serif;
+  --f-body:"Albert Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --step-0:1rem; --step-1:1.2rem; --step-2:1.6rem; --step-3:2.2rem; --step-4:clamp(2.4rem,6vw,4.4rem);
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121815; --paper:#1A221E; --ink:#E7EBE4; --muted:#A3ADA6; --line:#2E3933;
+    --accent:#8CC0A6; --clay:#E3906B; --s-buy:#4F8FD8; --s-build:#DA7440;
+    --scrim:rgba(6,10,8,.66); --ribbon-bg:#E7EBE4; --ribbon-fg:#121815; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121815; --paper:#1A221E; --ink:#E7EBE4; --muted:#A3ADA6; --line:#2E3933;
+  --accent:#8CC0A6; --clay:#E3906B; --s-buy:#4F8FD8; --s-build:#DA7440;
+  --scrim:rgba(6,10,8,.66); --ribbon-bg:#E7EBE4; --ribbon-fg:#121815; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.12;text-wrap:balance;margin:0}
+h2{font-size:var(--step-3)}
+h3{font-size:var(--step-1);letter-spacing:.01em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.mono{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.02em}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:var(--step-1);max-width:62ch;color:var(--ink)}
+.prose{max-width:64ch;display:grid;gap:1em;color:var(--ink)}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* staging ribbon + header */
+.ribbon{background:var(--ribbon-bg);color:var(--ribbon-fg);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding-block:7px;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--f-display);font-size:1.15rem;text-decoration:none;white-space:nowrap}
+.brand small{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);margin-left:8px;text-transform:uppercase}
+nav.links{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none}
+nav.links::-webkit-scrollbar{display:none}
+nav.links a{font-size:.9rem;text-decoration:none;color:var(--muted);white-space:nowrap;padding-block:4px}
+nav.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 .92rem/1 var(--f-body);text-decoration:none;padding:12px 18px;border-radius:2px;border:1px solid currentColor;transition:background .15s,color .15s}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn.solid:hover{filter:brightness(1.08)}
+@media (max-width:860px){nav.links{display:none}}
+
+/* hero */
+.hero{position:relative;color:var(--on-photo);background:#1b2420}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,12,.5) 0%,rgba(10,14,12,0) 60%),linear-gradient(180deg,rgba(10,14,12,0) 35%,var(--scrim) 100%)}
+.hero .wrap{position:relative;z-index:1;min-height:clamp(440px,64vh,640px);display:flex;flex-direction:column;justify-content:flex-end;gap:18px;padding-block:56px 40px}
+.hero .eyebrow{color:rgba(255,255,255,.82)}
+.hero h1{font-size:var(--step-4);max-width:14ch}
+.hero .wrap>*{text-shadow:0 1px 18px rgba(0,0,0,.45)}
+.hero p.sub{font-size:var(--step-1);max-width:46ch;color:rgba(255,255,255,.92)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero .btn{color:#fff}
+.hero .btn.solid{background:#fff;color:#1C2421;border-color:#fff}
+.hero .credit{position:absolute;right:max(16px, env(safe-area-inset-right, 0px));bottom:12px;z-index:1;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+
+/* deed strip */
+.deed{background:var(--paper);border-bottom:1px solid var(--line)}
+.deed .wrap{padding-block:22px;display:grid;gap:14px}
+.deed .legal{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.facts div{padding:14px 14px 4px 0;display:grid;gap:2px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-family:var(--f-display);font-size:1.7rem;line-height:1.1}
+.facts dd span{font-family:var(--f-body);font-size:.85rem;color:var(--muted);margin-left:4px}
+@media (max-width:900px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+section{padding-block:clamp(56px,8vw,96px)}
+section.band{background:var(--paper);border-block:1px solid var(--line)}
+.sec-head{display:grid;gap:12px;margin-bottom:36px}
+
+/* overview */
+.overview{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.overview figure{margin:0}
+.overview img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+figcaption{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin-top:8px}
+@media (max-width:820px){.overview{grid-template-columns:1fr}}
+
+/* two paths */
+.paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.path{background:var(--paper);border:1px solid var(--line);padding:clamp(22px,3vw,34px);display:grid;gap:18px;align-content:start;min-width:0}
+.path .tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.path .price{font-family:var(--f-display);font-size:clamp(2.2rem,4.6vw,3.2rem);color:var(--clay);line-height:1}
+.path .price small{display:block;font-family:var(--f-body);font-size:.9rem;color:var(--muted);margin-top:8px;line-height:1.4}
+.kv{display:grid;margin:0;border-top:1px solid var(--line)}
+.kv div{display:flex;justify-content:space-between;gap:16px;padding-block:10px;border-bottom:1px solid var(--line)}
+.kv dt{color:var(--muted);font-size:.95rem}
+.kv dd{margin:0;font-variant-numeric:tabular-nums;font-weight:500;text-align:right}
+.path ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+@media (max-width:820px){.paths{grid-template-columns:1fr}}
+
+/* chart */
+.chart-card{margin-top:32px;background:var(--paper);border:1px solid var(--line);padding:clamp(18px,3vw,30px);display:grid;gap:14px}
+.chart-card>*,.site-grid>*{min-width:0}
+.chart-scroll{overflow-x:auto;max-width:100%}
+.chart-scroll svg{display:block;width:100%;min-width:560px;height:auto}
+.chart text{font-family:var(--f-body);fill:var(--muted);font-size:13px}
+.chart .val{fill:var(--paper);font-weight:600;font-size:13px}
+.chart .total{fill:var(--ink);font-weight:600}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .ref{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 4}
+.chart .reflabel{fill:var(--ink);font-size:12px}
+.chart rect.buy{fill:var(--s-buy)} .chart rect.build{fill:var(--s-build)}
+.chart rect.hit{fill:transparent;cursor:default}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:2px;display:inline-block}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-size:.82rem;padding:8px 10px;border-radius:3px;z-index:40;max-width:240px;line-height:1.35}
+
+/* today */
+.today{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:start}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.photo-grid figure{margin:0;min-width:0}
+.photo-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.photo-grid .wide{grid-column:1/-1}
+.photo-grid .wide img{aspect-ratio:10/3}
+.progress{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.progress li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding-block:12px;border-bottom:1px solid var(--line);align-items:center}
+.progress .bar{grid-column:1/-1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress .bar i{display:block;height:100%;background:var(--accent);border-radius:2px}
+.progress .pct{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.invested{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.invested div{border-top:2px solid var(--ink);padding-top:10px;min-width:0}
+.invested b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.9rem;line-height:1.1}
+.invested span{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.today{grid-template-columns:1fr}}
+@media (max-width:420px){.invested{grid-template-columns:1fr}}
+
+/* vision slider (deliberately dark band in both themes) */
+.vision{background:#141a17;color:#E7EBE4}
+.vision .eyebrow{color:#9fb0a6}
+.vision .lede{color:#E7EBE4}
+.slider{display:grid;gap:14px;outline:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#C9D3CC;border:1px solid #34413a;padding:8px 12px;border-radius:2px;white-space:nowrap}
+.chips button span{color:#7f8f86;margin-left:6px}
+.chips button[aria-pressed="true"]{background:#E7EBE4;color:#141a17;border-color:#E7EBE4}
+.chips button[aria-pressed="true"] span{color:#4b5a52}
+.chips button:focus-visible,.stage button:focus-visible,.thumbs button:focus-visible{outline:2px solid #8CC0A6;outline-offset:2px}
+.stage{position:relative;aspect-ratio:16/9;max-width:100%;background:#0d120f;overflow:hidden;touch-action:pan-y;user-select:none}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.stage img.out{opacity:0}
+.stage .nav{all:unset;cursor:pointer;position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;display:grid;place-items:center;background:rgba(10,14,12,.55);color:#fff;border-radius:50%;font-size:22px;line-height:1;backdrop-filter:blur(4px)}
+.stage .nav:hover{background:rgba(10,14,12,.8)}
+.stage .prev{left:14px}.stage .next{right:14px}
+.stage .full{all:unset;cursor:pointer;position:absolute;right:12px;top:12px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(10,14,12,.55);padding:7px 10px;border-radius:2px}
+.s-meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.s-meta .cap{font-family:var(--f-display);font-size:1.3rem}
+.s-meta .cat{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#9fb0a6;margin-right:10px}
+.s-meta .count{font-family:var(--f-mono);font-size:.8rem;color:#9fb0a6;font-variant-numeric:tabular-nums}
+.thumbs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity;scrollbar-color:#34413a transparent}
+.thumbs button{all:unset;cursor:pointer;flex:0 0 auto;width:120px;aspect-ratio:16/9;scroll-snap-align:start;opacity:.55;transition:opacity .2s;position:relative}
+.thumbs button:hover{opacity:.85}
+.thumbs button[aria-current="true"]{opacity:1;box-shadow:inset 0 0 0 2px #8CC0A6}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.thumbs button[aria-current="true"] img{outline:2px solid #8CC0A6;outline-offset:-2px}
+@media (max-width:560px){.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.stage .nav{width:40px;height:40px;font-size:18px}.thumbs button{width:92px}.s-meta .cap{font-size:1.1rem}}
+.vision .note{margin-top:14px;font-size:.85rem;color:#9fb0a6}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1400px,96vw);width:96vw}
+dialog.lb::backdrop{background:rgba(5,8,6,.9)}
+dialog.lb img{width:100%;height:auto;max-height:82vh;object-fit:contain;display:block}
+dialog.lb .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;padding-top:10px;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em}
+dialog.lb button{all:unset;cursor:pointer;color:#fff;border:1px solid rgba(255,255,255,.5);padding:8px 12px;font-family:var(--f-mono);font-size:.75rem}
+dialog.lb button:focus-visible{outline:2px solid #8CC0A6}
+
+/* site */
+.site-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start}
+.sheet{background:#fff;border:1px solid var(--line);padding:10px}
+.sheet img{display:block;width:100%;height:auto}
+.sheet-wrap{overflow-x:auto}
+.specs{display:grid;margin:0;border-top:1px solid var(--line)}
+.specs div{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:12px;padding-block:10px;border-bottom:1px solid var(--line)}
+.specs dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.specs dd{margin:0;font-size:.95rem}
+@media (max-width:900px){.site-grid{grid-template-columns:1fr}}
+@media (max-width:420px){.specs div{grid-template-columns:1fr;gap:2px}}
+.walk{margin-top:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;border:1px dashed var(--accent);padding:22px}
+.walk .badge{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:var(--paper);padding:6px 10px;white-space:nowrap}
+@media (max-width:560px){.walk{grid-template-columns:1fr}}
+
+/* location */
+.loc{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.corridor svg{width:100%;height:auto;display:block}
+.corridor text{font-family:var(--f-body);fill:var(--ink);font-size:14px}
+.corridor .sm{font-family:var(--f-mono);font-size:11px;fill:var(--muted);letter-spacing:.04em}
+.corridor .road{stroke:var(--ink);stroke-width:3}
+.corridor .border{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 4}
+.corridor .dot{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.corridor .here{fill:var(--clay)}
+.drivers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+.drivers div{display:grid;gap:6px;align-content:start;border-top:1px solid var(--line);padding-top:14px;min-width:0}
+.drivers p{color:var(--muted);font-size:.96rem}
+@media (max-width:900px){.loc{grid-template-columns:1fr}.corridor{max-width:340px}}
+@media (max-width:560px){.drivers{grid-template-columns:1fr}}
+
+/* data room + inquire */
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin:0;padding:0;list-style:none}
+.docs li{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);display:grid;gap:2px;min-width:0}
+.docs b{font-weight:500}
+.docs span{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.docs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.docs{grid-template-columns:1fr}}
+.inquire{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.contact{border:1px dashed var(--muted);padding:22px;display:grid;gap:10px;background:var(--bg)}
+.contact .ph{font-family:var(--f-mono);font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.inquire{grid-template-columns:1fr}}
+
+footer{padding-block:36px 48px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+footer .wrap{display:grid;gap:12px}
+footer p{max-width:110ch}
+</style>
+
+<div class="ribbon">Staging draft · not for distribution · figures subject to verification</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Esplendor <small>Río Rico, AZ</small></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#paths">Two paths</a>
+      <a href="#today">Today</a>
+      <a href="#vision">Vision</a>
+      <a href="#site">Site</a>
+      <a href="#location">Location</a>
+    </nav>
+    <a class="btn solid" href="#inquire">Request package</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0" aria-label="Introduction">
+    <img src="img/render-pool.jpg" alt="Rendering of the renovated pool deck with palms and guest buildings" fetchpriority="high">
+    <div class="wrap">
+      <p class="eyebrow">Offered for sale · Santa Cruz County, Arizona</p>
+      <h1>Esplendor Resort at Río Rico</h1>
+      <p class="sub">A 179-room hilltop resort on 22.74 acres above the Santa Cruz River Valley. Cleared, designed and ready for its next owner to finish.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#paths">See the two paths</a>
+        <a class="btn" href="#vision">View all 39 renderings</a>
+      </div>
+    </div>
+    <span class="credit">Rendering · Victor Robles Arquitectos</span>
+  </section>
+
+  <div class="deed">
+    <div class="wrap">
+      <div class="legal mono">
+        <span>1069 Camino Caralampi, Río Rico, AZ 85648</span>
+        <span>APN 114-50-001B · 114-50-013B · 114-50-176</span>
+        <span>Sec. 3, T23S, R13E · Rio Rico Unit 7, Blk 699</span>
+      </div>
+      <dl class="facts">
+        <div><dt>Land</dt><dd class="num">22.74<span>acres</span></dd></div>
+        <div><dt>Guest rooms</dt><dd class="num">179</dd></div>
+        <div><dt>Building area</dt><dd class="num">107,579<span>SF</span></dd></div>
+        <div><dt>Zoning</dt><dd>B-2<span>hotel permitted</span></dd></div>
+        <div><dt>Elevation</dt><dd class="num">~3,500<span>ft</span></dd></div>
+        <div><dt>Access</dt><dd>I-19<span>Exit 17</span></dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section id="overview">
+    <div class="wrap overview">
+      <div class="prose">
+        <p class="eyebrow">The opportunity</p>
+        <h2>A finished resort site with the hard part already done</h2>
+        <p class="lede">Esplendor opened in 1970 as a Spanish Colonial resort on a mesa with 360-degree views of the Santa Cruz Valley. A kitchen fire closed it in 2015, and it sat vacant until the current ownership group bought it in 2021.</p>
+        <p>Since then the owners have demolished and cleared the fire-damaged areas, cleaned the full property, repaired roofs and corridors, and commissioned a complete remodeling plan set with architectural, structural, mechanical, electrical, plumbing and civil drawings. The guest buildings, ballroom, pool, tennis courts and grounds remain in place.</p>
+        <p>After five years of ownership, the group is ready to hand the project to a buyer who will complete the renovation and reopen it, or to bring in a capital partner and finish it together.</p>
+      </div>
+      <figure>
+        <img src="img/photo-main-building.jpg" alt="Main building today with cypress trees and clear sky">
+        <figcaption>Main building, 2025 · current condition</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="paths" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Two ways in</p>
+        <h2>Buy it as is, or finish it with us</h2>
+        <p class="lede">Both paths start from the same asset. The difference is who funds and runs the renovation.</p>
+      </div>
+      <div class="paths">
+        <article class="path">
+          <p class="tag">Path A · Acquire as is</p>
+          <p class="price num">$9M–$11M<small>Asking price for the property in its current state, all three parcels.</small></p>
+          <dl class="kv">
+            <div><dt>Price per room</dt><dd>$50K–$61K</dd></div>
+            <div><dt>2023 appraised value, as is</dt><dd>$13.9M</dd></div>
+            <div><dt>2023 appraised value, as complete</dt><dd>$28.9M</dd></div>
+            <div><dt>Estimated cost to complete</dt><dd>$11M–$13M</dd></div>
+            <div><dt>2022 purchase proposal received</dt><dd>$13.8M</dd></div>
+          </dl>
+          <p class="muted">A buyer steps in below the 2023 as-is appraisal, inherits the design package and cleared site, and controls the renovation and brand decisions.</p>
+        </article>
+        <article class="path">
+          <p class="tag">Path B · Capital partnership</p>
+          <p class="price num">$11M–$13M<small>Capital needed to complete the renovation alongside current ownership.</small></p>
+          <dl class="kv">
+            <div><dt>Ownership contributes</dt><dd>Property and pre-development</dd></div>
+            <div><dt>Invested to date</dt><dd>$3.17M</dd></div>
+            <div><dt>Renovation schedule</dt><dd>~18 months</dd></div>
+            <div><dt>Prior lender interest (2024)</dt><dd>$10M USDA pre-approval</dd></div>
+          </dl>
+          <ul>
+            <li>Open to joint-venture equity, preferred equity or construction financing.</li>
+            <li>Plans, budget and room-by-room schedule are ready to price.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="chart-card" aria-labelledby="chart-title">
+        <h3 id="chart-title">Path A: all-in cost against the 2023 completed value</h3>
+        <div class="legend" aria-hidden="true">
+          <span><i style="background:var(--s-buy)"></i>Purchase price</span>
+          <span><i style="background:var(--s-build)"></i>Cost to complete</span>
+          <span><i style="border-top:2px dashed var(--ink);height:0;border-radius:0"></i>2023 as-complete appraisal</span>
+        </div>
+        <div class="chart-scroll">
+          <svg class="chart" viewBox="0 0 640 196" role="img" aria-label="Low case: $9M purchase plus $11M to complete equals $20M. High case: $11M purchase plus $13M to complete equals $24M. Both are below the $28.9M 2023 as-complete appraisal.">
+            <line class="grid" x1="120" y1="20" x2="120" y2="150"/>
+            <line class="grid" x1="280" y1="20" x2="280" y2="150"/>
+            <line class="grid" x1="440" y1="20" x2="440" y2="150"/>
+            <line class="grid" x1="600" y1="20" x2="600" y2="150"/>
+            <text x="120" y="170" text-anchor="middle">$0</text>
+            <text x="280" y="170" text-anchor="middle">$10M</text>
+            <text x="440" y="170" text-anchor="middle">$20M</text>
+            <text x="600" y="170" text-anchor="middle">$30M</text>
+
+            <text x="0" y="62" style="fill:var(--ink)">Low case</text>
+            <rect class="buy" x="120" y="44" width="143" height="30" rx="4" data-tip="Purchase at $9M"/>
+            <rect class="build" x="265" y="44" width="175" height="30" rx="4" data-tip="Complete for $11M"/>
+            <text class="val" x="191" y="64" text-anchor="middle">$9M</text>
+            <text class="val" x="352" y="64" text-anchor="middle">$11M</text>
+            <text class="total" x="448" y="64">$20M</text>
+
+            <text x="0" y="122" style="fill:var(--ink)">High case</text>
+            <rect class="buy" x="120" y="104" width="175" height="30" rx="4" data-tip="Purchase at $11M"/>
+            <rect class="build" x="297" y="104" width="207" height="30" rx="4" data-tip="Complete for $13M"/>
+            <text class="val" x="207" y="124" text-anchor="middle">$11M</text>
+            <text class="val" x="400" y="124" text-anchor="middle">$13M</text>
+            <text class="total" x="512" y="124">$24M</text>
+
+            <line class="ref" x1="582" y1="14" x2="582" y2="150"/>
+            <text class="reflabel" x="578" y="186" text-anchor="end">$28.9M as complete (May 2023)</text>
+          </svg>
+        </div>
+        <p class="muted" style="font-size:.88rem">All-in basis of $20M–$24M against a $28.9M as-complete appraisal leaves roughly $4.9M–$8.9M of headroom before soft costs, carry and financing. Illustrative only; the appraisal is dated and a buyer should commission its own.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Where it stands today</p>
+        <h2>Five years of clearing, repairing and planning</h2>
+      </div>
+      <div class="today">
+        <div class="photo-grid">
+          <figure class="wide"><img src="img/photo-guest-wings.jpg" alt="Panorama of the three-story guest buildings across the motor court"><figcaption>Guest buildings from the motor court</figcaption></figure>
+          <figure><img src="img/photo-ballroom.jpg" alt="Cleared interior with beamed ceiling and fireplace"><figcaption>Fire area, demolished and cleared</figcaption></figure>
+          <figure><img src="img/photo-corridor-view.jpg" alt="Covered corridor with valley and mountain view"><figcaption>Guest corridor, valley view</figcaption></figure>
+          <figure><img src="img/photo-courtyard.jpg" alt="Landscaped courtyard between guest buildings"><figcaption>Courtyard and gardens</figcaption></figure>
+          <figure><img src="img/photo-roof-valley.jpg" alt="Clay tile roof overlooking the Santa Cruz Valley" style="object-position:center 30%"><figcaption>Tile roofs, repairs underway</figcaption></figure>
+        </div>
+        <div>
+          <ul class="progress">
+            <li><span>Fire-damaged kitchen and adjacent areas demolished</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Site cleanup, phases one and two</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Remodeling plans: architectural, structural, MEP, civil, water line</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Renderings and interior design</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Phase I environmental assessment and title insurance</span><span class="pct">Complete</span><span class="bar"><i style="width:100%"></i></span></li>
+            <li><span>Fountain restoration</span><span class="pct">60%</span><span class="bar"><i style="width:60%"></i></span></li>
+            <li><span>Swimming pool</span><span class="pct">50%</span><span class="bar"><i style="width:50%"></i></span></li>
+            <li><span>Roof repairs</span><span class="pct">45%</span><span class="bar"><i style="width:45%"></i></span></li>
+            <li><span>Main hallways</span><span class="pct">30%</span><span class="bar"><i style="width:30%"></i></span></li>
+          </ul>
+          <div class="invested">
+            <div><b class="num">$3.17M</b><span>Invested by ownership, 2021–2025</span></div>
+            <div><b class="num">$1.72M</b><span>Acquisition, 2021</span></div>
+            <div><b class="num">$1.46M</b><span>Cleanup, repairs, design and engineering</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision" class="vision">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">The vision</p>
+        <h2>Hacienda arrival, resort pool, wine garden</h2>
+        <p class="lede">All 39 concept renderings from the remodeling design package. Swipe, use the arrows, or pick a thumbnail.</p>
+      </div>
+      <div class="slider" id="slider" tabindex="0" aria-roledescription="carousel" aria-label="Renderings">
+        <div class="chips" id="chips" aria-label="Filter renderings"></div>
+        <div class="stage" id="stage">
+          <img id="s-img" src="img/renders/17.jpg" alt="Pool rendering">
+          <button class="nav prev" id="s-prev" type="button" aria-label="Previous rendering">&#8249;</button>
+          <button class="nav next" id="s-next" type="button" aria-label="Next rendering">&#8250;</button>
+          <button class="full" id="s-full" type="button">Enlarge</button>
+        </div>
+        <div class="s-meta" aria-live="polite"><p><span class="cat" id="s-cat"></span><span class="cap" id="s-cap"></span></p><span class="count" id="s-count"></span></div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <p class="note">Renderings by Victor Robles Arquitectos. Conceptual, not construction documents.</p>
+    </div>
+  </section>
+
+  <section id="site">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Site and buildings</p>
+        <h2>Guest wings around courtyards, event space at the crest</h2>
+      </div>
+      <div class="site-grid">
+        <figure style="margin:0">
+          <div class="sheet-wrap"><div class="sheet" style="min-width:520px"><img src="img/plan-resort.png" alt="Existing-conditions resort plan showing guest buildings A through M, pool, gym and convention center"></div></div>
+          <figcaption>Existing-conditions resort plan, sheet A-6 · HG Desert Designs, January 2022</figcaption>
+        </figure>
+        <dl class="specs">
+          <div><dt>Guest rooms</dt><dd>179, including one-bedroom suites, in 2- and 3-story buildings</dd></div>
+          <div><dt>Event space</dt><dd>9,122 SF convention center (Catalina, Santa Rita and Patagonia rooms), ballroom for up to 650, 8 conference rooms, exterior terrace</dd></div>
+          <div><dt>Main building</dt><dd>14,018 SF upper level with lobby, restaurant and bar; 8,794 SF lower level</dd></div>
+          <div><dt>Recreation</dt><dd>30 × 75 ft pool and spa, tennis and pickleball courts, new padel courts, gym and sauna</dd></div>
+          <div><dt>Parking</dt><dd>About 200 surface spaces</dd></div>
+          <div><dt>Construction</dt><dd>Masonry with stucco, clay tile and built-up roofs, beamed ceilings; built 1970</dd></div>
+          <div><dt>Flood zone</dt><dd>Zone X, outside the 500-year floodplain</dd></div>
+          <div><dt>Utilities</dt><dd>All public utilities available to the site</dd></div>
+        </dl>
+      </div>
+      <div class="walk">
+        <span class="badge">In production</span>
+        <div>
+          <h3>3D walkthrough</h3>
+          <p class="muted">A 3D model is being built from the full CAD drawing set. Buyers and partners will be able to walk the guest wings, lobby, ballroom and pool deck from a browser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Location and demand</p>
+        <h2>On the I-19 trade corridor, ten miles from the border</h2>
+      </div>
+      <div class="loc">
+        <div class="corridor">
+          <svg viewBox="0 0 300 470" role="img" aria-label="Interstate 19 corridor from Tucson south through Green Valley, Tubac and Río Rico to Nogales and the Mexican border.">
+            <line class="road" x1="70" y1="24" x2="70" y2="410"/>
+            <line class="border" x1="20" y1="378" x2="290" y2="378"/>
+            <text class="sm" x="286" y="372" text-anchor="end">U.S. | MEXICO</text>
+            <circle class="dot" cx="70" cy="30" r="7"/>
+            <text x="92" y="35">Tucson</text><text class="sm" x="92" y="52">~57 mi · TUS airport</text>
+            <circle class="dot" cx="70" cy="120" r="6"/>
+            <text x="92" y="125">Green Valley</text>
+            <circle class="dot" cx="70" cy="190" r="6"/>
+            <text x="92" y="195">Tubac</text><text class="sm" x="92" y="212">arts village, golf</text>
+            <circle class="here" cx="70" cy="262" r="10"/>
+            <text x="92" y="262" style="font-weight:600">Esplendor · Río Rico</text><text class="sm" x="92" y="279">I-19 Exit 17</text>
+            <circle class="dot" cx="70" cy="340" r="7"/>
+            <text x="92" y="338">Nogales, AZ</text><text class="sm" x="92" y="355">~10 mi · Mariposa port</text>
+            <circle class="dot" cx="70" cy="404" r="6"/>
+            <text x="92" y="409">Nogales, Sonora</text>
+            <text class="sm" x="92" y="426">Hwy 15 to Hermosillo</text>
+            <text class="sm" x="70" y="458" text-anchor="middle">I-19</text>
+          </svg>
+        </div>
+        <div class="drivers">
+          <div><h3>Border trade</h3><p>The Mariposa Port of Entry in Nogales is Arizona's main commercial gateway with Mexico, handling up to 1,600 trucks a day and much of the fresh produce the U.S. imports in winter.</p></div>
+          <div><h3>Federal agencies</h3><p>Customs and Border Protection, Border Patrol and other agencies staff the Nogales ports and need short- and long-term lodging, meeting rooms and food service.</p></div>
+          <div><h3>Hermosa mine</h3><p>South32's $1.23B Hermosa zinc and manganese project in the Patagonia Mountains was about half built as of July 2026, with first ore planned for fiscal 2027 and up to 900 jobs. Its remote operations center is under construction in Nogales.</p></div>
+          <div><h3>Leisure and events</h3><p>Weddings and corporate retreats, golf at Río Rico and Tubac, birding along the Santa Cruz River, and Mexican travelers heading north. Summers run 15–20°F cooler than Phoenix.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inquire">
+    <div class="wrap">
+      <div class="inquire">
+        <div class="prose">
+          <p class="eyebrow">Next step</p>
+          <h2>Request the offering package</h2>
+          <p>Qualified buyers and capital partners can review the full package after signing a confidentiality agreement. Property tours are available by appointment.</p>
+          <ul class="docs">
+            <li><b>2023 appraisal</b><span>As is and as complete</span></li>
+            <li><b>Remodeling plans</b><span>Arch., structural, MEP, civil</span></li>
+            <li><b>As-built CAD set</b><span>Site, floor plans, sections</span></li>
+            <li><b>Cost to complete</b><span>Line-item budget and schedule</span></li>
+            <li><b>Phase I ESA</b><span>Environmental assessment</span></li>
+            <li><b>Title and survey</b><span>Title insurance, legal descriptions</span></li>
+            <li><b>Rendering package</b><span>45 images</span></li>
+            <li><b>Investment records</b><span>2021–2025 payments</span></li>
+            <li><b>3D walkthrough</b><span>Coming soon</span></li>
+          </ul>
+        </div>
+        <div class="contact">
+          <p class="eyebrow">Contact</p>
+          <h3>Ownership group</h3>
+          <p class="ph">[ Contact name ]</p>
+          <p class="ph">[ Email ]</p>
+          <p class="ph">[ Phone ]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Esplendor Resort at Río Rico · 1069 Camino Caralampi, Río Rico, Arizona 85648.</p>
+    <p>This page is for information only. It is not an offer to sell or a solicitation of an offer to buy any security; any investment would be made only through definitive documents with qualified parties. Appraised values come from an independent appraisal prepared for the owner with an effective date of May 22, 2023; they are historical and may not be relied on by third parties. Cost, investment and progress figures are provided by the owner and are subject to buyer verification. Renderings are conceptual.</p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Rendering viewer">
+  <img id="lb-img" alt="">
+  <div class="bar"><button id="lb-prev" type="button">Prev</button><span id="lb-cap"></span><span style="display:flex;gap:8px"><button id="lb-next" type="button">Next</button><button id="lb-close" type="button">Close</button></span></div>
+</dialog>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+  var R=[["01", "Arrival", "Vehicle entry and bell tower"], ["02", "Arrival", "Vehicle entry and bell tower"], ["03", "Arrival", "Vehicle entry and bell tower"], ["04", "Arrival", "Entry garden"], ["05", "Arrival", "Entry garden"], ["06", "Arrival", "Entry garden"], ["07", "Arrival", "Side garden drive"], ["08", "Arrival", "Side garden drive"], ["09", "Exteriors", "Fountain court"], ["10", "Exteriors", "Fountain court"], ["11", "Exteriors", "Pedestrian arrival and portico"], ["12", "Exteriors", "Pedestrian arrival and portico"], ["13", "Exteriors", "Fountain court and garden arcade"], ["14", "Exteriors", "Pedestrian arrival and portico"], ["15", "Exteriors", "Pedestrian arrival and portico"], ["16", "Pool & grill", "Pool deck from above"], ["17", "Pool & grill", "Pool"], ["18", "Pool & grill", "Pool"], ["19", "Pool & grill", "Lounge deck"], ["20", "Pool & grill", "Cabanas and loungers"], ["21", "Pool & grill", "Cabanas and loungers"], ["22", "Pool & grill", "Lounge deck"], ["23", "Pool & grill", "Grill terrace"], ["24", "Pool & grill", "Grill terrace"], ["25", "Pool & grill", "Grill terrace"], ["26", "Pool & grill", "Grill terrace"], ["27", "Pool & grill", "Grill terrace"], ["28", "Wine garden", "Wine garden"], ["29", "Wine garden", "Wine garden"], ["30", "Wine garden", "Wine garden"], ["31", "Wine garden", "Wine garden"], ["32", "Wine garden", "Wine garden"], ["33", "Wine garden", "Wine garden from above"], ["34", "Wine garden", "Wine garden from above"], ["35", "Wine garden", "Wine garden from above"], ["36", "Rooms", "Superior guest room"], ["37", "Rooms", "Superior guest room"], ["38", "Rooms", "Superior guest room"], ["39", "Rooms", "Superior guest room"]];
+  var cats=['All','Arrival','Exteriors','Pool & grill','Wine garden','Rooms'];
+  var list=R.slice(), cur=16, filter='All';
+  var img=document.getElementById('s-img'), cap=document.getElementById('s-cap'), cat=document.getElementById('s-cat'), cnt=document.getElementById('s-count');
+  var thumbs=document.getElementById('thumbs'), chips=document.getElementById('chips');
+  function src(r){return 'img/renders/'+r[0]+'.jpg'}
+  cats.forEach(function(c){
+    var n=c==='All'?R.length:R.filter(function(r){return r[1]===c}).length;
+    var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',c===filter);
+    b.innerHTML=c.replace('&','&amp;')+'<span>'+n+'</span>';
+    b.addEventListener('click',function(){setFilter(c)}); chips.appendChild(b);
+  });
+  function buildThumbs(){
+    thumbs.innerHTML='';
+    list.forEach(function(r,i){
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',r[2]+', '+(i+1)+' of '+list.length);
+      var t=document.createElement('img'); t.src='img/renders/t/'+r[0]+'.jpg'; t.alt=''; t.loading='lazy'; t.decoding='async';
+      b.appendChild(t); b.addEventListener('click',function(){go(i)}); thumbs.appendChild(b);
+    });
+  }
+  function preload(i){var r=list[(i+list.length)%list.length]; if(r){var p=new Image(); p.src=src(r);}}
+  function go(i,instant){
+    cur=(i+list.length)%list.length; var r=list[cur];
+    cat.textContent=r[1]; cap.textContent=r[2]; cnt.textContent=(cur+1)+' / '+list.length;
+    var next=src(r);
+    if(img.getAttribute('src')!==next){
+      img.classList.add('out');
+      var pre=new Image(); pre.onload=pre.onerror=function(){img.src=next; img.alt=r[2]+' rendering'; requestAnimationFrame(function(){img.classList.remove('out')});}; pre.src=next;
+    }
+    [].forEach.call(thumbs.children,function(b,k){b.setAttribute('aria-current',k===cur)});
+    var tb=thumbs.children[cur]; if(tb){var L=tb.offsetLeft-thumbs.clientWidth/2+tb.clientWidth/2; thumbs.scrollTo({left:L,behavior:instant?'auto':'smooth'});}
+    preload(cur+1); preload(cur-1);
+    if(lb.open) showLb();
+  }
+  function setFilter(c){
+    var keep=list[cur]; filter=c; list=c==='All'?R.slice():R.filter(function(r){return r[1]===c});
+    [].forEach.call(chips.children,function(b){b.setAttribute('aria-pressed',b.firstChild.textContent===c)});
+    buildThumbs(); var k=list.indexOf(keep); go(k<0?0:k,true);
+  }
+  document.getElementById('s-prev').onclick=function(){go(cur-1)};
+  document.getElementById('s-next').onclick=function(){go(cur+1)};
+  var sl=document.getElementById('slider');
+  sl.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('.chips'))return; if(e.key==='ArrowRight'){go(cur+1);e.preventDefault()} if(e.key==='ArrowLeft'){go(cur-1);e.preventDefault()}});
+  var stage=document.getElementById('stage'), x0=null, y0=null;
+  stage.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return; x0=e.clientX;y0=e.clientY});
+  stage.addEventListener('pointerup',function(e){if(x0===null)return; var dx=e.clientX-x0, dy=e.clientY-y0; x0=null; if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)) go(cur+(dx<0?1:-1));});
+  stage.addEventListener('pointercancel',function(){x0=null});
+  // lightbox
+  var lb=document.getElementById('lb'), lbi=document.getElementById('lb-img'), lbc=document.getElementById('lb-cap');
+  function showLb(){var r=list[cur]; lbi.src=src(r); lbi.alt=r[2]+' rendering'; lbc.textContent=r[2]+'  ·  '+(cur+1)+' / '+list.length;}
+  document.getElementById('s-full').onclick=function(){showLb(); if(lb.showModal) lb.showModal();};
+  stage.addEventListener('dblclick',function(){showLb(); if(lb.showModal) lb.showModal();});
+  document.getElementById('lb-prev').onclick=function(){go(cur-1)};
+  document.getElementById('lb-next').onclick=function(){go(cur+1)};
+  document.getElementById('lb-close').onclick=function(){lb.close()};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  document.addEventListener('keydown',function(e){if(!lb.open)return; if(e.key==='ArrowRight')go(cur+1); if(e.key==='ArrowLeft')go(cur-1);});
+  buildThumbs(); go(cur,true);
+  // chart tooltips
+  var tip=document.getElementById('tip');
+  document.querySelectorAll('.chart rect[data-tip]').forEach(function(r){
+    r.addEventListener('mousemove',function(e){tip.textContent=r.getAttribute('data-tip');tip.hidden=false;tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+14)+'px';});
+    r.addEventListener('mouseleave',function(){tip.hidden=true;});
+  });
+})();
+</script>

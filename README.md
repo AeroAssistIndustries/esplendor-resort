@@ -1,0 +1,12 @@
+# Esplendor Resort at Río Rico — offering site
+
+Staging site for the sale or recapitalization of the Esplendor Resort, a 179-room hilltop resort on 22.74 acres at 1069 Camino Caralampi, Río Rico, Arizona.
+
+- `index.html` — single-page offering site (two paths: acquire as is at $9M–$11M, or capital partnership to fund the $11M–$13M completion)
+- `img/` — current photos, existing-conditions plan, hero rendering
+- `img/renders/` — all 39 concept renderings (Victor Robles Arquitectos) with thumbnails in `t/`
+- `walkthrough.html` — 3D massing model and walkthrough (in progress)
+
+The page is written as an artifact body (no `<html>`/`<head>` wrapper). Fonts load from Google Fonts; there is no build step.
+
+**Status:** staging draft, not for distribution. Appraisal figures are from a May 22, 2023 appraisal prepared for the owner; get the appraiser's consent before showing them publicly, and have counsel review the capital-partnership section before launch.
