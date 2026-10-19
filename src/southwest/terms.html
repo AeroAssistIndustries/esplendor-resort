@@ -1,0 +1,63 @@
+  <section id="terms" aria-labelledby="terms-title">
+    <div class="wrap">
+      <div class="sw-head">
+        <p class="sw-eb eyebrow">Your terms</p>
+        <h2 id="terms-title">Run the numbers on either path</h2>
+        <p class="lede">Set a price, a down payment and a rate to see what seller financing looks like, or see what a 50/50 stake is worth in each operating scenario. Illustrative only — actual terms are negotiated.</p>
+      </div>
+      <div class="terms-tabs" role="tablist" aria-label="Choose a path">
+        <button type="button" role="tab" id="tt-a" aria-controls="tp-a" aria-selected="true">Path A · Seller financing</button>
+        <button type="button" role="tab" id="tt-b" aria-controls="tp-b" aria-selected="false" tabindex="-1">Path B · 50/50 partnership</button>
+      </div>
+
+      <div class="terms" id="tp-a" role="tabpanel" aria-labelledby="tt-a">
+        <div class="t-in">
+          <label for="sa-px"><span>Purchase price <output id="sa-px-o" for="sa-px"></output></span><input type="range" id="sa-px" min="12" max="16" step="0.25" value="15"><span class="hint">Asking $15M, negotiable for serious buyers.</span></label>
+          <label for="sa-dp"><span>Down payment <output id="sa-dp-o" for="sa-dp"></output></span><input type="range" id="sa-dp" min="10" max="60" step="5" value="25"></label>
+          <label for="sa-rt"><span>Interest rate <output id="sa-rt-o" for="sa-rt"></output></span><input type="range" id="sa-rt" min="6" max="14" step="0.25" value="10"><span class="hint">Example only. The rate is set at prevailing hard-money levels when terms are agreed.</span></label>
+          <label for="sa-tm"><span>Term <output id="sa-tm-o" for="sa-tm"></output></span><input type="range" id="sa-tm" min="1" max="10" step="1" value="5"></label>
+          <div><p class="hint" id="sa-ty-l" style="margin-bottom:6px">Payments</p><div class="seg" role="group" aria-labelledby="sa-ty-l"><button type="button" data-ty="io" aria-pressed="true">Interest only</button><button type="button" data-ty="am" aria-pressed="false">25-year amortization</button></div></div>
+        </div>
+        <div class="t-out" aria-live="polite">
+          <dl class="t-kpis">
+            <div><dt>Cash at closing</dt><dd id="sa-cash">–</dd><dd class="s">down payment</dd></div>
+            <div><dt>Seller-financed</dt><dd id="sa-loan">–</dd><dd class="s" id="sa-loan-s"></dd></div>
+            <div><dt>Monthly payment</dt><dd id="sa-mo" class="hot">–</dd><dd class="s" id="sa-mo-s"></dd></div>
+            <div><dt>Due at maturity</dt><dd id="sa-bal">–</dd><dd class="s" id="sa-bal-s"></dd></div>
+          </dl>
+          <div>
+            <div class="t-bar" role="img" id="sa-bar" aria-label=""><i class="a" id="sa-bar-a"></i><i class="b" id="sa-bar-b"></i></div>
+            <p class="t-legend" style="margin-top:8px"><span><i style="background:var(--clay)"></i>Your cash</span><span><i style="background:var(--turq)"></i>Carried by the seller</span></p>
+          </div>
+          <p class="t-note" id="sa-cov"></p>
+          <p class="t-note">Indicative only and subject to buyer qualification, credit approval and definitive agreements. Renovation funding is separate; the owner&rsquo;s estimate to complete is $11&ndash;13M.</p>
+        </div>
+      </div>
+
+      <div class="terms" id="tp-b" role="tabpanel" aria-labelledby="tt-b" hidden>
+        <div class="t-in">
+          <div><p class="hint" id="sb-sc-l" style="margin-bottom:6px">Operating scenario after reopening</p><div class="seg" role="group" aria-labelledby="sb-sc-l"><button type="button" data-sc="cons" aria-pressed="false">Conservative</button><button type="button" data-sc="base" aria-pressed="true">Base</button><button type="button" data-sc="up" aria-pressed="false">Upside</button></div></div>
+          <p class="hint" id="sb-desc"></p>
+          <label class="t-check" for="sb-refi" style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="sb-refi" checked style="margin-top:4px;accent-color:var(--clay)"><span>Refinance at stabilization at 65% of value and split the proceeds 50/50</span></label>
+          <dl class="glance" style="margin-top:4px">
+            <div><dt>You invest</dt><dd>$15M, which funds the $11&ndash;13M completion plus reserves</dd></div>
+            <div><dt>Owner contributes</dt><dd>The property and five years of pre-development</dd></div>
+            <div><dt>Ownership</dt><dd>50% investor &middot; 50% current owner</dd></div>
+          </dl>
+        </div>
+        <div class="t-out" aria-live="polite">
+          <dl class="t-kpis">
+            <div><dt>Your 50% of value</dt><dd id="sb-val" class="hot">–</dd><dd class="s" id="sb-val-s"></dd></div>
+            <div><dt>Value multiple</dt><dd id="sb-mult">–</dd><dd class="s">on the $15M invested</dd></div>
+            <div><dt>Your share of NOI</dt><dd id="sb-noi">–</dd><dd class="s" id="sb-noi-s"></dd></div>
+            <div><dt>Cash back at refinance</dt><dd id="sb-refi-o">–</dd><dd class="s" id="sb-refi-s"></dd></div>
+          </dl>
+          <div>
+            <div class="t-bar" role="img" id="sb-bar" aria-label=""><i class="b" id="sb-bar-a"></i><i class="c" id="sb-bar-b"></i></div>
+            <p class="t-legend" style="margin-top:8px"><span><i style="background:var(--turq)"></i>Your 50%</span><span><i style="background:var(--brass-l)"></i>Owner&rsquo;s 50%</span></p>
+          </div>
+          <p class="t-note">Assumes the partnership owns the finished resort debt-free and shares value and cash flow equally; values use the same 8.5% cap rate and scenarios as the <a href="#returns">returns model</a>. Any preferred return, fees or waterfall would be set in definitive documents, offered only to eligible investors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
