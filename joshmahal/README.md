@@ -14,8 +14,4 @@ The site is plain static HTML, CSS and JavaScript. It has no build step and is s
 - `fonts/` holds Rozha One and Hind (SIL Open Font License).
 - `vendor/` holds Pannellum 2.5.6 (MIT), the 360° viewer.
 
-## Notes
-
-The renderings are AI-generated design interpretations, not photographs. The drawings are schematic and not for construction. Final design, engineering and permitting require an Arizona-registered architect and engineers.
-
 Prepared by Landmark Venture Group LLC, October 2026.
